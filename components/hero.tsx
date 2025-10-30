@@ -1,0 +1,51 @@
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { ChevronDown } from "lucide-react"
+
+export function Hero() {
+  return (
+    <section id="home" className="relative h-screen flex items-center justify-center">
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/1513-hero-pic.jpg"
+          alt="1513 at Stone Creek Venue"
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-venue-hero-overlay" />
+      </div>
+
+      <div
+        className="relative z-10 text-center text-venue-text-light px-4"
+        style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
+      >
+        <h1 className="font-serif text-6xl md:text-8xl mb-4 text-balance italic" style={{ fontWeight: 300 }}>
+          1513 at Stone Creek
+        </h1>
+        <p className="text-lg md:text-xl mb-2 text-venue-text-muted max-w-2xl mx-auto uppercase tracking-wider">
+          Your Story Begins at 1513 at Stone Creek
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="https://premiervenuepricing.com/stone-creek-inn-wedding-pricing" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-venue-text-light text-primary hover:bg-venue-text-muted">
+              Download Our Brochure
+            </Button>
+          </Link>
+          <Link href={"/gallery"}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
+            >
+              View Gallery
+            </Button>
+          </Link>
+        </div>
+      </div>
+
+      <a href="#content" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-venue-text-light animate-bounce">
+        <ChevronDown size={32} />
+      </a>
+    </section>
+  )
+}
