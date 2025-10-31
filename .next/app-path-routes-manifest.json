@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/apple-icon.png/route": "/apple-icon.png",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/testimonials/page": "/testimonials",
+  "/amenities/page": "/amenities",
+  "/gallery/page": "/gallery",
+  "/about/page": "/about",
+  "/contact/page": "/contact",
+  "/venue/page": "/venue"
+}
