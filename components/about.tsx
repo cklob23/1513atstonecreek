@@ -22,15 +22,15 @@ export function About() {
             </p>
             <div className="grid grid-cols-3 gap-6 mt-8">
               <div className="text-center">
-                <div className="text-3xl font-serif text-foreground mb-2">250</div>
+                <div className="text-3xl font-serif text-foreground mb-2">200</div>
                 <div className="text-sm text-muted-foreground">Guest Capacity</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-serif text-foreground mb-2">10</div>
+                <div className="text-3xl font-serif text-foreground mb-2">30</div>
                 <div className="text-sm text-muted-foreground">Acres</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-serif text-foreground mb-2">500+</div>
+                <div className="text-3xl font-serif text-foreground mb-2">1000+</div>
                 <div className="text-sm text-muted-foreground">Weddings Hosted</div>
               </div>
             </div>
