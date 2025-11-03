@@ -30,7 +30,7 @@ export function About() {
                 <div className="text-sm text-muted-foreground">Acres</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-serif text-foreground mb-2">1000+</div>
+                <div className="text-3xl font-serif text-foreground mb-2">1300+</div>
                 <div className="text-sm text-muted-foreground">Weddings Hosted</div>
               </div>
             </div>
