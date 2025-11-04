@@ -6,15 +6,21 @@ import { Star, ArrowRight } from "lucide-react"
 export function TestimonialsPreview() {
   const testimonials = [
     {
-      name: "Sarah & Michael",
-      date: "June 2024",
-      text: "Our wedding at 1513 at Stone Creek was absolutely magical. The venue exceeded all our expectations, and the staff went above and beyond to make our day perfect.",
+      name: "Lacey",
+      date: "August 2025",
+      text: "We hosted a wedding shower here in April. It was an amazing and beautiful experience. The new owners are attentive, efficient, accommodating, and kind! They are working very hard and diligently to bring this beautiful venue back up to its full potential. Check out 1513 at Stone Creek.",
       rating: 5,
     },
     {
-      name: "Emily & James",
-      date: "September 2024",
-      text: "From the moment we toured the venue, we knew it was the one. The rustic elegance and natural beauty created the perfect atmosphere for our celebration.",
+      name: "Rebecca",
+      date: "October 2025",
+      text: "Amazing venue! Loved the space.",
+      rating: 5,
+    },
+    {
+      name: "Kerry",
+      date: "September 2025",
+      text: "Wedding turned out beautiful. Food was great. Very pleased with everything!",
       rating: 5,
     },
   ]
