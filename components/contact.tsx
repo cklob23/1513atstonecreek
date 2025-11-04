@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail } from "lucide-react"
+//import { sendEmail } from "@/components/sendEmail"
+import logo from "@/public/1513-logo-header.png"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -19,7 +21,100 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
+    const guestHtmlBody = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: 'Georgia', serif;
+        background-color: #ffffff;
+        color: #3b2e24;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 650px;
+        background: #fffaf6;
+        margin: 30px auto;
+        padding: 30px 40px;
+        border: 1px solid #e7dfd7;
+        border-radius: 10px;
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .logo img {
+        max-width: 200px;
+      }
+      h2 {
+        color: #3b2e24;
+        text-align: center;
+      }
+      p {
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .details {
+        background: #f9f6f3;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      .details p {
+        margin: 8px 0;
+      }
+      .label {
+        font-weight: bold;
+        color: #3b2e24;
+      }
+      .footer {
+        margin-top: 35px;
+        font-size: 12px;
+        color: #8a8178;
+        text-align: center;
+      }
+    </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="logo">
+          <img src=${logo} alt="1513 at Stone Creek" />
+        </div>
+
+        <h2>Thank you for your inquiry!</h2>
+
+        <p>Hi ${formData.name},</p>
+
+        <p>
+          Thank you for reaching out about hosting your event at <strong>1513 at Stone Creek</strong>!
+          We're delighted to hear from you and can't wait to learn more about your plans.
+          Our team will review your inquiry and follow up soon with availability and details.
+        </p>
+
+        <div class="details">
+          <p><span class="label">Name:</span> ${formData.name}</p>
+          <p><span class="label">Email:</span> ${formData.email}</p>
+          <p><span class="label">Phone:</span> ${formData.phone}</p>
+          <p><span class="label">Preferred Date:</span> ${formData.date}</p>
+          <p><span class="label">Message:</span><br />${formData.message}</p>
+        </div>
+
+        <p>
+          We look forward to helping you create something beautiful here at 1513 at Stone Creek.
+        </p>
+
+        <div class="footer">
+          © ${new Date().getFullYear()} 1513 at Stone Creek &nbsp;|&nbsp; Est. 2025<br>
+          <a href="mailto:info@1513stonecreek.com" style="color:#3b2e24; text-decoration:none;">info@1513stonecreek.com</a>
+        </div>
+      </div>
+    </body>
+    </html>
+    `
+    //await sendEmail(guestHtmlBody)
     console.log("Form submitted:", formData)
   }
 
