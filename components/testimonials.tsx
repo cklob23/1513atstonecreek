@@ -21,6 +21,24 @@ export function Testimonials() {
       text: "Wedding turned out beautiful. Food was great. Very pleased with everything!",
       rating: 5,
     },
+       {
+      name: "Michael",
+      date: "June 2025",
+      text: "Awesome spot for that special occasion!",
+      rating: 5,
+    },
+    {
+      name: "Aaron",
+      date: "November 2024",
+      text: "Went here for a wedding. Looks great!",
+      rating: 5,
+    },
+    {
+      name: "Ariel",
+      date: "October 2025",
+      text: "I had my engagement party here in September! Gina and Haley were the best to work with and have made the place beautiful! We used the outdoor area and they had it decorated with lights and flowers! They had already set out tables with the table cloths! Highly recommend for any event and/or wedding!",
+      rating: 5,
+    },
   ]
 
   return (
