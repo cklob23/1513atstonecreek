@@ -19,7 +19,7 @@ export function Contact() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const guestHtmlBody = `
     <!DOCTYPE html>
@@ -114,7 +114,27 @@ export function Contact() {
     </body>
     </html>
     `
-    //await sendEmail(guestHtmlBody)
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          htmlBody: guestHtmlBody,
+          name: formData.name,
+          email: formData.email,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Your inquiry has been sent successfully!");
+        setFormData({ name: "", email: "", phone: "", date: "", message: "" });
+      } else {
+        alert("Failed to send. Please try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("There was an error sending your message.");
+    }
     console.log("Form submitted:", formData)
   }
 
