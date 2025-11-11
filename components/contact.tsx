@@ -1,14 +1,11 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail } from "lucide-react"
-//import { sendEmail } from "@/components/sendEmail"
-import logo from "@/public/1513-logo-header.png"
 
 export function Contact() {
   const [formData, setFormData] = useState({
