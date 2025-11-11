@@ -19,8 +19,13 @@ export function Contact() {
     message: "",
   })
 
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [message, setMessage] = useState("")
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setStatus("loading")
+    setMessage("Sending your inquiry...")
     const guestHtmlBody = `
     <!DOCTYPE html>
     <html>
@@ -124,18 +129,26 @@ export function Contact() {
           email: formData.email,
         }),
       });
-
+      console.log(response)
       if (response.ok) {
-        alert("Your inquiry has been sent successfully!");
-        setFormData({ name: "", email: "", phone: "", date: "", message: "" });
+        setStatus("success")
+        setMessage("✅ Your inquiry has been sent successfully!")
+        setFormData({ name: "", email: "", phone: "", date: "", message: "" })
       } else {
-        alert("Failed to send. Please try again later.");
+        setStatus("error")
+        setMessage("❌ Something went wrong. Please try again later.")
       }
     } catch (error) {
-      console.error(error);
-      alert("There was an error sending your message.");
+      console.error(error)
+      setStatus("error")
+      setMessage("⚠️ There was an error sending your message.")
     }
-    console.log("Form submitted:", formData)
+
+    // reset after 5 seconds
+    setTimeout(() => {
+      setStatus("idle")
+      setMessage("")
+    }, 5000)
   }
 
   return (

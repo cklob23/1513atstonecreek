@@ -9,23 +9,20 @@ export default async function handler(req, res) {
 
     try {
         const transporter = nodemailer.createTransport({
-            host: "imap.gmail.com",
+            host: "smtp.gmail.com",
             port: 465,
             secure: true,
             auth: {
                 user: "1513atstonecreek.inquiries@gmail.com",
                 pass: "plzz hsph kxrg qgyt",
             },
-            logger: true,
-            debug: true,
         });
 
         await transporter.sendMail({
-            from: '"1513 at Stone Creek Inquiries" <1513atstonecreek.inquiries@gmail.com>',
+            from: `"1513 at Stone Creek" <1513atstonecreek.inquiries@gmail.com>`,
             to: "info@1513atstonecreek.com",
-            bcc: "klobe.caleb23@gmail.com",
-            subject: "Inquiry About The Venue",
             replyTo: email,
+            subject: `New Inquiry from ${name}`,
             html: htmlBody,
         });
 
