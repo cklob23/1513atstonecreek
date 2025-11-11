@@ -10,6 +10,7 @@
     --color-red-300: oklch(80.8% 0.114 19.571);
     --color-red-400: oklch(70.4% 0.191 22.216);
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-green-600: oklch(62.7% 0.194 149.214);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -1592,6 +1593,9 @@
       }
     }
   }
+  .text-green-600 {
+    color: var(--color-green-600);
+  }
   .text-muted-foreground {
     color: var(--muted-foreground);
   }
@@ -1619,6 +1623,9 @@
         color: color-mix(in oklab, var(--primary-foreground) 80%, transparent);
       }
     }
+  }
+  .text-red-600 {
+    color: var(--color-red-600);
   }
   .text-secondary-foreground {
     color: var(--secondary-foreground);
@@ -2768,6 +2775,11 @@
   .disabled\:opacity-50 {
     &:disabled {
       opacity: 50%;
+    }
+  }
+  .disabled\:opacity-60 {
+    &:disabled {
+      opacity: 60%;
     }
   }
   .in-data-\[side\=left\]\:cursor-w-resize {

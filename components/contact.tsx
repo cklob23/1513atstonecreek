@@ -86,7 +86,11 @@ export function Contact() {
     <body>
       <div class="container">
         <div class="logo">
-          <img src=${logo} alt="1513 at Stone Creek" />
+          <img
+            src="https://one513atstonecreek.onrender.com/1513-logo-header.png"
+            alt="1513 at Stone Creek"
+            style="max-width:200px"
+          />
         </div>
 
         <h2>Thank you for your inquiry!</h2>
@@ -120,7 +124,7 @@ export function Contact() {
     </html>
     `
     try {
-      const response = await fetch("https://one513atstonecreek.onrender.com/api/sendEmail", {
+      const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
