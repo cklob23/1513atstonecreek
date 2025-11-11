@@ -1,38 +1,32 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function POST(req) {
-    try {
-        const { htmlBody, name, email } = await req.json();
+  try {
+    const { htmlBody, name, email } = await req.json();
 
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            requireTLS: true,
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_SECRET,
-            },
-            logger: true,
-            debug: true,
-        });
+    // Initialize the Resend client using your API key from Render environment variables
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-        await transporter.sendMail({
-            from: `"1513 at Stone Creek Inquiry" <1513atstonecreek.inquiries@gmail.com>`,
-            to: "info@1513atstonecreek.com",
-            subject: `New Inquiry from ${name}`,
-            html: htmlBody,
-        });
+    // Send the email
+    const data = await resend.emails.send({
+      from: "1513 at Stone Creek <noreply@1513atstonecreek.com>",
+      to: "info@1513atstonecreek.com",
+      reply_to: email, // optional, lets you reply directly to sender
+      subject: `New Inquiry from ${name}`,
+      html: htmlBody,
+    });
 
-        return new Response(
-            JSON.stringify({ success: true, message: "Email sent successfully" }),
-            { status: 200, headers: { "Content-Type": "application/json" } }
-        );
-    } catch (error) {
-        console.error("Error sending email:", error);
-        return new Response(
-            JSON.stringify({ success: false, error: error.message }),
-            { status: 500, headers: { "Content-Type": "application/json" } }
-        );
-    }
+    console.log("Resend API response:", data);
+
+    return new Response(
+      JSON.stringify({ success: true, message: "Email sent successfully" }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return new Response(
+      JSON.stringify({ success: false, error: error.message }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
 }
