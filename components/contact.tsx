@@ -87,7 +87,7 @@ export function Contact() {
       <div class="container">
         <div class="logo">
           <img
-            src="https://one513atstonecreek.onrender.com/1513-logo-header.png"
+            src="https://one513atstonecreek.onrender.com/1513icon300x300.png"
             alt="1513 at Stone Creek"
             style="max-width:200px"
           />
@@ -123,12 +123,109 @@ export function Contact() {
     </body>
     </html>
     `
+
+    const hostHtmlBody = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: 'Georgia', serif;
+        background-color: #ffffff;
+        color: #3b2e24;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 650px;
+        background: #fffaf6;
+        margin: 30px auto;
+        padding: 30px 40px;
+        border: 1px solid #e7dfd7;
+        border-radius: 10px;
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .logo img {
+        max-width: 200px;
+      }
+      h2 {
+        color: #3b2e24;
+        text-align: center;
+      }
+      p {
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .details {
+        background: #f9f6f3;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      .details p {
+        margin: 8px 0;
+      }
+      .label {
+        font-weight: bold;
+        color: #3b2e24;
+      }
+      .footer {
+        margin-top: 35px;
+        font-size: 12px;
+        color: #8a8178;
+        text-align: center;
+      }
+    </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="logo">
+          <img
+            src="https://one513atstonecreek.onrender.com/1513icon300x300.png"
+            alt="1513 at Stone Creek"
+            style="max-width:200px"
+          />
+        </div>
+
+        <h2>New Event Inquiry Received</h2>
+
+        <p>
+          A new inquiry was submitted through the <strong>1513 at Stone Creek</strong> website contact form.
+          Please review the guest’s information below:
+        </p>
+
+        <div class="details">
+          <p><span class="label">Name:</span> ${formData.name}</p>
+          <p><span class="label">Email:</span> ${formData.email}</p>
+          <p><span class="label">Phone:</span> ${formData.phone}</p>
+          <p><span class="label">Preferred Date:</span> ${formData.date}</p>
+          <p><span class="label">Message:</span><br />${formData.message}</p>
+        </div>
+
+        <p>
+          You can reply directly to the guest at
+          <a href="mailto:${formData.email}" style="color:#3b2e24;">${formData.email}</a>
+          to follow up on this inquiry.
+        </p>
+
+        <div class="footer">
+          © ${new Date().getFullYear()} 1513 at Stone Creek | Internal Notification
+        </div>
+      </div>
+    </body>
+    </html>
+    `;
+
     try {
       const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          htmlBody: guestHtmlBody,
+          htmlBody: hostHtmlBody,
           name: formData.name,
           email: formData.email,
         }),
