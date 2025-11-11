@@ -211,9 +211,26 @@ export function Contact() {
                   className="bg-muted border-border min-h-32"
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                Send Inquiry
+              <Button
+                type="submit"
+                size="lg"
+                disabled={status === "loading"}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === "loading" ? "Sending..." : "Send Inquiry"}
               </Button>
+
+              {status === "loading" && (
+                <p className="text-center text-muted-foreground animate-pulse">Sending your message...</p>
+              )}
+
+              {status === "success" && (
+                <p className="text-center text-green-600 font-medium">{message}</p>
+              )}
+
+              {status === "error" && (
+                <p className="text-center text-red-600 font-medium">{message}</p>
+              )}
             </form>
           </div>
 
