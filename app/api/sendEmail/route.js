@@ -6,11 +6,12 @@ export async function POST(req) {
 
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
+            port: 587,
+            secure: false,
+            requireTLS: true,
             auth: {
-                user: "1513atstonecreek.inquiries@gmail.com",
-                pass: "plzz hsph kxrg qgyt",
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_SECRET,
             },
             logger: true,
             debug: true,
