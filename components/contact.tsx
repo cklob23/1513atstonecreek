@@ -226,7 +226,7 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           htmlBody: guestHtmlBody,
-          name: formData.name,
+          name: "Thank you for your inquiry!",
           email: formData.email,
         }),
       });
@@ -235,7 +235,7 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           htmlBody: hostHtmlBody,
-          name: formData.name,
+          name: "New Event Inquiry from Website",
           email: "info@1513atstonecreek.com",
         }),
       });
