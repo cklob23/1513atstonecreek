@@ -9,12 +9,12 @@ export default async function handler(req, res) {
 
     try {
         const transporter = nodemailer.createTransport({
-            host: "imap.gmail.com",
+            host: "smtp.gmail.com",
             port: 465,
             secure: true,
             auth: {
-                user: "1513atstonecreek.inquiries@gmail.com",
-                pass: "plzz hsph kxrg qgyt",
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_SECRET,
             },
             logger: true,
             debug: true,
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
                 return res.status(200).json({ success: true });
             }
         })
-        
+
     } catch (error) {
         console.error("Email error:", error);
         return res.status(500).json({ success: false, error: "Email failed to send" });
