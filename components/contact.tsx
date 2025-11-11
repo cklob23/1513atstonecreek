@@ -115,7 +115,7 @@ export function Contact() {
     </html>
     `
     try {
-      const response = await fetch("/api/sendEmail", {
+      const response = await fetch("https://one513atstonecreek.onrender.com/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
