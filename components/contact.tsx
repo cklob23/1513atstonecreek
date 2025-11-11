@@ -221,17 +221,26 @@ export function Contact() {
     `;
 
     try {
-      const response = await fetch("/api/sendEmail", {
+      const guestResponse = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          htmlBody: guestHtmlBody,
+          name: formData.name,
+          email: formData.email,
+        }),
+      });
+      const hostResponse = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           htmlBody: hostHtmlBody,
           name: formData.name,
-          email: formData.email,
+          email: "info@1513atstonecreek.com",
         }),
       });
-      console.log(response)
-      if (response.ok) {
+      console.log(guestResponse)
+      if (guestResponse.ok && hostResponse.ok) {
         setStatus("success")
         setMessage("✅ Your inquiry has been sent successfully!")
         setFormData({ name: "", email: "", phone: "", date: "", message: "" })

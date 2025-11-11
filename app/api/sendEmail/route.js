@@ -12,13 +12,11 @@ export async function POST(req) {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_SECRET,
             },
-            logger: true,
-            debug: true,
         });
 
         await transporter.sendMail({
             from: `"1513 at Stone Creek Inquiry" <1513atstonecreek.inquiries@gmail.com>`,
-            to: "info@1513atstonecreek.com",
+            to: email,
             subject: `New Inquiry from ${name}`,
             html: htmlBody,
         });
