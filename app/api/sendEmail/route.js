@@ -17,7 +17,7 @@ export async function POST(req) {
         });
 
         await transporter.sendMail({
-            from: `"1513 at Stone Creek" <1513atstonecreek.inquiries@gmail.com>`,
+            from: `"1513 at Stone Creek Inquiry" <1513atstonecreek.inquiries@gmail.com>`,
             to: "info@1513atstonecreek.com",
             subject: `New Inquiry from ${name}`,
             html: htmlBody,
