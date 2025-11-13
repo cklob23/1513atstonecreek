@@ -218,7 +218,7 @@ export function Contact() {
     `;
 
     try {
-      const guestResponse = await fetch("/api/sendEmail", {
+      const guestResponse = await fetch("https://one513atstonecreek.onrender.com/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -227,7 +227,7 @@ export function Contact() {
           email: formData.email,
         }),
       });
-      const hostResponse = await fetch("/api/sendEmail", {
+      const hostResponse = await fetch("https://one513atstonecreek.onrender.com/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
