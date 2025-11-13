@@ -218,21 +218,21 @@ export function Contact() {
     `;
 
     try {
-      const guestResponse = await fetch("https://one513atstonecreek.onrender.com/api/sendEmail", {
+      const guestResponse = await fetch("http://localhost:4000/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          htmlBody: guestHtmlBody,
-          name: "Thank you for your inquiry!",
+          html: guestHtmlBody,
+          subject: "Thank you for your inquiry!",
           email: formData.email,
         }),
       });
-      const hostResponse = await fetch("https://one513atstonecreek.onrender.com/api/sendEmail", {
+      const hostResponse = await fetch("http://localhost:4000/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          htmlBody: hostHtmlBody,
-          name: "New Event Inquiry from Website",
+          html: hostHtmlBody,
+          subject: "New Event Inquiry from Website",
           email: "info@1513atstonecreek.com",
         }),
       });
