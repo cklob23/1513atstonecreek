@@ -218,7 +218,7 @@ export function Contact() {
     `;
 
     try {
-      const guestResponse = await fetch("http://localhost:4000/sendEmail", {
+      const guestResponse = await fetch("https://one513-at-stone-creek-server.onrender.com:4000/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -227,7 +227,7 @@ export function Contact() {
           email: formData.email,
         }),
       });
-      const hostResponse = await fetch("http://localhost:4000/sendEmail", {
+      const hostResponse = await fetch("https://one513-at-stone-creek-server.onrender.com:4000/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
