@@ -33,7 +33,7 @@ export default function VenuePage() {
       title: "The Pavillion",
       description:
         "A covered outdoor space perfect for ceremonies, receptions, and gatherings of all kinds — beautifully designed to shine in any season or weather.",
-      image: "/1513-venue7.jpg",
+      image: "/the-venue19.jpg",
     },
     {
       title: "The Ballroom",
@@ -51,7 +51,7 @@ export default function VenuePage() {
       title: "The Patio",
       description:
         "Ideal for cocktail hour, mingling, or your next celebration — complete with our brand-new outdoor fireplace, creating a cozy, inviting atmosphere.",
-      image: "/1513-open-area-lights.jpg",
+      image: "/the-venue18.jpg",
     },
   ]
 

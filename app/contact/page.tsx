@@ -10,7 +10,7 @@ export default function ContactPage() {
       <PageBanner
         title="Contact Us"
         description="Let's start planning your unforgettable celebration"
-        image="the-venue2.jpg"
+        image="1513-moment22.jpg"
       />
       <Contact />
       <Footer />
