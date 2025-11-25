@@ -264,13 +264,13 @@ export function Contact() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Get in Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ready to start planning your perfect day? Contact us to schedule a tour
+            Ready to start planning your perfect day? Contact us to schedule a tour.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-
-          {/* FORM */}
+          
+          {/* LEFT SIDE FORM */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-8">
 
@@ -322,30 +322,33 @@ export function Contact() {
                 type="submit"
                 size="lg"
                 disabled={status === "loading"}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 {status === "loading" ? "Sending..." : "Send Inquiry"}
               </Button>
 
-              {status === "loading" && <p className="text-center text-muted-foreground animate-pulse">Sending your message...</p>}
-              {status === "success" && <p className="text-center text-green-600 font-medium">{message}</p>}
-              {status === "error" && <p className="text-center text-red-600 font-medium">{message}</p>}
+              {status !== "idle" && (
+                <p className="text-center font-medium">
+                  {status === "loading" && "Sending your message..."}
+                  {status === "success" && <span className="text-green-600">{message}</span>}
+                  {status === "error" && <span className="text-red-600">{message}</span>}
+                </p>
+              )}
+
             </form>
           </div>
 
-
+          {/* RIGHT SIDE INFO */}
           <div className="space-y-8">
-
             <div>
               <h3 className="font-serif text-2xl mb-6 text-foreground">Visit Us</h3>
               <div className="space-y-4">
-
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-muted-foreground mt-1" />
                   <div>
                     <div className="font-semibold text-foreground">Address</div>
                     <div className="text-muted-foreground">
-                      2769 Cedartown Hwy<br />Rockmart, GA, 30153
+                      2769 Cedartown Hwy<br/>Rockmart, GA, 30153
                     </div>
                   </div>
                 </div>
@@ -365,21 +368,18 @@ export function Contact() {
                     <div className="text-muted-foreground">info@1513atstonecreek.com</div>
                   </div>
                 </div>
-
               </div>
             </div>
 
             <div>
               <h3 className="font-serif text-2xl mb-4 text-foreground">Hours</h3>
               <div className="text-muted-foreground space-y-2">
-                <div className="flex justify-between"><span>Tours by Appointment</span></div>
-
-                <div className="flex items-start gap-4">
+                <div>Tours by Appointment</div>
+                <div className="flex justify-between">
                   <span>Monday - Saturday</span>
                   <span>10am - 6pm</span>
                 </div>
-
-                <div className="flex items-start gap-4">
+                <div className="flex justify-between">
                   <span>Sunday</span>
                   <span>1am - 5pm</span>
                 </div>
