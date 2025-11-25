@@ -299,25 +299,16 @@ export function Contact() {
                   className="bg-muted border-border"
                 />
               </div>
-              <div className="relative">
+              <div>
                 <Input
                   type="date"
-                  id="event-date"
+                  placeholder="Preferred Event Date"
+                  onFocus={(e) => (e.target.type = "date")}
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  className="peer bg-muted border-border"
+                  className="bg-muted border-border"
                 />
-                <label
-                  htmlFor="event-date"
-                  className="absolute left-3 top-1/2 -translate-y-1/2
-               text-muted-foreground pointer-events-none
-               peer-focus:-top-2 peer-focus:text-xs
-               peer-valid:-top-2 peer-valid:text-xs
-               transition-all">
-                  Preferred Event Date
-                </label>
               </div>
-
               <div>
                 <Textarea
                   placeholder="Tell us about your vision..."
