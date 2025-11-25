@@ -4799,12 +4799,6 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:translate-y-1\/2 {
-    &::-webkit-calendar-picker-indicator {
-      --tw-translate-y: calc(1/2 * 100%);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-  }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-60 {
     &::-webkit-calendar-picker-indicator {
       opacity: 60%;
@@ -4844,26 +4838,6 @@
   .\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0 {
     &:has([role=checkbox]) {
       padding-right: calc(var(--spacing) * 0);
-    }
-  }
-  .\[\&\:invalid\:\:-webkit-datetime-edit-day-field\]\:opacity-0 {
-    &:invalid::-webkit-datetime-edit-day-field {
-      opacity: 0%;
-    }
-  }
-  .\[\&\:invalid\:\:-webkit-datetime-edit-month-field\]\:opacity-0 {
-    &:invalid::-webkit-datetime-edit-month-field {
-      opacity: 0%;
-    }
-  }
-  .\[\&\:invalid\:\:-webkit-datetime-edit-text\]\:opacity-0 {
-    &:invalid::-webkit-datetime-edit-text {
-      opacity: 0%;
-    }
-  }
-  .\[\&\:invalid\:\:-webkit-datetime-edit-year-field\]\:opacity-0 {
-    &:invalid::-webkit-datetime-edit-year-field {
-      opacity: 0%;
     }
   }
   .\[\.border-b\]\:pb-3 {
@@ -4963,26 +4937,6 @@
   }
   .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-year-field\]\:opacity-100 {
     &:not(:placeholder-shown)::-webkit-datetime-edit-year-field {
-      opacity: 100%;
-    }
-  }
-  .\[\&\:valid\:\:-webkit-datetime-edit-day-field\]\:opacity-100 {
-    &:valid::-webkit-datetime-edit-day-field {
-      opacity: 100%;
-    }
-  }
-  .\[\&\:valid\:\:-webkit-datetime-edit-month-field\]\:opacity-100 {
-    &:valid::-webkit-datetime-edit-month-field {
-      opacity: 100%;
-    }
-  }
-  .\[\&\:valid\:\:-webkit-datetime-edit-text\]\:opacity-100 {
-    &:valid::-webkit-datetime-edit-text {
-      opacity: 100%;
-    }
-  }
-  .\[\&\:valid\:\:-webkit-datetime-edit-year-field\]\:opacity-100 {
-    &:valid::-webkit-datetime-edit-year-field {
       opacity: 100%;
     }
   }
