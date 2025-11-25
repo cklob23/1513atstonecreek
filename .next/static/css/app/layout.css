@@ -4804,6 +4804,11 @@
       flex: none;
     }
   }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:mt-\[2px\] {
+    &::-webkit-calendar-picker-indicator {
+      margin-top: 2px;
+    }
+  }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:mt-\[6px\] {
     &::-webkit-calendar-picker-indicator {
       margin-top: 6px;
@@ -4833,6 +4838,11 @@
       }
     }
   }
+  .\[\&\:\:-webkit-calendar-picker-indicator\:hover\]\:opacity-100 {
+    &::-webkit-calendar-picker-indicator:hover {
+      opacity: 100%;
+    }
+  }
   .\[\&\:\:-webkit-datetime-edit\]\:text-foreground {
     &::-webkit-datetime-edit {
       color: var(--foreground);
@@ -4860,6 +4870,11 @@
       color: var(--foreground);
     }
   }
+  .\[\&\:\:-webkit-datetime-edit-day-field\]\:opacity-0 {
+    &::-webkit-datetime-edit-day-field {
+      opacity: 0%;
+    }
+  }
   .\[\&\:\:-webkit-datetime-edit-fields-wrapper\]\:p-0 {
     &::-webkit-datetime-edit-fields-wrapper {
       padding: calc(var(--spacing) * 0);
@@ -4870,14 +4885,29 @@
       color: var(--foreground);
     }
   }
+  .\[\&\:\:-webkit-datetime-edit-month-field\]\:opacity-0 {
+    &::-webkit-datetime-edit-month-field {
+      opacity: 0%;
+    }
+  }
   .\[\&\:\:-webkit-datetime-edit-text\]\:text-foreground {
     &::-webkit-datetime-edit-text {
       color: var(--foreground);
     }
   }
+  .\[\&\:\:-webkit-datetime-edit-text\]\:opacity-0 {
+    &::-webkit-datetime-edit-text {
+      opacity: 0%;
+    }
+  }
   .\[\&\:\:-webkit-datetime-edit-year-field\]\:text-foreground {
     &::-webkit-datetime-edit-year-field {
       color: var(--foreground);
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit-year-field\]\:opacity-0 {
+    &::-webkit-datetime-edit-year-field {
+      opacity: 0%;
     }
   }
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md {
@@ -4974,6 +5004,26 @@
   .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit\]\:text-foreground {
     &:not(:placeholder-shown)::-webkit-datetime-edit {
       color: var(--foreground);
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-day-field\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-day-field {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-month-field\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-month-field {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-text\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-text {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-year-field\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-year-field {
+      opacity: 100%;
     }
   }
   .\[\&\>\*\]\:w-full {

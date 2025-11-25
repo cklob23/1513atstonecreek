@@ -37,14 +37,26 @@ export function FloatingInput({
           appearance-none
 
           ${type === "date" ? `
-            appearance-none
-            [&::-webkit-datetime-edit]:text-transparent
-            [&::-webkit-datetime-edit]:focus:text-foreground
-            [&:not(:placeholder-shown)::-webkit-datetime-edit]:text-foreground
-            [&::-webkit-calendar-picker-indicator]:opacity-60
-            [&::-webkit-calendar-picker-indicator]:hover:opacity-100
-            [&::-webkit-calendar-picker-indicator]:mt-[6px]
-            ` : ""}
+        appearance-none
+
+        /* Hide forced placeholder */
+        [&::-webkit-datetime-edit-text]:opacity-0
+        [&::-webkit-datetime-edit-month-field]:opacity-0
+        [&::-webkit-datetime-edit-day-field]:opacity-0
+        [&::-webkit-datetime-edit-year-field]:opacity-0
+
+        /* Show text once value is selected */
+        [&:not(:placeholder-shown)::-webkit-datetime-edit-text]:opacity-100
+        [&:not(:placeholder-shown)::-webkit-datetime-edit-month-field]:opacity-100
+        [&:not(:placeholder-shown)::-webkit-datetime-edit-day-field]:opacity-100
+        [&:not(:placeholder-shown)::-webkit-datetime-edit-year-field]:opacity-100
+
+        /* Center the icon */
+        [&::-webkit-calendar-picker-indicator]:mt-[2px]
+        [&::-webkit-calendar-picker-indicator]:mr-2
+        [&::-webkit-calendar-picker-indicator]:opacity-60
+        [&::-webkit-calendar-picker-indicator:hover]:opacity-100
+        ` : ""}
 
           ${textarea ? "min-h-32 h-auto" : ""}
           ${className}
