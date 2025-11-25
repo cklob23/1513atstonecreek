@@ -287,6 +287,9 @@
   .top-\[1px\] {
     top: 1px;
   }
+  .top-\[14px\] {
+    top: 14px;
+  }
   .top-\[50\%\] {
     top: 50%;
   }
@@ -334,6 +337,9 @@
   }
   .left-2 {
     left: calc(var(--spacing) * 2);
+  }
+  .left-3 {
+    left: calc(var(--spacing) * 3);
   }
   .left-\[50\%\] {
     left: 50%;
@@ -819,9 +825,6 @@
   .flex-1 {
     flex: 1;
   }
-  .flex-shrink-0 {
-    flex-shrink: 0;
-  }
   .shrink-0 {
     flex-shrink: 0;
   }
@@ -944,6 +947,9 @@
   .list-none {
     list-style-type: none;
   }
+  .appearance-none {
+    appearance: none;
+  }
   .auto-rows-min {
     grid-auto-rows: min-content;
   }
@@ -1040,13 +1046,6 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-6 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .space-y-8 {
@@ -1410,6 +1409,9 @@
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
+  }
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
@@ -1427,6 +1429,9 @@
   }
   .pr-8 {
     padding-right: calc(var(--spacing) * 8);
+  }
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
   }
   .pb-3 {
     padding-bottom: calc(var(--spacing) * 3);
@@ -1510,6 +1515,9 @@
   }
   .text-\[0\.8rem\] {
     font-size: 0.8rem;
+  }
+  .text-\[16px\] {
+    font-size: 16px;
   }
   .leading-none {
     --tw-leading: 1;
@@ -2173,11 +2181,38 @@
       color: var(--color-red-300);
     }
   }
+  .peer-valid\:top-1 {
+    &:is(:where(.peer):valid ~ *) {
+      top: calc(var(--spacing) * 1);
+    }
+  }
+  .peer-valid\:text-xs {
+    &:is(:where(.peer):valid ~ *) {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
   .peer-hover\/menu-button\:text-sidebar-accent-foreground {
     &:is(:where(.peer\/menu-button):hover ~ *) {
       @media (hover: hover) {
         color: var(--sidebar-accent-foreground);
       }
+    }
+  }
+  .peer-focus\:top-1 {
+    &:is(:where(.peer):focus ~ *) {
+      top: calc(var(--spacing) * 1);
+    }
+  }
+  .peer-focus\:text-xs {
+    &:is(:where(.peer):focus ~ *) {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+  .peer-focus\:text-foreground {
+    &:is(:where(.peer):focus ~ *) {
+      color: var(--foreground);
     }
   }
   .peer-disabled\:cursor-not-allowed {
@@ -4767,6 +4802,21 @@
   .\[\&\+\[data-slot\=item-content\]\]\:flex-none {
     &+[data-slot=item-content] {
       flex: none;
+    }
+  }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:mr-2 {
+    &::-webkit-calendar-picker-indicator {
+      margin-right: calc(var(--spacing) * 2);
+    }
+  }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-100 {
+    &::-webkit-calendar-picker-indicator {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit\]\:text-transparent {
+    &::-webkit-datetime-edit {
+      color: transparent;
     }
   }
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md {

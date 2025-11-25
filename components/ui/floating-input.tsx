@@ -33,15 +33,24 @@ export function FloatingInput({
         onChange={onChange}
         type={textarea ? undefined : type}
         required={required}
-        className={`peer bg-muted border border-border pt-6 pb-2 px-3 rounded-md h-12 text-[16px] 
-          ${textarea ? "min-h-32" : ""} 
-          appearance-none ${className}`}
+        className={`peer bg-muted border border-border pt-6 pb-2 px-3 rounded-md h-12 text-[16px]
+          appearance-none
+
+          ${type === "date" ? `
+            [&::-webkit-datetime-edit]:text-transparent 
+            [&::-webkit-calendar-picker-indicator]:opacity-100 
+            [&::-webkit-calendar-picker-indicator]:mr-2
+          ` : ""}
+
+          ${textarea ? "min-h-32 h-auto" : ""}
+          ${className}
+        `}
       />
 
       <label
         htmlFor={id}
         className="
-          absolute left-3 top-[14px] text-muted-foreground pointer-events-none 
+          absolute left-3 top-[14px] text-muted-foreground pointer-events-none
           transition-all duration-200
           peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
           peer-valid:top-1 peer-valid:text-xs
