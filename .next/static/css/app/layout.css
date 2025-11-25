@@ -2257,73 +2257,8 @@
       top: calc(var(--spacing) * 1);
     }
   }
-  .peer-\[value\]\:top-1 {
-    &:is(:where(.peer):is(value) ~ *) {
-      top: calc(var(--spacing) * 1);
-    }
-  }
-  .peer-\[value\]\:text-xs {
-    &:is(:where(.peer):is(value) ~ *) {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
-    }
-  }
   .peer-\[\&\:valid\]\:text-foreground {
     &:is(:where(.peer):valid ~ *) {
-      color: var(--foreground);
-    }
-  }
-  .selection\:bg-primary {
-    & *::selection {
-      background-color: var(--primary);
-    }
-    &::selection {
-      background-color: var(--primary);
-    }
-  }
-  .selection\:text-primary-foreground {
-    & *::selection {
-      color: var(--primary-foreground);
-    }
-    &::selection {
-      color: var(--primary-foreground);
-    }
-  }
-  .file\:inline-flex {
-    &::file-selector-button {
-      display: inline-flex;
-    }
-  }
-  .file\:h-7 {
-    &::file-selector-button {
-      height: calc(var(--spacing) * 7);
-    }
-  }
-  .file\:border-0 {
-    &::file-selector-button {
-      border-style: var(--tw-border-style);
-      border-width: 0px;
-    }
-  }
-  .file\:bg-transparent {
-    &::file-selector-button {
-      background-color: transparent;
-    }
-  }
-  .file\:text-sm {
-    &::file-selector-button {
-      font-size: var(--text-sm);
-      line-height: var(--tw-leading, var(--text-sm--line-height));
-    }
-  }
-  .file\:font-medium {
-    &::file-selector-button {
-      --tw-font-weight: var(--font-weight-medium);
-      font-weight: var(--font-weight-medium);
-    }
-  }
-  .file\:text-foreground {
-    &::file-selector-button {
       color: var(--foreground);
     }
   }
@@ -2849,11 +2784,6 @@
   .disabled\:opacity-50 {
     &:disabled {
       opacity: 50%;
-    }
-  }
-  .disabled\:opacity-60 {
-    &:disabled {
-      opacity: 60%;
     }
   }
   .in-data-\[side\=left\]\:cursor-w-resize {
@@ -4251,6 +4181,11 @@
       max-width: 420px;
     }
   }
+  .md\:max-w-sm {
+    @media (width >= 48rem) {
+      max-width: var(--container-sm);
+    }
+  }
   .md\:grid-cols-2 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4853,19 +4788,15 @@
       top: calc(1/2 * 100%);
     }
   }
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:mt-\[4px\] {
-    &::-webkit-calendar-picker-indicator {
-      margin-top: 4px;
-    }
-  }
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:mr-1 {
-    &::-webkit-calendar-picker-indicator {
-      margin-right: calc(var(--spacing) * 1);
-    }
-  }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:mr-2 {
     &::-webkit-calendar-picker-indicator {
       margin-right: calc(var(--spacing) * 2);
+    }
+  }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:-translate-y-1\/2 {
+    &::-webkit-calendar-picker-indicator {
+      --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:translate-y-1\/2 {
@@ -4874,29 +4805,9 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:translate-y-\[-1px\] {
-    &::-webkit-calendar-picker-indicator {
-      --tw-translate-y: -1px;
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-  }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-60 {
     &::-webkit-calendar-picker-indicator {
       opacity: 60%;
-    }
-  }
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-70 {
-    &::-webkit-calendar-picker-indicator {
-      opacity: 70%;
-    }
-  }
-  .hover\:\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-100 {
-    &:hover {
-      @media (hover: hover) {
-        &::-webkit-calendar-picker-indicator {
-          opacity: 100%;
-        }
-      }
     }
   }
   .\[\&\:\:-webkit-calendar-picker-indicator\:hover\]\:opacity-100 {
@@ -4904,78 +4815,30 @@
       opacity: 100%;
     }
   }
-  .\[\&\:\:-webkit-clear-button\]\:hidden {
-    &::-webkit-clear-button {
-      display: none;
-    }
-  }
-  .\[\&\:\:-webkit-datetime-edit\]\:opacity-0 {
-    &::-webkit-datetime-edit {
+  .\[\&\:\:-webkit-datetime-edit-day-field\]\:opacity-0 {
+    &::-webkit-datetime-edit-day-field {
       opacity: 0%;
     }
   }
-  .\[\&\:\:-webkit-datetime-edit-day-field\]\:text-transparent {
-    &::-webkit-datetime-edit-day-field {
-      color: transparent;
-    }
-  }
-  .has-\[value\]\:\[\&\:\:-webkit-datetime-edit-day-field\]\:text-foreground {
-    &:has(*:is(value)) {
-      &::-webkit-datetime-edit-day-field {
-        color: var(--foreground);
-      }
-    }
-  }
-  .\[\&\:\:-webkit-datetime-edit-month-field\]\:text-transparent {
+  .\[\&\:\:-webkit-datetime-edit-month-field\]\:opacity-0 {
     &::-webkit-datetime-edit-month-field {
-      color: transparent;
+      opacity: 0%;
     }
   }
-  .has-\[value\]\:\[\&\:\:-webkit-datetime-edit-month-field\]\:text-foreground {
-    &:has(*:is(value)) {
-      &::-webkit-datetime-edit-month-field {
-        color: var(--foreground);
-      }
-    }
-  }
-  .\[\&\:\:-webkit-datetime-edit-text\]\:text-transparent {
+  .\[\&\:\:-webkit-datetime-edit-text\]\:opacity-0 {
     &::-webkit-datetime-edit-text {
-      color: transparent;
+      opacity: 0%;
     }
   }
-  .has-\[value\]\:\[\&\:\:-webkit-datetime-edit-text\]\:text-foreground {
-    &:has(*:is(value)) {
-      &::-webkit-datetime-edit-text {
-        color: var(--foreground);
-      }
-    }
-  }
-  .\[\&\:\:-webkit-datetime-edit-year-field\]\:text-transparent {
+  .\[\&\:\:-webkit-datetime-edit-year-field\]\:opacity-0 {
     &::-webkit-datetime-edit-year-field {
-      color: transparent;
-    }
-  }
-  .has-\[value\]\:\[\&\:\:-webkit-datetime-edit-year-field\]\:text-foreground {
-    &:has(*:is(value)) {
-      &::-webkit-datetime-edit-year-field {
-        color: var(--foreground);
-      }
-    }
-  }
-  .\[\&\:\:-webkit-inner-spin-button\]\:hidden {
-    &::-webkit-inner-spin-button {
-      display: none;
+      opacity: 0%;
     }
   }
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md {
     &:first-child[data-selected=true] button {
       border-top-left-radius: calc(var(--radius) - 2px);
       border-bottom-left-radius: calc(var(--radius) - 2px);
-    }
-  }
-  .\[\&\:focus\:\:-webkit-datetime-edit\]\:opacity-100 {
-    &:focus::-webkit-datetime-edit {
-      opacity: 100%;
     }
   }
   .\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0 {
@@ -5081,6 +4944,26 @@
     &:last-child[data-selected=true] button {
       border-top-right-radius: calc(var(--radius) - 2px);
       border-bottom-right-radius: calc(var(--radius) - 2px);
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-day-field\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-day-field {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-month-field\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-month-field {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-text\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-text {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit-year-field\]\:opacity-100 {
+    &:not(:placeholder-shown)::-webkit-datetime-edit-year-field {
+      opacity: 100%;
     }
   }
   .\[\&\:valid\:\:-webkit-datetime-edit-day-field\]\:opacity-100 {

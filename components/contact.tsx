@@ -258,7 +258,7 @@ export function Contact() {
     }, 5000)
   }
 
-  return (
+    return (
     <section id="contact" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
@@ -339,7 +339,8 @@ export function Contact() {
           </div>
 
           {/* RIGHT SIDE INFO */}
-          <div className="space-y-8">
+          <div className="space-y-8 md:max-w-sm">
+            
             <div>
               <h3 className="font-serif text-2xl mb-6 text-foreground">Visit Us</h3>
               <div className="space-y-4">
