@@ -4809,14 +4809,63 @@
       margin-right: calc(var(--spacing) * 2);
     }
   }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-60 {
+    &::-webkit-calendar-picker-indicator {
+      opacity: 60%;
+    }
+  }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-100 {
     &::-webkit-calendar-picker-indicator {
       opacity: 100%;
     }
   }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:hover\:opacity-100 {
+    &::-webkit-calendar-picker-indicator {
+      &:hover {
+        @media (hover: hover) {
+          opacity: 100%;
+        }
+      }
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit\]\:text-foreground {
+    &::-webkit-datetime-edit {
+      color: var(--foreground);
+    }
+  }
   .\[\&\:\:-webkit-datetime-edit\]\:text-transparent {
     &::-webkit-datetime-edit {
       color: transparent;
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit\]\:opacity-100 {
+    &::-webkit-datetime-edit {
+      opacity: 100%;
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit-day-field\]\:text-foreground {
+    &::-webkit-datetime-edit-day-field {
+      color: var(--foreground);
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit-fields-wrapper\]\:p-0 {
+    &::-webkit-datetime-edit-fields-wrapper {
+      padding: calc(var(--spacing) * 0);
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit-month-field\]\:text-foreground {
+    &::-webkit-datetime-edit-month-field {
+      color: var(--foreground);
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit-text\]\:text-foreground {
+    &::-webkit-datetime-edit-text {
+      color: var(--foreground);
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit-year-field\]\:text-foreground {
+    &::-webkit-datetime-edit-year-field {
+      color: var(--foreground);
     }
   }
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md {
