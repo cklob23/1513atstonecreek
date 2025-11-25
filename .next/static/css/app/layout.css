@@ -4804,6 +4804,11 @@
       flex: none;
     }
   }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:mt-\[6px\] {
+    &::-webkit-calendar-picker-indicator {
+      margin-top: 6px;
+    }
+  }
   .\[\&\:\:-webkit-calendar-picker-indicator\]\:mr-2 {
     &::-webkit-calendar-picker-indicator {
       margin-right: calc(var(--spacing) * 2);
@@ -4841,6 +4846,13 @@
   .\[\&\:\:-webkit-datetime-edit\]\:opacity-100 {
     &::-webkit-datetime-edit {
       opacity: 100%;
+    }
+  }
+  .\[\&\:\:-webkit-datetime-edit\]\:focus\:text-foreground {
+    &::-webkit-datetime-edit {
+      &:focus {
+        color: var(--foreground);
+      }
     }
   }
   .\[\&\:\:-webkit-datetime-edit-day-field\]\:text-foreground {
@@ -4957,6 +4969,11 @@
     &:last-child[data-selected=true] button {
       border-top-right-radius: calc(var(--radius) - 2px);
       border-bottom-right-radius: calc(var(--radius) - 2px);
+    }
+  }
+  .\[\&\:not\(\:placeholder-shown\)\:\:-webkit-datetime-edit\]\:text-foreground {
+    &:not(:placeholder-shown)::-webkit-datetime-edit {
+      color: var(--foreground);
     }
   }
   .\[\&\>\*\]\:w-full {

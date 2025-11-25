@@ -37,16 +37,14 @@ export function FloatingInput({
           appearance-none
 
           ${type === "date" ? `
-  [&::-webkit-datetime-edit]:text-foreground
-  [&::-webkit-datetime-edit]:opacity-100
-  [&::-webkit-datetime-edit-fields-wrapper]:p-0
-  [&::-webkit-datetime-edit-text]:text-foreground
-  [&::-webkit-datetime-edit-day-field]:text-foreground
-  [&::-webkit-datetime-edit-month-field]:text-foreground
-  [&::-webkit-datetime-edit-year-field]:text-foreground
-  [&::-webkit-calendar-picker-indicator]:opacity-60
-  [&::-webkit-calendar-picker-indicator]:hover:opacity-100
-` : ""}
+            appearance-none
+            [&::-webkit-datetime-edit]:text-transparent
+            [&::-webkit-datetime-edit]:focus:text-foreground
+            [&:not(:placeholder-shown)::-webkit-datetime-edit]:text-foreground
+            [&::-webkit-calendar-picker-indicator]:opacity-60
+            [&::-webkit-calendar-picker-indicator]:hover:opacity-100
+            [&::-webkit-calendar-picker-indicator]:mt-[6px]
+            ` : ""}
 
           ${textarea ? "min-h-32 h-auto" : ""}
           ${className}
