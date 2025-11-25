@@ -49,7 +49,7 @@ export function Contact() {
         margin-bottom: 25px;
       }
       .logo img {
-        max-width: 100px;
+        max-width: 50px;
       }
       h2 {
         color: #3b2e24;
@@ -147,7 +147,7 @@ export function Contact() {
         margin-bottom: 25px;
       }
       .logo img {
-        max-width: 100px;
+        max-width: 50px;
       }
       h2 {
         color: #3b2e24;
@@ -262,16 +262,15 @@ export function Contact() {
     <section id="contact" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">
-            Get in Touch
-          </h2>
+          <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Get in Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Ready to start planning your perfect day? Contact us to schedule a tour
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* LEFT PANEL: FORM */}
+
+          {/* FORM */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-8">
 
@@ -280,9 +279,7 @@ export function Contact() {
                 label="Your Name"
                 required
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
 
               <FloatingInput
@@ -291,9 +288,7 @@ export function Contact() {
                 type="email"
                 required
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
 
               <FloatingInput
@@ -302,9 +297,7 @@ export function Contact() {
                 type="tel"
                 required
                 value={formData.phone}
-                onChange={(e) =>
-                  setFormData({ ...formData, phone: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
 
               <FloatingInput
@@ -313,9 +306,7 @@ export function Contact() {
                 type="date"
                 required
                 value={formData.date}
-                onChange={(e) =>
-                  setFormData({ ...formData, date: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
               />
 
               <FloatingInput
@@ -324,40 +315,27 @@ export function Contact() {
                 textarea
                 required
                 value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
 
               <Button
                 type="submit"
                 size="lg"
                 disabled={status === "loading"}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
               >
                 {status === "loading" ? "Sending..." : "Send Inquiry"}
               </Button>
 
-              {status === "loading" && (
-                <p className="text-center text-muted-foreground animate-pulse">
-                  Sending your message...
-                </p>
-              )}
-
-              {status === "success" && (
-                <p className="text-center text-green-600 font-medium">
-                  {message}
-                </p>
-              )}
-
-              {status === "error" && (
-                <p className="text-center text-red-600 font-medium">{message}</p>
-              )}
+              {status === "loading" && <p className="text-center text-muted-foreground animate-pulse">Sending your message...</p>}
+              {status === "success" && <p className="text-center text-green-600 font-medium">{message}</p>}
+              {status === "error" && <p className="text-center text-red-600 font-medium">{message}</p>}
             </form>
           </div>
 
-          {/* RIGHT PANEL: INFO */}
+
           <div className="space-y-8">
+
             <div>
               <h3 className="font-serif text-2xl mb-6 text-foreground">Visit Us</h3>
               <div className="space-y-4">
@@ -367,9 +345,7 @@ export function Contact() {
                   <div>
                     <div className="font-semibold text-foreground">Address</div>
                     <div className="text-muted-foreground">
-                      2769 Cedartown Hwy
-                      <br />
-                      Rockmart, GA, 30153
+                      2769 Cedartown Hwy<br />Rockmart, GA, 30153
                     </div>
                   </div>
                 </div>
@@ -386,9 +362,7 @@ export function Contact() {
                   <Mail className="w-6 h-6 text-muted-foreground mt-1" />
                   <div>
                     <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">
-                      info@1513atstonecreek.com
-                    </div>
+                    <div className="text-muted-foreground">info@1513atstonecreek.com</div>
                   </div>
                 </div>
 
@@ -398,9 +372,7 @@ export function Contact() {
             <div>
               <h3 className="font-serif text-2xl mb-4 text-foreground">Hours</h3>
               <div className="text-muted-foreground space-y-2">
-                <div className="flex justify-between">
-                  <span>Tours by Appointment</span>
-                </div>
+                <div className="flex justify-between"><span>Tours by Appointment</span></div>
 
                 <div className="flex items-start gap-4">
                   <span>Monday - Saturday</span>
@@ -415,6 +387,7 @@ export function Contact() {
             </div>
 
           </div>
+
         </div>
       </div>
     </section>
