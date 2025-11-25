@@ -270,53 +270,104 @@ export function Contact() {
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+            <form onSubmit={handleSubmit} className="space-y-8">
+
+              {/* NAME */}
+              <div className="relative">
                 <Input
-                  placeholder="Your Name"
+                  id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-muted border-border"
+                  className="peer bg-muted border-border pt-6 pb-2"
                   required
                 />
+                <label
+                  htmlFor="name"
+                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
+                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
+                  peer-valid:top-1 peer-valid:text-xs"
+                >
+                  Your Name
+                </label>
               </div>
-              <div>
+
+              {/* EMAIL */}
+              <div className="relative">
                 <Input
+                  id="email"
                   type="email"
-                  placeholder="Email Address"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-muted border-border"
+                  className="peer bg-muted border-border pt-6 pb-2"
                   required
                 />
+                <label
+                  htmlFor="email"
+                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
+                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
+                  peer-valid:top-1 peer-valid:text-xs"
+                >
+                  Email Address
+                </label>
               </div>
-              <div>
+
+              {/* PHONE */}
+              <div className="relative">
                 <Input
+                  id="phone"
                   type="tel"
-                  placeholder="Phone Number"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="bg-muted border-border"
+                  className="peer bg-muted border-border pt-6 pb-2"
                 />
+                <label
+                  htmlFor="phone"
+                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
+                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
+                  peer-valid:top-1 peer-valid:text-xs"
+                >
+                  Phone Number
+                </label>
               </div>
-              <div>
+
+              {/* DATE */}
+              <div className="relative">
                 <Input
+                  id="date"
                   type="date"
-                  placeholder="Preferred Event Date"
-                  onFocus={(e) => (e.target.type = "date")}
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  className="bg-muted border-border"
+                  className="peer bg-muted border-border pt-6 pb-2 appearance-none"
                 />
+                <label
+                  htmlFor="date"
+                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
+                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
+                  peer-valid:top-1 peer-valid:text-xs"
+                >
+                  Preferred Event Date
+                </label>
               </div>
-              <div>
+
+              {/* MESSAGE */}
+              <div className="relative">
                 <Textarea
-                  placeholder="Tell us about your vision..."
+                  id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="bg-muted border-border min-h-32"
+                  className="peer bg-muted border-border pt-6 pb-2 min-h-32"
                 />
+                <label
+                  htmlFor="message"
+                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
+                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
+                  peer-valid:top-1 peer-valid:text-xs"
+                >
+                  Tell us about your vision...
+                </label>
               </div>
+
+              {/* SUBMIT */}
               <Button
                 type="submit"
                 size="lg"
@@ -355,6 +406,7 @@ export function Contact() {
                     </div>
                   </div>
                 </div>
+
                 <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-1" />
                   <div>
@@ -362,6 +414,7 @@ export function Contact() {
                     <div className="text-muted-foreground">(470) 296-0272</div>
                   </div>
                 </div>
+
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-1" />
                   <div>
@@ -388,6 +441,7 @@ export function Contact() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
