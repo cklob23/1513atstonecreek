@@ -42,19 +42,29 @@ export function FloatingInput({
           ${type === "date" ? `
             appearance-none
 
-            /* Hide placeholder */
-            [&::-webkit-datetime-edit-text]:opacity-0
-            [&::-webkit-datetime-edit-month-field]:opacity-0
-            [&::-webkit-datetime-edit-day-field]:opacity-0
-            [&::-webkit-datetime-edit-year-field]:opacity-0
+            /* Hide Safari/Chrome forced placeholder */
+            color: transparent;
+            [&:focus]:color-foreground;
+            [&:not(:placeholder-shown)]:color-foreground;
 
-            /* Reveal once value is selected */
-            [&:not(:placeholder-shown)::-webkit-datetime-edit-text]:opacity-100
-            [&:not(:placeholder-shown)::-webkit-datetime-edit-month-field]:opacity-100
-            [&:not(:placeholder-shown)::-webkit-datetime-edit-day-field]:opacity-100
-            [&:not(:placeholder-shown)::-webkit-datetime-edit-year-field]:opacity-100
+            /* Hide placeholder text sub-elements */
+            [&::-webkit-datetime-edit]:color-transparent
+            [&:focus::-webkit-datetime-edit]:color-foreground
+            [&:not(:placeholder-shown)::-webkit-datetime-edit]:color-foreground
 
-            /* FIX: center the calendar icon */
+            /* Hide individual segment placeholders */
+            [&::-webkit-datetime-edit-fields-wrapper]:color-transparent
+            [&::-webkit-datetime-edit-text]:color-transparent
+            [&::-webkit-datetime-edit-month-field]:color-transparent
+            [&::-webkit-datetime-edit-day-field]:color-transparent
+            [&::-webkit-datetime-edit-year-field]:color-transparent
+
+            /* Show date when selected */
+            [&:not(:placeholder-shown)::-webkit-datetime-edit-month-field]:color-foreground
+            [&:not(:placeholder-shown)::-webkit-datetime-edit-day-field]:color-foreground
+            [&:not(:placeholder-shown)::-webkit-datetime-edit-year-field]:color-foreground
+
+            /* Fix icon alignment */
             [&::-webkit-calendar-picker-indicator]:relative
             [&::-webkit-calendar-picker-indicator]:top-1/2
             [&::-webkit-calendar-picker-indicator]:-translate-y-1/2
