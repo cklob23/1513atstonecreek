@@ -3,8 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { FloatingInput } from "@/components/ui/floating-input"
 import { MapPin, Phone, Mail } from "lucide-react"
 
 export function Contact() {
@@ -23,6 +22,7 @@ export function Contact() {
     e.preventDefault()
     setStatus("loading")
     setMessage("Sending your inquiry...")
+
     const guestHtmlBody = `
     <!DOCTYPE html>
     <html>
@@ -269,105 +269,53 @@ export function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* LEFT SIDE FORM */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-8">
 
-              {/* NAME */}
-              <div className="relative">
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="peer bg-muted border-border pt-6 pb-2"
-                  required
-                />
-                <label
-                  htmlFor="name"
-                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
-                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
-                  peer-valid:top-1 peer-valid:text-xs"
-                >
-                  Your Name
-                </label>
-              </div>
+              <FloatingInput
+                id="name"
+                label="Your Name"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
 
-              {/* EMAIL */}
-              <div className="relative">
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="peer bg-muted border-border pt-6 pb-2"
-                  required
-                />
-                <label
-                  htmlFor="email"
-                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
-                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
-                  peer-valid:top-1 peer-valid:text-xs"
-                >
-                  Email Address
-                </label>
-              </div>
+              <FloatingInput
+                id="email"
+                label="Email Address"
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
 
-              {/* PHONE */}
-              <div className="relative">
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="peer bg-muted border-border pt-6 pb-2"
-                />
-                <label
-                  htmlFor="phone"
-                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
-                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
-                  peer-valid:top-1 peer-valid:text-xs"
-                >
-                  Phone Number
-                </label>
-              </div>
+              <FloatingInput
+                id="phone"
+                label="Phone Number"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
 
-              {/* DATE */}
-              <div className="relative">
-                <Input
-                  id="date"
-                  type="date"
-                  value={formData.date}
-                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  className="peer bg-muted border-border pt-6 pb-2 appearance-none"
-                />
-                <label
-                  htmlFor="date"
-                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
-                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
-                  peer-valid:top-1 peer-valid:text-xs"
-                >
-                  Preferred Event Date
-                </label>
-              </div>
+              <FloatingInput
+                id="date"
+                label="Preferred Event Date"
+                type="date"
+                required
+                value={formData.date}
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              />
 
-              {/* MESSAGE */}
-              <div className="relative">
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="peer bg-muted border-border pt-6 pb-2 min-h-32"
-                />
-                <label
-                  htmlFor="message"
-                  className="absolute left-3 top-[14px] text-muted-foreground pointer-events-none transition-all
-                  peer-focus:top-1 peer-focus:text-xs peer-focus:text-foreground
-                  peer-valid:top-1 peer-valid:text-xs"
-                >
-                  Tell us about your vision...
-                </label>
-              </div>
+              <FloatingInput
+                id="message"
+                label="Tell us about your vision..."
+                textarea
+                required
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              />
 
-              {/* SUBMIT */}
               <Button
                 type="submit"
                 size="lg"
@@ -378,7 +326,9 @@ export function Contact() {
               </Button>
 
               {status === "loading" && (
-                <p className="text-center text-muted-foreground animate-pulse">Sending your message...</p>
+                <p className="text-center text-muted-foreground animate-pulse">
+                  Sending your message...
+                </p>
               )}
 
               {status === "success" && (
@@ -391,24 +341,23 @@ export function Contact() {
             </form>
           </div>
 
+          {/* RIGHT SIDE INFO */}
           <div className="space-y-8">
             <div>
               <h3 className="font-serif text-2xl mb-6 text-foreground">Visit Us</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-1" />
+                  <MapPin className="w-6 h-6 text-muted-foreground mt-1" />
                   <div>
                     <div className="font-semibold text-foreground">Address</div>
                     <div className="text-muted-foreground">
-                      2769 Cedartown Hwy
-                      <br />
-                      Rockmart, GA, 30153
+                      2769 Cedartown Hwy<br />Rockmart, GA, 30153
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-1" />
+                  <Phone className="w-6 h-6 text-muted-foreground mt-1" />
                   <div>
                     <div className="font-semibold text-foreground">Phone</div>
                     <div className="text-muted-foreground">(470) 296-0272</div>
@@ -416,7 +365,7 @@ export function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <Mail className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-1" />
+                  <Mail className="w-6 h-6 text-muted-foreground mt-1" />
                   <div>
                     <div className="font-semibold text-foreground">Email</div>
                     <div className="text-muted-foreground">info@1513atstonecreek.com</div>
@@ -431,6 +380,7 @@ export function Contact() {
                 <div className="flex justify-between">
                   <span>Tours by Appointment</span>
                 </div>
+
                 <div className="flex items-start gap-4">
                   <span>Monday - Saturday</span>
                   <span>10am - 6pm</span>
