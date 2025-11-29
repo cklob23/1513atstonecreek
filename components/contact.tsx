@@ -49,7 +49,7 @@ export function Contact() {
         margin-bottom: 25px;
       }
       .logo img {
-        width: 50px;
+        width: 150px;
       }
       h2 {
         color: #3b2e24;
@@ -147,7 +147,7 @@ export function Contact() {
         margin-bottom: 25px;
       }
       .logo img {
-        width: 50px;
+        width: 150px;
       }
       h2 {
         color: #3b2e24;
