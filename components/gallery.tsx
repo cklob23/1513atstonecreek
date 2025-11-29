@@ -28,8 +28,17 @@ export function Gallery() {
     { src: "/1513-moment10.jpg", alt: "Couple Portrait" },
     { src: "/1513-spaces1.jpg", alt: "Table Settings" },
     { src: "/1513-moment30.jpg", alt: "Sunset Views" },
-    { src: "/1513-moment31.jpg", alt: "Gardens" },
+    { src: "/1513-moment40.jpg", alt: "Gardens" },
     { src: "/1513-moment33.jpg", alt: "Gardens" },
+    { src: "/1513-moment41.jpg", alt: "Sunset Views" },
+    { src: "/1513-moment42.jpg", alt: "Gardens" },
+    { src: "/1513-moment43.jpg", alt: "Gardens" },
+    { src: "/1513-moment44.jpg", alt: "Sunset Views" },
+    { src: "/1513-dining8.jpg", alt: "Gardens" },
+    { src: "/1513-venue9.jpg", alt: "Gardens" },
+    { src: "/1513-moment21.jpg", alt: "Sunset Views" },
+    { src: "/1513-dining7.jpg", alt: "Gardens" },
+    { src: "/1513-moment23.jpg", alt: "Gardens" },
   ]
 
   return (
