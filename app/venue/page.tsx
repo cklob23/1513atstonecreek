@@ -33,13 +33,13 @@ export default function VenuePage() {
       title: "The Pavillion",
       description:
         "A covered outdoor space perfect for ceremonies, receptions, and gatherings of all kinds — beautifully designed to shine in any season or weather.",
-      image: "/the-venue19.jpg",
+      image: "/the-cross38.jpg",
     },
     {
       title: "The Ballroom",
       description:
         "Elegant and spacious, our ballroom seats up to 200 guests comfortably and offers a timeless setting for dining, dancing, and unforgettable moments.",
-      image: "/1513-room1.jpg",
+      image: "/the-dining2.jpg",
     },
     {
       title: "Bridal Suite",
@@ -51,7 +51,7 @@ export default function VenuePage() {
       title: "The Patio",
       description:
         "Ideal for cocktail hour, mingling, or your next celebration — complete with our brand-new outdoor fireplace, creating a cozy, inviting atmosphere.",
-      image: "/the-venue18.jpg",
+      image: "/1513-patio.jpg",
     },
   ]
 

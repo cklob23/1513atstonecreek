@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react"
 
 export function GalleryPreview() {
   const images = [
-    { src: "/the-moment15.jpg", alt: "Ceremony Space" },
-    { src: "/the-venue17.jpg", alt: "Reception Hall" },
+    { src: "/the-moment15.jpg", alt: "1513 Moment" },
+    { src: "/1513-moment28.jpg", alt: "Reception Hall" },
     { src: "/1513-moment18.jpg", alt: "Couple Portrait" },
-    { src: "/1513-moment17.jpg", alt: "Table Settings" },
+    { src: "/1513-moment17.jpg", alt: "1513 Moment 2" },
   ]
 
   return (

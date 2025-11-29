@@ -10,7 +10,7 @@ export default function AboutPage() {
       <PageBanner
         title="Our Story"
         description="Discover the history and charm of 1513 at Stone Creek"
-        image="the-venue6.jpg"
+        image="1513-venue0.jpg"
       />
       <About />
       <Footer />
