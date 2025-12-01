@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 import { Geist_Mono, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from 'next/font/google'
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 // Initialize fonts
 const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
+        <ScrollToTop />
       </body>
     </html>
   )
