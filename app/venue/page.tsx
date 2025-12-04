@@ -45,7 +45,7 @@ export default function VenuePage() {
       title: "Bridal Suite",
       description:
         "Luxurious, comfortable, and thoughtfully designed for parties of every size. Begin your day surrounded by your closest friends in spaces crafted for relaxation and excitement.",
-      image: "/1513-bridalsuite2.jpg",
+      image: "/1513-suite4.jpg",
     },
     {
       title: "The Patio",
