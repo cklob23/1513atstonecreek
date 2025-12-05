@@ -47,12 +47,12 @@ export function Gallery() {
   return (
     <section id="gallery" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Gallery</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Explore our stunning venue through the eyes of couples who celebrated their special day with us
           </p>
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((image, index) => (
