@@ -28,7 +28,7 @@ export function Gallery() {
     { src: "/1513-venue24.jpg", alt: "Sunset Views" },
     { src: "/the-dining1.jpg", alt: "Gardens" },
     { src: "/1513-moment8.jpg", alt: "Reception Hall" },
-    { src: "/1513-venue22.jpg", alt: "Couple Portrait" },
+    { src: "/the-venue17.jpg", alt: "Couple Portrait" },
     { src: "/1513-spaces1.jpg", alt: "Table Settings" },
     { src: "/1513-moment30.jpg", alt: "Sunset Views" },
     { src: "/1513-moment40.jpg", alt: "Gardens" },
