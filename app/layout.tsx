@@ -1,18 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
-
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 import { Geist_Mono, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from 'next/font/google'
 import { ScrollToTop } from "@/components/scroll-to-top"
+import Script from "next/script"
 
 // Initialize fonts
-const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
-const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
-const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700"] })
+const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
+const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
+const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700"] })
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL("https://1513atstonecreek.com"),
   title: "1513 at Stone Creek | Elegant Wedding & Event Venue",
   description:
@@ -68,9 +67,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+            <head>
+        {/* Google Analytics */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9`}
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-992WXP6EC9');
+          `}
+        </Script>
+      </head>
       <body className={`font-sans antialiased`}>
         {children}
-        <Analytics />
         <ScrollToTop />
       </body>
     </html>
