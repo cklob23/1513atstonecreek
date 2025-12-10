@@ -12,15 +12,54 @@ const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","4
 const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
 const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700"] })
 
-export const metadata: Metadata = {
-  title: "1513 at Stone Creek | Wedding Venue",
-  description: "Your Story Begins at 1513 at Stone Creek",
+export const metadata = {
+  metadataBase: new URL("https://1513atstonecreek.com"),
+  title: "1513 at Stone Creek | Elegant Wedding & Event Venue",
+  description:
+    "Your story begins at 1513 at Stone Creek — a stunning Georgia wedding venue offering elegant indoor and outdoor spaces for ceremonies, receptions, and special events.",
+  keywords: [
+    "wedding venue",
+    "event venue",
+    "Stone Creek wedding",
+    "Georgia wedding venue",
+    "reception venue",
+    "ceremony venue",
+    "rustic elegant wedding venue"
+  ],
+
   generator: "Developed by Caleb Klobe",
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+  alternates: {
+    canonical: "https://1513atstonecreek.com",
   },
-}
+  openGraph: {
+    title: "1513 at Stone Creek | Wedding & Event Venue",
+    description:
+      "A breathtaking Georgia wedding venue with modern amenities, charming architecture, and unforgettable event spaces.",
+    url: "https://1513atstonecreek.com",
+    siteName: "1513 at Stone Creek",
+    images: [
+      {
+        url: "/1513-hero-pic.jpg",
+        width: 1200,
+        height: 630,
+        alt: "1513 at Stone Creek Wedding Venue",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "1513 at Stone Creek",
+    description:
+      "Experience unforgettable weddings and events at 1513 at Stone Creek.",
+    images: ["/1513-hero-pic.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function RootLayout({
   children,
