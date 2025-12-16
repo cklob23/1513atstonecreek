@@ -6,10 +6,10 @@ import { Geist_Mono, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, I
 import { ScrollToTop } from "@/components/scroll-to-top"
 import Script from "next/script"
 
-// Initialize fonts
-const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
-const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
-const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700"] })
+// Fonts
+const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
+const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
+const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://1513atstonecreek.com"),
@@ -21,15 +21,11 @@ export const metadata: Metadata = {
     "event venue",
     "Stone Creek wedding",
     "Georgia wedding venue",
-    "reception venue",
-    "ceremony venue",
-    "rustic elegant wedding venue"
+    "Rockmart wedding venue",
+    "reception venue Georgia",
+    "barn wedding venue Georgia"
   ],
-
-  generator: "Developed by Caleb Klobe",
-  alternates: {
-    canonical: "https://1513atstonecreek.com",
-  },
+  alternates: { canonical: "https://1513atstonecreek.com" },
   openGraph: {
     title: "1513 at Stone Creek | Wedding & Event Venue",
     description:
@@ -50,28 +46,28 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "1513 at Stone Creek",
-    description:
-      "Experience unforgettable weddings and events at 1513 at Stone Creek.",
+    description: "Experience unforgettable weddings and events at 1513 at Stone Creek.",
     images: ["/1513-hero-pic.jpg"],
   },
   robots: {
     index: true,
     follow: true,
   },
-};
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-            <head>
+      <head>
+
         {/* Google Analytics */}
         <Script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9"
         />
         <Script id="google-analytics">
           {`
@@ -81,8 +77,43 @@ export default function RootLayout({
             gtag('config', 'G-992WXP6EC9');
           `}
         </Script>
+
+        <Script id="organization-schema" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "1513 at Stone Creek",
+            "url": "https://1513atstonecreek.com",
+            "logo": "https://1513atstonecreek.com/1513icon300x300.png",
+            "sameAs": [
+              "https://www.facebook.com/1513atstonecreek",
+              "https://www.instagram.com/1513atstonecreek"
+            ]
+          })}
+        </Script>
+
+        {/* ⭐ LOCAL BUSINESS / WEDDING VENUE SCHEMA */}
+        <Script id="venue-schema" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WeddingVenue",
+            "name": "1513 at Stone Creek",
+            "image": "https://1513atstonecreek.com/1513-hero-pic.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "2769 Cedartown Hwy",
+              "addressLocality": "Rockmart",
+              "addressRegion": "GA",
+              "postalCode": "30153",
+              "addressCountry": "US"
+            },
+            "telephone": "+14702960272",
+            "url": "https://1513atstonecreek.com"
+          })}
+        </Script>
+
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className="font-sans antialiased">
         {children}
         <ScrollToTop />
       </body>
