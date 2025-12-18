@@ -382,7 +382,7 @@ export function Contact() {
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
-                  <span>1am - 5pm</span>
+                  <span>1pm - 5pm</span>
                 </div>
               </div>
             </div>
