@@ -94,7 +94,7 @@ export default function RootLayout({
           })}
         </Script>
 
-        {/* ⭐ LOCAL BUSINESS / WEDDING VENUE SCHEMA */}
+        {/* LOCAL BUSINESS / WEDDING VENUE SCHEMA */}
         <Script id="venue-schema" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
