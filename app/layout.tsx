@@ -79,21 +79,24 @@ export default function RootLayout({
             gtag('config', 'G-992WXP6EC9');
           `}
         </Script>
-
         <Script id="organization-schema" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "1513 at Stone Creek",
             "url": "https://1513atstonecreek.com",
-            "logo": "https://1513atstonecreek.com/1513icon300x300.png",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://1513atstonecreek.com/1513icon300x300.png",
+              "width": 300,
+              "height": 300
+            },
             "sameAs": [
               "https://www.facebook.com/1513atstonecreek",
               "https://www.instagram.com/1513atstonecreek"
             ]
           })}
         </Script>
-
         {/* LOCAL BUSINESS / WEDDING VENUE SCHEMA */}
         <Script id="venue-schema" type="application/ld+json">
           {JSON.stringify({
