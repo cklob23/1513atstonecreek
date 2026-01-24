@@ -1,52 +1,152 @@
-# Path to the temp folder
-$sourceFolder = "D:\src\1513 Photos\Temp"
+# ==============================
+# CONFIG
+# ==============================
+$ApiKey = "AIzaSyB6CCTBVb-Y43q0clrPT1FmQfTMrIC64fY"
+$DriveFolderId = "1sjgfMGPnD6iRlyZsmazYSxZjBztMt_0n"
+$PublicDir = "D:\src\1513 Photos\"
+$GalleryFile = "D:\src\1513-at-stone-creek\components\gallery.tsx"
+$PublicPrefix = "/"
 
-# Path to the folder containing photos
-$destinationFolder = "D:\src\1513 Photos"
+# Only download files added in the last X days
+$DaysBack = 14
+$CutoffDate = (Get-Date).AddDays(-$DaysBack).ToString("yyyy-MM-ddTHH:mm:ssZ")
 
-# Ensure destination exists
-if (-not (Test-Path $destinationFolder)) {
-    New-Item -ItemType Directory -Path $destinationFolder | Out-Null
+$AllowedExtensions = @(".jpg", ".jpeg", ".png", ".webp")
+$FilePrefix = "1513-photo"
+
+# ==============================
+# READ EXISTING GALLERY CONTENT
+# ==============================
+$galleryContent = Get-Content $GalleryFile -Raw
+
+# Existing src values
+$existingSrcs = [regex]::Matches($galleryContent, 'src:\s*"([^"]+)"') |
+ForEach-Object { $_.Groups[1].Value }
+
+# Existing photo numbers
+$existingNumbers = [regex]::Matches($galleryContent, '1513 Photo (\d+)') |
+ForEach-Object { [int]$_.Groups[1].Value }
+
+$nextPhotoNumber = if ($existingNumbers.Count -gt 0) {
+    ($existingNumbers | Measure-Object -Maximum).Maximum + 1
+}
+else {
+    1
 }
 
-# Get all .jpeg files sorted
-$files = Get-ChildItem -Path $sourceFolder -Filter *.jp* | Sort-Object Name
+Write-Host "Starting at photo number: $nextPhotoNumber"
 
-# Start counter
-$counter1 = 1
+# ==============================
+# GET FILES FROM GOOGLE DRIVE
+# ==============================
+$uri = "https://www.googleapis.com/drive/v3/files?q='$DriveFolderId'+in+parents+and+mimeType+contains+'image/'+and+createdTime+>+'$CutoffDate'&fields=files(id,name,createdTime)&orderBy=createdTime+desc&key=$ApiKey"
+$response = Invoke-RestMethod -Uri $uri -Method Get
 
-foreach ($file in $files) {
-    $newName = "1513image$counter1.jpg"
-    $destinationPath = Join-Path $destinationFolder $newName
-    Rename-Item -Path $file.FullName -NewName $newName
-    # Prevent overwriting existing files
-    if (Test-Path $destinationPath) {
-        Write-Warning "Skipping $($file.Name) — $newName already exists"
-        $counter1++
+# ==============================
+# PROCESS FILES
+# ==============================
+$newEntries = @()
+
+foreach ($file in $response.files | Sort-Object name) {
+
+    $originalName = $file.name
+    $fileId = $file.id
+    $originalExt = [System.IO.Path]::GetExtension($originalName).ToLower()
+
+    # Validate extension
+    if ($AllowedExtensions -notcontains $originalExt) {
+        Write-Host "Skipping (invalid extension): $originalName"
         continue
     }
 
-    # Rename and move in one step
-    Move-Item -Path "$($sourceFolder)\$($newName)" -Destination $destinationPath
+    # FORCE .jpg
+    $newFileName = "{0}-{1}.jpg" -f $FilePrefix, $nextPhotoNumber
+    $publicSrc = "$($PublicPrefix)$($newFileName)"
+    $localPath = Join-Path $PublicDir $newFileName
 
-    Write-Host "Moved and renamed: $($file.Name) → $newName"
-    $counter1++
+    # Skip duplicates
+    if ($existingSrcs -contains $publicSrc) {
+        Write-Host "Skipping (already in gallery): $newFileName"
+        continue
+    }
+
+    if (Test-Path $localPath) {
+        Write-Host "Skipping (already exists): $newFileName"
+        continue
+    }
+
+    # Download
+    Write-Host "Downloading: $originalName → $newFileName"
+    $downloadUrl = "https://www.googleapis.com/drive/v3/files/$($fileId)?alt=media&key=$ApiKey"
+    Invoke-WebRequest -Uri $downloadUrl -OutFile $localPath
+
+    # Gallery entry
+    $newEntries += "  { src: `"$publicSrc`", alt: `"1513 Photo $nextPhotoNumber`" },"
+    $nextPhotoNumber++
 }
 
-# Get all JPG files
-$photos = Get-ChildItem -Path $destinationFolder -Filter *.jpg | Where-Object {$_.Name -like "1513image*"} | Sort-Object Name
+# ==============================
+# INSERT INTO gallery.tsx
+# ==============================
+if ($newEntries.Count -gt 0) {
 
-# Counter for alt text numbering
-$counter2 = 32
+    $insertBlock = "`n" + ($newEntries -join "`n")
 
-# Generate formatted strings
-$results = foreach ($photo in $photos) {
-    "{ src: `"/$($photo.Name)`", alt: `"1513 Photo $counter2`" },"
-    $counter2++
+    $updatedContent = $galleryContent -replace '(const\s+images\s*=\s*\[)', "`$1$insertBlock"
+
+    Set-Content -Path $GalleryFile -Value $updatedContent
+
+    Write-Host "✅ Added $($newEntries.Count) new photos"
+}
+else {
+    Write-Host "✅ No new images found"
 }
 
-# Output to console
-$results
+# ==============================
+# RANDOMIZE IMAGES ARRAY
+# ==============================
+Write-Host "🔀 Randomizing images array..."
 
-# Optional: save to a file
-# $results | Out-File "1513-photo-strings.txt" -Encoding UTF8
+$galleryContent = Get-Content $GalleryFile -Raw
+
+# Match the images array block
+if ($galleryContent -match '(const\s+images\s*=\s*\[)([\s\S]*?)(\])') {
+
+    $arrayStart = $matches[1]
+    $arrayBody = $matches[2]
+    $arrayEnd = $matches[3]
+
+    # Split lines
+    $lines = $arrayBody -split "`n"
+
+    # Active image entries
+    $activeEntries = $lines | Where-Object {
+        $_ -match '^\s*\{\s*src:\s*".+?",\s*alt:\s*".+?"\s*\},'
+    }
+
+    # Commented or non-image lines
+    $otherLines = $lines | Where-Object {
+        $_ -notmatch '^\s*\{\s*src:\s*".+?",\s*alt:\s*".+?"\s*\},'
+    }
+
+    # Shuffle active entries
+    $shuffledEntries = $activeEntries | Sort-Object { Get-Random }
+
+    # Rebuild array body
+    $newArrayBody = @(
+        $otherLines
+        $shuffledEntries
+    ) -join "`n"
+
+    # Replace content
+    $newGalleryContent = $galleryContent -replace `
+        '(const\s+images\s*=\s*\[[\s\S]*?\])',
+    "$arrayStart$newArrayBody$arrayEnd"
+
+    Set-Content -Path $GalleryFile -Value $newGalleryContent
+
+    Write-Host "✅ Images array randomized"
+}
+else {
+    Write-Host "⚠️ Could not locate images array"
+}
