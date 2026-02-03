@@ -2,4 +2,5 @@
   "/page": "app/page.js",
   "/about/page": "app/about/page.js",
   "/venue/page": "app/venue/page.js",
-  "/testimonials/page": "app/testimonials/page.js",
+  "/gallery/page": "app/gallery/page.js"
+}
