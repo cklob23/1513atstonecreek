@@ -4,17 +4,21 @@ import { ChevronDown } from "lucide-react"
 
 export function Hero() {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center">
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
-          src="/1513-hero-pic.jpg"
-          alt="1513 at Stone Creek Venue"
+        <video
           className="w-full h-full object-cover"
-          loading="eager"
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/New_1513.mp4" type="video/mp4" />
+        </video>
+
         <div className="absolute inset-0 bg-venue-hero-overlay" />
       </div>
-
       <div
         className="relative z-10 text-center text-venue-text-light px-4"
         style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
