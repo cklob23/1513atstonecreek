@@ -1,126 +1,182 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
+
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-import { Geist_Mono, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from 'next/font/google'
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { Geist_Mono, Geist as V0_Font_Geist, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from "next/font/google"
 import Script from "next/script"
 
-// Fonts
-const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
-const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
-const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700"] })
+const _geist = V0_Font_Geist({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+})
+const _geistMono = Geist_Mono({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+})
+const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+})
+
+const siteUrl = "https://1513atstonecreek.com"
+const siteName = "1513 at Stone Creek"
+const siteDescription =
+  "1513 at Stone Creek is a premier wedding and special events venue nestled on a scenic countryside estate. Featuring rustic elegance, a picturesque pond, lush gardens, and a covered pavilion, it is the perfect setting for weddings, receptions, and celebrations."
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://1513atstonecreek.com"),
-  title: "1513 at Stone Creek | Elegant Wedding & Event Venue",
-  description:
-    "Your story begins at 1513 at Stone Creek — a stunning Georgia wedding venue offering elegant indoor and outdoor spaces for ceremonies, receptions, and special events.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} | Wedding & Events Venue`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
   keywords: [
     "wedding venue",
     "event venue",
-    "Stone Creek wedding",
-    "Georgia wedding venue",
-    "Rockmart wedding venue",
-    "reception venue Georgia",
-    "barn wedding venue Georgia"
+    "1513 at Stone Creek",
+    "Stone Creek weddings",
+    "rustic wedding venue",
+    "outdoor wedding venue",
+    "wedding reception",
+    "special events venue",
+    "countryside wedding",
+    "barn wedding",
+    "garden wedding",
+    "wedding pavilion",
+    "wedding ceremony",
+    "bridal venue",
+    "wedding planning",
+    "rehearsal dinner venue",
+    "engagement party venue",
   ],
-  alternates: { canonical: "https://1513atstonecreek.com" },
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "1513 at Stone Creek | Wedding & Event Venue",
-    description:
-      "A breathtaking Georgia wedding venue with modern amenities, charming architecture, and unforgettable event spaces.",
-    url: "https://1513atstonecreek.com",
-    siteName: "1513 at Stone Creek",
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: siteName,
+    title: `${siteName} | Wedding & Events Venue`,
+    description: siteDescription,
     images: [
       {
         url: "/1513-hero-pic.jpg",
         width: 1200,
         height: 630,
-        alt: "1513 at Stone Creek Wedding Venue",
+        alt: "1513 at Stone Creek - Scenic pond and countryside estate wedding venue",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "1513 at Stone Creek",
-    description: "Experience unforgettable weddings and events at 1513 at Stone Creek.",
+    title: `${siteName} | Wedding & Events Venue`,
+    description: siteDescription,
     images: ["/1513-hero-pic.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
+  alternates: {
+    canonical: siteUrl,
   },
+  category: "Wedding Venue",
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f0eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1917" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+}
+
+function LocalBusinessJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    name: siteName,
+    description: siteDescription,
+    url: siteUrl,
+    image: `${siteUrl}/1513-hero-pic.jpg`,
+    telephone: "(470) 296-0272",
+    priceRange: "$$",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
+    sameAs: [],
+    amenityFeature: [
+      { "@type": "LocationFeatureSpecification", name: "Outdoor Ceremony Space" },
+      { "@type": "LocationFeatureSpecification", name: "Covered Pavilion" },
+      { "@type": "LocationFeatureSpecification", name: "Bridal Suite" },
+      { "@type": "LocationFeatureSpecification", name: "Scenic Pond & Gardens" },
+      { "@type": "LocationFeatureSpecification", name: "On-Site Parking" },
+    ],
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        {/* Google Analytics */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9"
-        />
-        <Script id="google-analytics">
-          {`
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/favicon.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      {/* Google Analytics */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9"
+      />
+      <Script id="google-analytics">
+        {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-992WXP6EC9');
           `}
-        </Script>
-        <Script id="organization-schema" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "1513 at Stone Creek",
-            "url": "https://1513atstonecreek.com",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://1513atstonecreek.com/1513icon300x300.png",
-              "width": 300,
-              "height": 300
-            },
-            "sameAs": [
-              "https://www.facebook.com/1513atstonecreek",
-              "https://www.instagram.com/1513atstonecreek"
-            ]
-          })}
-        </Script>
-        {/* LOCAL BUSINESS / WEDDING VENUE SCHEMA */}
-        <Script id="venue-schema" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WeddingVenue",
-            "name": "1513 at Stone Creek",
-            "image": "https://1513atstonecreek.com/1513-hero-pic.jpg",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "2769 Cedartown Hwy",
-              "addressLocality": "Rockmart",
-              "addressRegion": "GA",
-              "postalCode": "30153",
-              "addressCountry": "US"
-            },
-            "telephone": "+14702960272",
-            "url": "https://1513atstonecreek.com"
-          })}
-        </Script>
-
+      </Script>
+      <head>
+        <LocalBusinessJsonLd />
       </head>
+
       <body className="font-sans antialiased">
         {children}
-        <ScrollToTop />
+        <Analytics />
       </body>
     </html>
   )

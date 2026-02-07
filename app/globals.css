@@ -40,7 +40,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Added venue-specific semantic tokens */
-  --venue-hero-overlay: oklch(0.25 0.015 60 / 0.4);
+  --venue-hero-overlay: oklch(0.25 0.015 60 / 0.15);
   --venue-nav-bg: oklch(0.25 0.015 60 / 0.95);
   --venue-text-light: oklch(0.98 0.005 60);
   --venue-text-muted: oklch(0.95 0.005 60);
@@ -82,7 +82,7 @@
   --sidebar-ring: oklch(0.439 0 0);
 
   /* Dark mode venue tokens */
-  --venue-hero-overlay: oklch(0.145 0 0 / 0.6);
+  --venue-hero-overlay: oklch(0.145 0 0 / 0.3);
   --venue-nav-bg: oklch(0.145 0 0 / 0.95);
   --venue-text-light: oklch(0.985 0 0);
   --venue-text-muted: oklch(0.708 0 0);
@@ -90,9 +90,9 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
+  --font-sans: "Geist", "Geist Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
-  --font-serif: 'IBM Plex Serif', 'IBM Plex Serif Fallback';
+  --font-serif: "IBM Plex Serif", "IBM Plex Serif Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -149,4 +149,62 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes diagonal-sweep {
+  0% {
+    transform: translateX(-100%) translateY(100%) rotate(-45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(-100%) rotate(-45deg);
+  }
+}
+
+@keyframes sweep-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes photo-reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gallery-placeholder {
+  background-color: var(--muted);
+}
+
+.gallery-shadow-sweep::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 40%,
+    oklch(0.25 0.015 60 / 0.12) 45%,
+    oklch(0.25 0.015 60 / 0.25) 50%,
+    oklch(0.25 0.015 60 / 0.12) 55%,
+    transparent 60%,
+    transparent 100%
+  );
+  animation: diagonal-sweep 1.6s ease-in-out infinite;
+}
+
+.gallery-sweep-exit {
+  animation: sweep-exit 0.4s ease-out forwards;
+}
+
+.gallery-photo-reveal {
+  animation: photo-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
