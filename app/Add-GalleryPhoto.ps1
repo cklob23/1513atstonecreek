@@ -1,97 +1,108 @@
 # ==============================
 # CONFIG
 # ==============================
-$ApiKey = "AIzaSyB6CCTBVb-Y43q0clrPT1FmQfTMrIC64fY"
-$DriveFolderId = "1sjgfMGPnD6iRlyZsmazYSxZjBztMt_0n"
-$PublicDir = "D:\src\1513 Photos\"
+$SourceFolder = "G:\.shortcut-targets-by-id\1sjgfMGPnD6iRlyZsmazYSxZjBztMt_0n\1513 Photos"
+$PublicFolder = "D:\src\1513-at-stone-creek\public"
 $GalleryFile = "D:\src\1513-at-stone-creek\components\gallery.tsx"
 $PublicPrefix = "/"
 
-# Only download files added in the last X days
 $DaysBack = 14
-$CutoffDate = (Get-Date).AddDays(-$DaysBack).ToString("yyyy-MM-ddTHH:mm:ssZ")
+$CutoffDate = (Get-Date).AddDays(-$DaysBack)
 
 $AllowedExtensions = @(".jpg", ".jpeg", ".png", ".webp")
+$JpegQuality = 90
 $FilePrefix = "1513-photo"
 
+Add-Type -AssemblyName System.Drawing
+
+# Ensure public folder exists
+if (-not (Test-Path $PublicFolder)) {
+    New-Item -ItemType Directory -Path $PublicFolder | Out-Null
+}
+
 # ==============================
-# READ EXISTING GALLERY CONTENT
+# READ EXISTING GALLERY
 # ==============================
 $galleryContent = Get-Content $GalleryFile -Raw
 
-# Existing src values
 $existingSrcs = [regex]::Matches($galleryContent, 'src:\s*"([^"]+)"') |
 ForEach-Object { $_.Groups[1].Value }
 
-# Existing photo numbers
 $existingNumbers = [regex]::Matches($galleryContent, '1513 Photo (\d+)') |
 ForEach-Object { [int]$_.Groups[1].Value }
 
 $nextPhotoNumber = if ($existingNumbers.Count -gt 0) {
     ($existingNumbers | Measure-Object -Maximum).Maximum + 1
 }
-else {
-    1
-}
+else { 1 }
 
 Write-Host "Starting at photo number: $nextPhotoNumber"
 
 # ==============================
-# GET FILES FROM GOOGLE DRIVE
+# GET RECENT FILES
 # ==============================
-$uri = "https://www.googleapis.com/drive/v3/files?q='$DriveFolderId'+in+parents+and+mimeType+contains+'image/'+and+createdTime+>+'$CutoffDate'&fields=files(id,name,createdTime)&orderBy=createdTime+desc&key=$ApiKey"
-$response = Invoke-RestMethod -Uri $uri -Method Get
+$recentFiles = Get-ChildItem $SourceFolder -File |
+Where-Object {
+    $_.LastWriteTime -gt $CutoffDate -and
+    $AllowedExtensions -contains $_.Extension.ToLower()
+} |
+Sort-Object LastWriteTime
+
+$newEntries = @()
 
 # ==============================
 # PROCESS FILES
 # ==============================
-$newEntries = @()
+foreach ($file in $recentFiles) {
 
-foreach ($file in $response.files | Sort-Object name) {
+    $newFileName = "$FilePrefix-$nextPhotoNumber.jpg"
+    $destPath = Join-Path $PublicFolder $newFileName
+    $publicSrc = "$PublicPrefix$newFileName"
 
-    $originalName = $file.name
-    $fileId = $file.id
-    $originalExt = [System.IO.Path]::GetExtension($originalName).ToLower()
-
-    # Validate extension
-    if ($AllowedExtensions -notcontains $originalExt) {
-        Write-Host "Skipping (invalid extension): $originalName"
-        continue
-    }
-
-    # FORCE .jpg
-    $newFileName = "{0}-{1}.jpg" -f $FilePrefix, $nextPhotoNumber
-    $publicSrc = "$($PublicPrefix)$($newFileName)"
-    $localPath = Join-Path $PublicDir $newFileName
-
-    # Skip duplicates
     if ($existingSrcs -contains $publicSrc) {
         Write-Host "Skipping (already in gallery): $newFileName"
+        $nextPhotoNumber++
         continue
     }
 
-    if (Test-Path $localPath) {
-        Write-Host "Skipping (already exists): $newFileName"
+    if (Test-Path $destPath) {
+        Write-Host "Skipping (already exists in public): $newFileName"
+        $nextPhotoNumber++
         continue
     }
 
-    # Download
-    Write-Host "Downloading: $originalName → $newFileName"
-    $downloadUrl = "https://www.googleapis.com/drive/v3/files/$($fileId)?alt=media&key=$ApiKey"
-    Invoke-WebRequest -Uri $downloadUrl -OutFile $localPath
+    Write-Host "Processing: $($file.Name) → $newFileName"
 
-    # Gallery entry
+    # Convert to JPG if needed
+    if ($file.Extension.ToLower() -ne ".jpg") {
+
+        $image = [System.Drawing.Image]::FromFile($file.FullName)
+
+        $jpegCodec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() |
+        Where-Object { $_.MimeType -eq "image/jpeg" }
+
+        $encoderParams = New-Object System.Drawing.Imaging.EncoderParameters(1)
+        $encoderParams.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter(
+            [System.Drawing.Imaging.Encoder]::Quality, [long]$JpegQuality
+        )
+
+        $image.Save($destPath, $jpegCodec, $encoderParams)
+        $image.Dispose()
+    }
+    else {
+        Copy-Item $file.FullName $destPath
+    }
+
     $newEntries += "  { src: `"$publicSrc`", alt: `"1513 Photo $nextPhotoNumber`" },"
     $nextPhotoNumber++
 }
 
 # ==============================
-# INSERT INTO gallery.tsx
+# INSERT INTO GALLERY
 # ==============================
 if ($newEntries.Count -gt 0) {
 
     $insertBlock = "`n" + ($newEntries -join "`n")
-
     $updatedContent = $galleryContent -replace '(const\s+images\s*=\s*\[)', "`$1$insertBlock"
 
     Set-Content -Path $GalleryFile -Value $updatedContent
@@ -103,42 +114,35 @@ else {
 }
 
 # ==============================
-# RANDOMIZE IMAGES ARRAY
+# RANDOMIZE ARRAY
 # ==============================
 Write-Host "🔀 Randomizing images array..."
 
 $galleryContent = Get-Content $GalleryFile -Raw
 
-# Match the images array block
 if ($galleryContent -match '(const\s+images\s*=\s*\[)([\s\S]*?)(\])') {
 
     $arrayStart = $matches[1]
     $arrayBody = $matches[2]
     $arrayEnd = $matches[3]
 
-    # Split lines
     $lines = $arrayBody -split "`n"
 
-    # Active image entries
     $activeEntries = $lines | Where-Object {
         $_ -match '^\s*\{\s*src:\s*".+?",\s*alt:\s*".+?"\s*\},'
     }
 
-    # Commented or non-image lines
     $otherLines = $lines | Where-Object {
         $_ -notmatch '^\s*\{\s*src:\s*".+?",\s*alt:\s*".+?"\s*\},'
     }
 
-    # Shuffle active entries
     $shuffledEntries = $activeEntries | Sort-Object { Get-Random }
 
-    # Rebuild array body
     $newArrayBody = @(
         $otherLines
         $shuffledEntries
     ) -join "`n"
 
-    # Replace content
     $newGalleryContent = $galleryContent -replace `
         '(const\s+images\s*=\s*\[[\s\S]*?\])',
     "$arrayStart$newArrayBody$arrayEnd"
