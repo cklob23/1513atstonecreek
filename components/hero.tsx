@@ -30,11 +30,11 @@ export function Hero() {
           Your Story Begins at 1513 at Stone Creek
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="https://premiervenuepricing.com/pricing-pamphlet-1513-at-stone-creek" target="_blank" rel="noopener noreferrer">
+          {/* <Link href="https://premiervenuepricing.com/pricing-pamphlet-1513-at-stone-creek" target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="bg-venue-text-light text-primary hover:bg-venue-text-muted">
               Download Our Brochure
             </Button>
-          </Link>
+          </Link> */}
           <Link href={"/gallery"}>
             <Button
               size="lg"

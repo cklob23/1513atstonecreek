@@ -61,14 +61,14 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Link href="https://premiervenuepricing.com/pricing-pamphlet-1513-at-stone-creek" target="_blank" rel="noopener noreferrer">
+            {/* <Link href="https://premiervenuepricing.com/pricing-pamphlet-1513-at-stone-creek" target="_blank" rel="noopener noreferrer">
               <Button
                 variant="outline"
                 className="bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
               >
                 Download Brochure
               </Button>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,14 +91,14 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Link href="https://premiervenuepricing.com/stone-creek-inn-wedding-pricing" target="_blank" rel="noopener noreferrer">
+            {/* <Link href="https://premiervenuepricing.com/stone-creek-inn-wedding-pricing" target="_blank" rel="noopener noreferrer">
               <Button
                 variant="outline"
                 className="w-1/2 mt-4 bg-transparent border-venue-text-light text-venue-text-light"
               >
                 Download Brochure
               </Button>
-            </Link>
+            </Link> */}
           </div>
         )}
       </div>
