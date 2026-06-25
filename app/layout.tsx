@@ -2,10 +2,12 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 
 import { Analytics } from "@vercel/analytics/next"
+// @ts-ignore - CSS module side-effect import
 import "./globals.css"
 
 import { Geist_Mono, Geist as V0_Font_Geist, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from "next/font/google"
 import Script from "next/script"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 const _geist = V0_Font_Geist({
   subsets: ["latin"],
@@ -177,6 +179,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <Analytics />
+        <ScrollToTop />
       </body>
     </html>
   )

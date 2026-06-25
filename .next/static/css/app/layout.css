@@ -650,9 +650,6 @@
   .h-\[500px\] {
     height: 500px;
   }
-  .h-\[713px\] {
-    height: 713px;
-  }
   .h-\[calc\(100\%-1px\)\] {
     height: calc(100% - 1px);
   }
