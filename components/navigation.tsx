@@ -53,6 +53,9 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <Button asChild>
+              <Link href="/contact">Book Tour</Link>
+            </Button>
             <DownloadBrochuresButton variant="outline" />
           </div>
 
@@ -76,6 +79,11 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <Button asChild className="w-full mt-4">
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Book Tour
+              </Link>
+            </Button>
             <DownloadBrochuresButton variant="outline" className="w-full mt-4" />
           </div>
         )}
