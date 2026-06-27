@@ -199,7 +199,7 @@ export function Contact() {
 
         <p>
           A new inquiry was submitted through the <strong>1513 at Stone Creek</strong> website contact form.
-          Please review the guest’s information below:
+          Please review the guest's information below:
         </p>
 
         <div class="details">
@@ -227,7 +227,7 @@ export function Contact() {
     `;
 
     try {
-      const guestResponse = await fetch("https://one513-at-stone-creek-server.onrender.com/sendEmail", {
+      const guestResponse = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -250,7 +250,7 @@ export function Contact() {
           ],
         }),
       });
-      const hostResponse = await fetch("https://one513-at-stone-creek-server.onrender.com/sendEmail", {
+      const hostResponse = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
