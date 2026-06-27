@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { ChevronDown } from "lucide-react"
+import Link from "next/link"
+import { DownloadBrochuresButton } from "@/components/download-brochures-button"
 
 export function Hero() {
   return (
@@ -19,6 +19,7 @@ export function Hero() {
 
         <div className="absolute inset-0 bg-venue-hero-overlay" />
       </div>
+
       <div
         className="relative z-10 text-center text-venue-text-light px-4"
         style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
@@ -29,21 +30,15 @@ export function Hero() {
         <p className="text-lg md:text-xl mb-2 text-venue-text-muted max-w-2xl mx-auto uppercase tracking-wider">
           Your Story Begins at 1513 at Stone Creek
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          {/* <Link href="https://premiervenuepricing.com/pricing-pamphlet-1513-at-stone-creek" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="bg-venue-text-light text-primary hover:bg-venue-text-muted">
-              Download Our Brochure
-            </Button>
-          </Link> */}
-          <Link href={"/gallery"}>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
-            >
-              View Gallery
-            </Button>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/gallery"
+            className="inline-flex h-11 items-center justify-center rounded-md border border-venue-text-light/60 bg-venue-text-light/10 px-8 text-base font-medium text-venue-text-light backdrop-blur-sm transition-colors hover:bg-venue-text-light/20"
+          >
+            View Gallery
           </Link>
+          <DownloadBrochuresButton variant="solid" size="lg" className="h-11 px-8" />
         </div>
       </div>
 
