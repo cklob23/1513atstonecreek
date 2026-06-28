@@ -25,7 +25,6 @@ export function Navigation() {
     { href: "/venue", label: "The Venue" },
     { href: "/about", label: "About" },
     { href: "/gallery", label: "Gallery" },
-  //  { href: "/amenities", label: "Amenities" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ]
