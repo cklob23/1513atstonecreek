@@ -10,7 +10,7 @@ export default function GalleryPage() {
       <PageBanner
         title="Gallery"
         description=""
-        image="/1513-venue001.jpg"
+        image="/1513-photo-204.jpg"
       />
       <Gallery />
       <Footer />

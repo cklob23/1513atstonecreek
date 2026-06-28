@@ -1,12 +1,12 @@
 # ==============================
 # CONFIG
 # ==============================
-$SourceFolder = "G:\.shortcut-targets-by-id\1sjgfMGPnD6iRlyZsmazYSxZjBztMt_0n\1513 Photos"
+$SourceFolder = "G:\My Drive\New 1513 Photos" #G:\.shortcut-targets-by-id\1sjgfMGPnD6iRlyZsmazYSxZjBztMt_0n\1513 Photos"
 $PublicFolder = "D:\src\1513-at-stone-creek\public"
 $GalleryFile = "D:\src\1513-at-stone-creek\components\gallery.tsx"
 $PublicPrefix = "/"
 
-$DaysBack = 14
+$DaysBack = 120
 $CutoffDate = (Get-Date).AddDays(-$DaysBack)
 
 $AllowedExtensions = @(".jpg", ".jpeg", ".png", ".webp")
