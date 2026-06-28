@@ -32,7 +32,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-venue-nav-bg backdrop-blur-sm shadow-lg" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? "bg-venue-nav-bg backdrop-blur-sm shadow-lg" : "bg-transparent"
         }`}
     >
       <div className="container mx-auto px-4">
@@ -67,7 +67,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pb-4 px-4 -mx-4 bg-venue-nav-bg shadow-lg">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
