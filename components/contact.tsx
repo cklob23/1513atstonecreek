@@ -121,17 +121,17 @@ export function Contact() {
 
         <div class="details">
           <p>
-            <a href="https://one513atstonecreek.onrender.com/brochures/pricing-pamphlet.pdf" style="color:#3b2e24; font-weight:bold;">
+            <a href="https://1513atstonecreek.com/brochures/pricing-pamphlet.pdf" style="color:#3b2e24; font-weight:bold;">
               &#128196; Wedding Pricing Pamphlet
             </a>
           </p>
           <p>
-            <a href="https://one513atstonecreek.onrender.com/brochures/micro-wedding-brochure.pdf" style="color:#3b2e24; font-weight:bold;">
+            <a href="https://1513atstonecreek.com/brochures/micro-wedding-brochure.pdf" style="color:#3b2e24; font-weight:bold;">
               &#128196; Micro Wedding Brochure
             </a>
           </p>
           <p>
-            <a href="https://one513atstonecreek.onrender.com/brochures/comparison-chart.pdf" style="color:#3b2e24; font-weight:bold;">
+            <a href="https://1513atstonecreek.com/brochures/comparison-chart.pdf" style="color:#3b2e24; font-weight:bold;">
               &#128196; Venue Comparison Chart
             </a>
           </p>
