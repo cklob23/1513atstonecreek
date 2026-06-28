@@ -116,6 +116,28 @@ export function Contact() {
         </div>
 
         <p>
+          As promised, here are our pricing brochures. Click any link below to view or download:
+        </p>
+
+        <div class="details">
+          <p>
+            <a href="https://one513atstonecreek.onrender.com/brochures/pricing-pamphlet.pdf" style="color:#3b2e24; font-weight:bold;">
+              &#128196; Wedding Pricing Pamphlet
+            </a>
+          </p>
+          <p>
+            <a href="https://one513atstonecreek.onrender.com/brochures/micro-wedding-brochure.pdf" style="color:#3b2e24; font-weight:bold;">
+              &#128196; Micro Wedding Brochure
+            </a>
+          </p>
+          <p>
+            <a href="https://one513atstonecreek.onrender.com/brochures/comparison-chart.pdf" style="color:#3b2e24; font-weight:bold;">
+              &#128196; Venue Comparison Chart
+            </a>
+          </p>
+        </div>
+
+        <p>
           We look forward to helping you create something beautiful here at 1513 at Stone Creek.
         </p>
 
@@ -199,7 +221,7 @@ export function Contact() {
 
         <p>
           A new inquiry was submitted through the <strong>1513 at Stone Creek</strong> website contact form.
-          Please review the guest’s information below:
+          Please review the guest's information below:
         </p>
 
         <div class="details">
@@ -234,20 +256,6 @@ export function Contact() {
           html: guestHtmlBody,
           subject: "Thank you for your inquiry!",
           email: formData.email,
-          attachments: [
-            {
-              filename: "1513 at Stone Creek - Wedding Pricing Pamphlet.pdf",
-              path: "https://one513atstonecreek.onrender.com/brochures/pricing-pamphlet.pdf",
-            },
-            {
-              filename: "1513 at Stone Creek - Micro Wedding Brochure.pdf",
-              path: "https://one513atstonecreek.onrender.com/brochures/micro-wedding-brochure.pdf",
-            },
-            {
-              filename: "1513 at Stone Creek - Comparison Chart.pdf",
-              path: "https://one513atstonecreek.onrender.com/brochures/comparison-chart.pdf",
-            },
-          ],
         }),
       });
       const hostResponse = await fetch("https://one513-at-stone-creek-server.onrender.com/sendEmail", {
@@ -288,7 +296,7 @@ export function Contact() {
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Get in Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Ready to start planning your perfect day? Contact us to schedule a tour. When you submit your inquiry,
-            we&apos;ll automatically email you our pricing brochures, including our pricing pamphlet, micro wedding
+            we'll automatically email you our pricing brochures, including our pricing pamphlet, micro wedding
             brochure, and venue comparison chart.
           </p>
         </div>
