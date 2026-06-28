@@ -37,17 +37,17 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-2xl font-serif text-venue-text-light">
+          <Link href="/" className="text-2xl font-serif text-venue-text-light whitespace-nowrap">
             1513 at Stone Creek
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-venue-text-light hover:text-venue-text-muted transition-colors text-sm tracking-wide ${pathname === link.href ? "border-b-2 border-venue-text-light" : ""
+                className={`text-venue-text-light hover:text-venue-text-muted transition-colors text-sm tracking-wide whitespace-nowrap ${pathname === link.href ? "border-b-2 border-venue-text-light" : ""
                   }`}
               >
                 {link.label}
@@ -60,14 +60,14 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-venue-text-light" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button className="xl:hidden text-venue-text-light" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 px-4 -mx-4 bg-venue-nav-bg shadow-lg">
+          <div className="xl:hidden pb-4 px-4 -mx-4 bg-venue-nav-bg shadow-lg">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
