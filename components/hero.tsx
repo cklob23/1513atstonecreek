@@ -4,19 +4,29 @@ import { DownloadBrochuresButton } from "@/components/download-brochures-button"
 
 export function Hero() {
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/New_1513.mp4" type="video/mp4" />
-        </video>
+    // <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    //   <div className="absolute inset-0 z-0">
+    //     <video
+    //       className="w-full h-full object-cover"
+    //       autoPlay
+    //       muted
+    //       loop
+    //       playsInline
+    //       preload="auto"
+    //     >
+    //       <source src="/New_1513.mp4" type="video/mp4" />
+    //     </video>
 
+    //     <div className="absolute inset-0 bg-venue-hero-overlay" />
+    //   </div>
+    <section id="home" className="relative h-screen flex items-center justify-center">
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/1513-photo-288.jpg"
+          alt="1513 at Stone Creek Venue"
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
         <div className="absolute inset-0 bg-venue-hero-overlay" />
       </div>
 

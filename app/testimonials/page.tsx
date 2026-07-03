@@ -10,7 +10,7 @@ export default function TestimonialsPage() {
       <PageBanner
         title="Testimonials"
         description="Hear from couples who celebrated their special day with us"
-        image="1513-moment24.jpg"
+        image="1513-photo-289.jpg"
       />
       <Testimonials />
       <Footer />
