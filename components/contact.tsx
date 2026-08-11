@@ -5,6 +5,8 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { FloatingInput } from "@/components/ui/floating-input"
 import { MapPin, Phone, Mail } from "lucide-react"
+import Script from "next/script"
+import Link from "next/link"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -295,16 +297,36 @@ export function Contact() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Get in Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ready to start planning your perfect day? Contact us to schedule a tour. When you submit your inquiry,
-            we'll automatically email you our pricing brochures, including our pricing pamphlet, micro wedding
+            Ready to start planning your perfect day? When you submit your information below,
+            we'll automatically send you our pricing brochures, including our pricing pamphlet, micro wedding
             brochure, and venue comparison chart.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-
+          <div className="h-[713px]">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/EWlddMzddiwY3FDKnxDY"
+              style={{ width: "100%", height: "100%", border: "none", borderRadius: "8px" }}
+              id="inline-EWlddMzddiwY3FDKnxDY"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="1513 Website Form - MMASSIVE Digital"
+              data-height="1807"
+              data-layout-iframe-id="inline-EWlddMzddiwY3FDKnxDY"
+              data-form-id="EWlddMzddiwY3FDKnxDY"
+              title="1513 Website Form - MMASSIVE Digital"
+            >
+            </iframe>
+            <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
+          </div>
           {/* LEFT SIDE FORM */}
-          <div>
+          {/* <div>
             <form onSubmit={handleSubmit} className="space-y-8">
 
               <FloatingInput
@@ -424,7 +446,7 @@ export function Contact() {
               )}
 
             </form>
-          </div>
+          </div> */}
 
           {/* RIGHT SIDE INFO */}
           <div className="space-y-8 md:max-w-sm">
@@ -458,6 +480,16 @@ export function Contact() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div className="border border-border rounded-lg p-6 bg-muted">
+              <h3 className="font-serif text-2xl mb-2 text-foreground">Schedule a Tour</h3>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Pick a date and time that works for you and see the venue in person.
+              </p>
+              <Button asChild size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link href="/book-tour">Book a Tour</Link>
+              </Button>
             </div>
 
             <div>

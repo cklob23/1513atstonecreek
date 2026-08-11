@@ -25,6 +25,7 @@ export function Navigation() {
     { href: "/venue", label: "The Venue" },
     { href: "/about", label: "About" },
     { href: "/gallery", label: "Gallery" },
+    //{ href: "/amenities", label: "Amenities" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ]
@@ -53,7 +54,7 @@ export function Navigation() {
               </Link>
             ))}
             <Button asChild>
-              <Link href="/contact">Book Tour</Link>
+              <Link href="/book-tour">Book Tour</Link>
             </Button>
             <DownloadBrochuresButton variant="outline" />
           </div>
@@ -79,7 +80,7 @@ export function Navigation() {
               </Link>
             ))}
             <Button asChild className="w-full mt-4">
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link href="/book-tour" onClick={() => setIsMobileMenuOpen(false)}>
                 Book Tour
               </Link>
             </Button>
