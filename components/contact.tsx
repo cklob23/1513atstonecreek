@@ -304,7 +304,7 @@ export function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="h-[713px]">
+          <div className="h-[713px] mb-8 md:mb-0">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/EWlddMzddiwY3FDKnxDY"
               style={{ width: "100%", height: "100%", border: "none", borderRadius: "8px" }}

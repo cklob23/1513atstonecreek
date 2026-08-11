@@ -16,7 +16,7 @@ export default function BookTourPage() {
             <PageBanner
                 title="Book a Tour"
                 description="See the venue in person and imagine your celebration here"
-                image="1513-venue-cross2.jpg"
+                image="the-venue6.jpg"
             />
             <BookingCalendar />
             <Footer />
