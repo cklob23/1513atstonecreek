@@ -10,6 +10,18 @@ export function BookingCalendar() {
                         Choose a date and time below that works best for you. We can&apos;t wait to walk you through the grounds and
                         show you where your story begins.
                     </p>
+                    <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed mt-4">
+                        Don&apos;t see a time that works for you? Reach out and we&apos;ll do our best to accommodate weekend and
+                        evening availability. Call us at{" "}
+                        <a href="tel:+14702960272" className="text-foreground font-medium hover:underline">
+                            (470) 296-0272
+                        </a>{" "}
+                        or email{" "}
+                        <a href="mailto:info@1513atstonecreek.com" className="text-foreground font-medium hover:underline">
+                            info@1513atstonecreek.com
+                        </a>
+                        .
+                    </p>
                 </div>
 
                 <div className="max-w-4xl mx-auto rounded-lg bg-background border border-border">
@@ -20,19 +32,6 @@ export function BookingCalendar() {
                         allow="payment"
                         className="w-full block border-0 min-h-[820px]"
                     />
-                </div>
-
-                <div className="text-center mt-10">
-                    <p className="text-muted-foreground">
-                        Prefer to reach out directly? Call us at{" "}
-                        <a href="tel:+14702960272" className="text-foreground font-medium hover:underline">
-                            (470) 296-0272
-                        </a>{" "}
-                        or email{" "}
-                        <a href="mailto:info@1513atstonecreek.com" className="text-foreground font-medium hover:underline">
-                            info@1513atstonecreek.com
-                        </a>
-                    </p>
                 </div>
             </div>
 
