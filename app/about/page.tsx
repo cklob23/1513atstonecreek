@@ -2,6 +2,7 @@ import { About } from "@/components/about"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { StaffSection } from "@/components/staff-section"
 
 export default function AboutPage() {
   return (
@@ -13,6 +14,7 @@ export default function AboutPage() {
         image="1513-venue0.jpg"
       />
       <About />
+      <StaffSection />
       <Footer />
     </main>
   )
