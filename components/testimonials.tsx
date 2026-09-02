@@ -4,6 +4,12 @@ import { Star } from "lucide-react"
 export function Testimonials() {
   const testimonials = [
     {
+      name: "Jennifer",
+      date: "August 2026",
+      text: "Wonderful venue with talented and helpful staff! Haley and Gina are great to work with throughout the planning process. They are kind to the bride and parents. The coordinator on the wedding day is available and helpful with all the details too. All inclusive venue is the way to go!",
+      rating: 5,
+    },
+    {
       name: "Larry",
       date: "June 2026",
       text: "The entire staff at 1513 at Stone Creek was incredible. They were wonderful to our entire group the day of my daughter's wedding. The venue itself is incredible. We could not have shared a more perfect day and the staff is a big reason why. Glad to recommend this venue and staff to anyone interested.",

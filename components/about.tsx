@@ -5,7 +5,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <img
-              src="/1513-photo-287.jpg"
+              src="/1513-photo-296.jpeg"
               alt="Venue Interior"
               className="w-full h-[500px] object-cover rounded-lg shadow-xl"
             />

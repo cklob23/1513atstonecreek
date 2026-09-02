@@ -22,7 +22,7 @@ export function Hero() {
     <section id="home" className="relative h-screen flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <img
-          src="/1513-photo-288.jpg"
+          src="/1513-photo-301.png"
           alt="1513 at Stone Creek Venue"
           className="w-full h-full object-cover"
           loading="eager"

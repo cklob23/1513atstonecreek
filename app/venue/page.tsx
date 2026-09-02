@@ -33,7 +33,7 @@ export default function VenuePage() {
       title: "The Pavillion",
       description:
         "A covered outdoor space perfect for ceremonies, receptions, and gatherings of all kinds — beautifully designed to shine in any season or weather.",
-      image: "/the-cross38.jpg",
+      image: "/1513-photo-302.jpeg",
     },
     {
       title: "The Ballroom",

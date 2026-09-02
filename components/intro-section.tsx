@@ -16,7 +16,7 @@ export function IntroSection() {
                     <div className="order-2 md:order-1">
                         <div className="rounded-full overflow-hidden w-full aspect-square">
                             <img
-                                src="/1513-venue-cross.jpg"
+                                src="/1513-photo-303.jpeg"
                                 alt="Wedding at 1513 at Stone Creek"
                                 className="w-full h-full object-cover"
                             />

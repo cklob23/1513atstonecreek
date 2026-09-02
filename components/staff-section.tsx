@@ -24,7 +24,7 @@ const founders = [
         ],
         funFacts: [
             "Before weddings, I was a Labor & Delivery OB Tech and Certified Surgical Technologist.",
-            "I'm a mom of four amazing kiddos (one of whom is waiting for us in Heaven).",
+            "Blessed with a wonderful husband and four amazing kiddos (one of whom is waiting for us in Heaven).",
             "You'll rarely catch me without a large Black Mountain coffee with salted caramel cold foam—or an Alani.",
             "Wedding cake is my weakness—especially our marble cake with salted caramel and toffee ganache.",
         ],
