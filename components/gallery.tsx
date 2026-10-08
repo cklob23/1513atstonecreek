@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useLayoutEffect, useRef } from "react"
+import { useState, useCallback, useLayoutEffect, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 
 const PAGE_SIZE = 54
@@ -330,6 +330,34 @@ function GalleryImage({ src, alt, index }: { src: string; alt: string; index: nu
     syncFromElement(imgRef.current)
   }, [src, syncFromElement])
 
+  // Re-check when a lazy or late-decoded image enters the viewport.
+  useEffect(() => {
+    const img = imgRef.current
+    if (!img || typeof IntersectionObserver === "undefined") return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            syncFromElement(img)
+          }
+        }
+      },
+      { rootMargin: "200px" },
+    )
+    observer.observe(img)
+    return () => observer.disconnect()
+  }, [src, syncFromElement])
+
+  // If onLoad/complete never fire (hung tab, stalled decode), drop the
+  // placeholder and keep the CSS fade so the bitmap can still appear.
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setStatus((current) => (current === "loading" ? "loaded" : current))
+    }, 2500)
+    return () => window.clearTimeout(timeoutId)
+  }, [src])
+
   const revealDelay = `${Math.min(index, 11) * 80}ms`
 
   return (
@@ -351,9 +379,9 @@ function GalleryImage({ src, alt, index }: { src: string; alt: string; index: nu
         onLoad={() => setStatus("loaded")}
         onError={() => setStatus("error")}
         className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
-          status === "loaded" ? "gallery-photo-reveal" : "opacity-0"
+          status === "error" ? "opacity-0" : "gallery-photo-reveal"
         }`}
-        style={{ animationDelay: status === "loaded" ? revealDelay : "0ms" }}
+        style={{ animationDelay: revealDelay }}
       />
 
       {status === "error" && (

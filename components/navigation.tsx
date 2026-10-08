@@ -20,6 +20,9 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const isHome = pathname === "/"
+  const showSolidNav = !isHome || isScrolled || isMobileMenuOpen
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/venue", label: "The Venue" },
@@ -32,7 +35,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? "bg-venue-nav-bg backdrop-blur-sm shadow-lg" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${showSolidNav ? "bg-venue-nav-bg backdrop-blur-sm shadow-lg" : "bg-transparent"
         }`}
     >
       <div className="container mx-auto px-4">

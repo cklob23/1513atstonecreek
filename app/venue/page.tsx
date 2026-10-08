@@ -1,8 +1,15 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageBanner } from "@/components/page-banner"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, MapPin, Clock, Sparkles } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "The Venue",
+  description:
+    "Explore the pavilion, ballroom, bridal suite, and patio at 1513 at Stone Creek, an all-inclusive wedding and events venue.",
+}
 
 export default function VenuePage() {
   const features = [

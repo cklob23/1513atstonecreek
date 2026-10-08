@@ -78,7 +78,7 @@ export function ContactFormEmbed() {
   }, [])
 
   return (
-    <div className="w-full">
+    <div className="contact-form-embed w-full max-w-full min-w-0 overflow-x-hidden">
       {submitted && (
         <div className="rounded-lg border border-border bg-background p-8 md:p-12 text-center shadow-sm">
           <h3 className="font-serif text-3xl mb-3 text-foreground">Thank you</h3>
@@ -110,7 +110,7 @@ export function ContactFormEmbed() {
           data-height="1807"
           data-layout-iframe-id={IFRAME_ID}
           data-form-id={FORM_ID}
-          className="block w-full min-h-[600px] rounded-md border-0"
+          className="block w-full max-w-full min-w-0 min-h-[600px] rounded-md border-0"
         />
         <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
       </div>

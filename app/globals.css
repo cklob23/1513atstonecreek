@@ -206,7 +206,25 @@ html {
 }
 
 .gallery-photo-reveal {
-  animation: photo-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: photo-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* LeadConnector/GHL sometimes sizes the iframe to 100vw and breakouts
+   with left:50% / margin-left:-50vw, which overflows a padded column. */
+.contact-form-embed,
+.contact-form-embed iframe,
+.contact-form-embed .ep-wrapper,
+.contact-form-embed .ep-iFrameContainer,
+.contact-form-embed .ep-iFrame {
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.contact-form-embed iframe {
+  width: 100% !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* Darker mid-frame gradient so light hero photos still meet WCAG AA 4.5:1 */

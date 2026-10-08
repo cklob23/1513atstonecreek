@@ -1,7 +1,14 @@
+import type { Metadata } from "next"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Request pricing brochures or get in touch with 1513 at Stone Creek to start planning your wedding or special event.",
+}
 
 export default function ContactPage() {
   return (

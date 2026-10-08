@@ -1,7 +1,14 @@
+import type { Metadata } from "next"
 import { Testimonials } from "@/components/testimonials"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+
+export const metadata: Metadata = {
+  title: "Testimonials",
+  description:
+    "Read what couples say about celebrating their wedding or special event at 1513 at Stone Creek.",
+}
 
 export default function TestimonialsPage() {
   return (

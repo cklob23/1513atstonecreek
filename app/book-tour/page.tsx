@@ -4,7 +4,7 @@ import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
 
 export const metadata = {
-    title: "Book a Tour | 1513 at Stone Creek",
+    title: "Book a Tour",
     description:
         "Schedule a private tour of 1513 at Stone Creek, our wedding and special event venue in Rockmart, Georgia.",
 }
