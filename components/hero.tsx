@@ -23,7 +23,7 @@ export function Hero() {
         <h1 className="font-serif text-6xl md:text-8xl mb-6 text-balance italic text-white" style={{ fontWeight: 300 }}>
           1513 at Stone Creek
         </h1>
-        <p className="text-lg md:text-xl font-medium mb-8 text-white max-w-2xl mx-auto uppercase tracking-wide">
+        <p className="text-lg md:text-xl font-medium mb-8 text-white max-w-2xl mx-auto uppercase tracking-wide text-balance">
           Your Story Begins at 1513 at Stone Creek.
         </p>
 
