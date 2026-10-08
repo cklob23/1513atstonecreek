@@ -5,7 +5,8 @@
   "scripts": {
     "optimize-images": "node scripts/optimize-images.mjs",
     "check-export": "node scripts/check-no-caleb.mjs",
-    "build": "npm run optimize-images && next build && npm run check-export",
+    "check-seo": "node scripts/check-seo.mjs",
+    "build": "npm run optimize-images && next build && npm run check-export && npm run check-seo",
     "export": "next export",
     "dev": "next dev",
     "lint": "eslint .",

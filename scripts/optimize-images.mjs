@@ -80,7 +80,22 @@ async function runPool(items, limit, worker) {
   return written
 }
 
+async function writeOgImage() {
+  const source = path.join(publicDir, "1513-hero-pic.jpg")
+  const dest = path.join(publicDir, "og-image.jpg")
+  if (await alreadyFresh(source, dest)) return 0
+  await sharp(source)
+    .rotate()
+    .resize({ width: 1200, height: 630, fit: "cover", position: "centre" })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(dest)
+  return 1
+}
+
 await mkdir(outDir, { recursive: true })
 const files = await walk(publicDir)
 const written = await runPool(files, concurrency, optimizeOne)
-console.log(`Optimized ${files.length} source images (${written} new WebP variants) into public/opt`)
+const ogWritten = await writeOgImage()
+console.log(
+  `Optimized ${files.length} source images (${written} new WebP variants) into public/opt${ogWritten ? "; wrote og-image.jpg" : ""}`,
+)

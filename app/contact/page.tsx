@@ -1,19 +1,23 @@
 import type { Metadata } from "next"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 
 export const metadata: Metadata = pageMetadata({
-  topic: "Get Pricing",
+  topic: "Wedding Venue Pricing, Rockmart",
   path: "/contact",
-  description: "Get pricing for an all-inclusive wedding or event at 1513 at Stone Creek in Rockmart, GA.",
+  description:
+    "Get pricing for weddings and events at 1513 at Stone Creek in Rockmart, GA. Plan a reception, rehearsal dinner, shower, or corporate event.",
 })
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <JsonLd data={breadcrumbJsonLd("/contact")} />
       <Navigation />
       <PageBanner
         title="Contact Us"

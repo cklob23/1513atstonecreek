@@ -24,6 +24,7 @@ export function PageBanner({ title, description, image, imageAlt }: PageBannerPr
           className="w-full h-full object-cover"
           sizes="100vw"
           loading="eager"
+          fetchPriority="high"
         />
         <HeroOverlay />
       </div>

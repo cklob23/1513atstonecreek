@@ -6,8 +6,10 @@ import "./globals.css"
 
 import { Geist_Mono, Geist as V0_Font_Geist, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from "next/font/google"
 import Script from "next/script"
+import { JsonLd } from "@/components/json-ld"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { defaultOgImage, siteFacts, siteName, siteUrl } from "@/lib/site"
+import { venueJsonLd } from "@/lib/json-ld"
+import { ogImageAbsolute, siteDescription, siteName, siteUrl } from "@/lib/site"
 
 const _geist = V0_Font_Geist({
   subsets: ["latin"],
@@ -22,8 +24,7 @@ const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 })
 
-const siteDescription =
-  "All-inclusive wedding and event venue in Rockmart, GA. 1300+ weddings hosted on 30 acres, for up to 200 guests."
+const ogImage = ogImageAbsolute()
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,20 +38,22 @@ export const metadata: Metadata = {
     "event venue",
     "1513 at Stone Creek",
     "Rockmart GA wedding venue",
+    "northwest Georgia wedding venue",
+    "wedding venue near Atlanta",
+    "Rome GA wedding venue",
+    "Cartersville wedding venue",
+    "Dallas GA wedding venue",
+    "Carrollton wedding venue",
+    "Polk County wedding venue",
     "Stone Creek weddings",
     "rustic wedding venue",
     "outdoor wedding venue",
+    "barn wedding venue",
     "wedding reception",
-    "special events venue",
-    "countryside wedding",
-    "barn wedding",
-    "garden wedding",
-    "wedding pavilion",
-    "wedding ceremony",
-    "bridal venue",
-    "wedding planning",
     "rehearsal dinner venue",
-    "engagement party venue",
+    "corporate event venue",
+    "bridal shower venue",
+    "wedding pavilion",
   ],
   authors: [{ name: siteName }],
   creator: siteName,
@@ -66,6 +69,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "150x150" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "150x150" }],
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -73,13 +84,13 @@ export const metadata: Metadata = {
     siteName,
     title: `Rockmart, GA Wedding & Event Venue | ${siteName}`,
     description: siteDescription,
-    images: [defaultOgImage],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `Rockmart, GA Wedding & Event Venue | ${siteName}`,
     description: siteDescription,
-    images: [defaultOgImage.url],
+    images: [ogImage.url],
   },
   alternates: {
     canonical: siteUrl,
@@ -97,59 +108,6 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
-function LocalBusinessJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "EventVenue",
-    name: siteName,
-    description: siteDescription,
-    url: siteUrl,
-    image: `${siteUrl}${defaultOgImage.url}`,
-    telephone: siteFacts.phone,
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteFacts.addressLines[0],
-      addressLocality: "Rockmart",
-      addressRegion: "GA",
-      postalCode: "30153",
-      addressCountry: "US",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "10:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Sunday",
-        opens: "13:00",
-        closes: "17:00",
-      },
-    ],
-    sameAs: [
-      "https://www.facebook.com/stonecreekinnvenue",
-      "https://www.instagram.com/stonecreekvenue/?hl=en",
-    ],
-    amenityFeature: [
-      { "@type": "LocationFeatureSpecification", name: "Outdoor Ceremony Space" },
-      { "@type": "LocationFeatureSpecification", name: "Covered Pavilion" },
-      { "@type": "LocationFeatureSpecification", name: "Bridal Suite" },
-      { "@type": "LocationFeatureSpecification", name: "Scenic Pond & Gardens" },
-      { "@type": "LocationFeatureSpecification", name: "On-Site Parking" },
-    ],
-  }
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  )
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -158,10 +116,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <LocalBusinessJsonLd />
+        <JsonLd data={venueJsonLd()} />
       </head>
 
       <body className="font-sans antialiased">
