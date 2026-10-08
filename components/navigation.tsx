@@ -26,7 +26,6 @@ export function Navigation() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/venue", label: "The Venue" },
-    { href: "/packages", label: "Pricing" },
     { href: "/about", label: "About" },
     { href: "/gallery", label: "Gallery" },
     { href: "/testimonials", label: "Testimonials" },
@@ -45,7 +44,7 @@ export function Navigation() {
             1513 at Stone Creek
           </Link>
 
-          <div className="hidden xl:flex items-center gap-4">
+          <div className="hidden xl:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
