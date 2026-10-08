@@ -37,7 +37,7 @@ export default function PackagesPage() {
       <Navigation />
       <PageBanner
         title="Wedding Packages"
-        description="All-inclusive weddings and events in Rockmart, GA"
+        description="Venue-only and all-inclusive weddings in Rockmart, GA."
         image="/1513-photo-296.jpeg"
         imageAlt="Pavilion ceremony aisle at 1513 at Stone Creek"
         overlay="strong"
