@@ -53,10 +53,14 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Button asChild>
-              <Link href="/book-tour">Book Tour</Link>
+            <Button
+              asChild
+              variant="outline"
+              className="bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
+            >
+              <Link href="/book-tour">Book a Tour</Link>
             </Button>
-            <DownloadBrochuresButton variant="outline" />
+            <DownloadBrochuresButton variant="solid" />
           </div>
 
           {/* Mobile Menu Button */}
@@ -79,12 +83,16 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="w-full mt-4">
+            <Button
+              asChild
+              variant="outline"
+              className="w-full mt-4 bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
+            >
               <Link href="/book-tour" onClick={() => setIsMobileMenuOpen(false)}>
-                Book Tour
+                Book a Tour
               </Link>
             </Button>
-            <DownloadBrochuresButton variant="outline" className="w-full mt-4" />
+            <DownloadBrochuresButton variant="solid" className="w-full mt-4" />
           </div>
         )}
       </div>

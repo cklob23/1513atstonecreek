@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 
-import { Analytics } from "@vercel/analytics/next"
 // @ts-ignore - CSS module side-effect import
 import "./globals.css"
 
@@ -178,7 +177,6 @@ export default function RootLayout({
 
       <body className="font-sans antialiased">
         {children}
-        <Analytics />
         <ScrollToTop />
       </body>
     </html>

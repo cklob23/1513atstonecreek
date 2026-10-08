@@ -13,22 +13,22 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>
-                <a href="\venue" className="hover:text-primary-foreground transition-colors">
+                <a href="/venue" className="hover:text-primary-foreground transition-colors">
                   The Venue
                 </a>
               </li>
               <li>
-                <a href="\about" className="hover:text-primary-foreground transition-colors">
+                <a href="/about" className="hover:text-primary-foreground transition-colors">
                   About
                 </a>
               </li>
               <li>
-                <a href="\gallery" className="hover:text-primary-foreground transition-colors">
+                <a href="/gallery" className="hover:text-primary-foreground transition-colors">
                   Gallery
                 </a>
               </li>
               <li>
-                <a href="\contact" className="hover:text-primary-foreground transition-colors">
+                <a href="/contact" className="hover:text-primary-foreground transition-colors">
                   Contact
                 </a>
               </li>
