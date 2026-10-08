@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export function Contact() {
   return (
-    <section id="contact" className="py-20 bg-secondary">
+    <section id="contact" className="py-20 bg-secondary overflow-x-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Get in Touch</h2>
@@ -19,7 +19,7 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto items-start">
           {/* LEFT SIDE FORM */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 min-w-0 max-w-full">
             <ContactFormEmbed />
           </div>
 

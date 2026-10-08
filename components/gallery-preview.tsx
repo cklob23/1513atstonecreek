@@ -1,13 +1,14 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { ResponsiveImage } from "@/components/responsive-image"
 
 export function GalleryPreview() {
   const images = [
-    { src: "/the-moment15.jpg", alt: "1513 Moment" },
-    { src: "/1513-photo-294.jpeg", alt: "Reception Hall" },
-    { src: "/1513-photo-295.jpeg", alt: "Couple Portrait" },
-    { src: "/1513-moment17.jpg", alt: "1513 Moment 2" },
+    { src: "/the-moment15.jpg", alt: "Wedding moment on the grounds at 1513 at Stone Creek" },
+    { src: "/1513-photo-294.jpeg", alt: "Reception tables set in the ballroom at 1513 at Stone Creek" },
+    { src: "/1513-photo-295.jpeg", alt: "Couple portrait at 1513 at Stone Creek" },
+    { src: "/1513-moment17.jpg", alt: "Evening celebration at 1513 at Stone Creek" },
   ]
 
   return (
@@ -15,18 +16,19 @@ export function GalleryPreview() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Captured Moments</h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            A glimpse into the beautiful celebrations that have taken place at 1513 at Stone Creek
+          <p className="text-foreground/80 text-lg max-w-3xl mx-auto leading-relaxed">
+            A glimpse into the celebrations that have taken place at 1513 at Stone Creek
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {images.map((image, index) => (
-            <div key={index} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer h-96">
-              <img
-                src={image.src || "/placeholder.svg"}
+          {images.map((image) => (
+            <div key={image.src} className="relative overflow-hidden rounded-lg shadow-lg group h-96">
+              <ResponsiveImage
+                src={image.src}
                 alt={image.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-transparent group-hover:bg-venue-hover-overlay transition-colors duration-300" />
             </div>

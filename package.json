@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "check-export": "node scripts/check-no-caleb.mjs",
+    "build": "npm run optimize-images && next build && npm run check-export",
     "export": "next export",
     "dev": "next dev",
     "lint": "eslint .",
@@ -70,6 +72,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8.5",
+    "sharp": "^0.35.5",
     "sitemap": "^9.0.0",
     "tailwindcss": "^4.1.9",
     "tw-animate-css": "1.3.3",

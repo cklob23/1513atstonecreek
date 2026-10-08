@@ -7,6 +7,7 @@ import "./globals.css"
 import { Geist_Mono, Geist as V0_Font_Geist, IBM_Plex_Serif as V0_Font_IBM_Plex_Serif } from "next/font/google"
 import Script from "next/script"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { defaultOgImage, siteFacts, siteName, siteUrl } from "@/lib/site"
 
 const _geist = V0_Font_Geist({
   subsets: ["latin"],
@@ -21,15 +22,13 @@ const _ibmPlexSerif = V0_Font_IBM_Plex_Serif({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 })
 
-const siteUrl = "https://1513atstonecreek.com"
-const siteName = "1513 at Stone Creek"
 const siteDescription =
-  "1513 at Stone Creek is a premier wedding and special events venue nestled on a scenic countryside estate. Featuring rustic elegance, a picturesque pond, lush gardens, and a covered pavilion, it is the perfect setting for weddings, receptions, and celebrations."
+  "All-inclusive wedding and event venue in Rockmart, GA. 1300+ weddings hosted on 30 acres, for up to 200 guests."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} | Wedding & Events Venue`,
+    default: `Rockmart, GA Wedding & Event Venue | ${siteName}`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -37,6 +36,7 @@ export const metadata: Metadata = {
     "wedding venue",
     "event venue",
     "1513 at Stone Creek",
+    "Rockmart GA wedding venue",
     "Stone Creek weddings",
     "rustic wedding venue",
     "outdoor wedding venue",
@@ -70,23 +70,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: siteName,
-    title: `${siteName} | Wedding & Events Venue`,
+    siteName,
+    title: `Rockmart, GA Wedding & Event Venue | ${siteName}`,
     description: siteDescription,
-    images: [
-      {
-        url: "/1513-hero-pic.jpg",
-        width: 1200,
-        height: 630,
-        alt: "1513 at Stone Creek - Scenic pond and countryside estate wedding venue",
-      },
-    ],
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} | Wedding & Events Venue`,
+    title: `Rockmart, GA Wedding & Event Venue | ${siteName}`,
     description: siteDescription,
-    images: ["/1513-hero-pic.jpg"],
+    images: [defaultOgImage.url],
   },
   alternates: {
     canonical: siteUrl,
@@ -111,26 +104,35 @@ function LocalBusinessJsonLd() {
     name: siteName,
     description: siteDescription,
     url: siteUrl,
-    image: `${siteUrl}/1513-hero-pic.jpg`,
-    telephone: "(470) 296-0272",
+    image: `${siteUrl}${defaultOgImage.url}`,
+    telephone: siteFacts.phone,
     priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteFacts.addressLines[0],
+      addressLocality: "Rockmart",
+      addressRegion: "GA",
+      postalCode: "30153",
+      addressCountry: "US",
+    },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "09:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "10:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Sunday",
+        opens: "13:00",
         closes: "17:00",
       },
     ],
-    sameAs: [],
+    sameAs: [
+      "https://www.facebook.com/stonecreekinnvenue",
+      "https://www.instagram.com/stonecreekvenue/?hl=en",
+    ],
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Outdoor Ceremony Space" },
       { "@type": "LocationFeatureSpecification", name: "Covered Pavilion" },
@@ -155,29 +157,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <link rel="icon" href="/favicon.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      {/* Google Analytics */}
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9"
-      />
-      <Script id="google-analytics">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-992WXP6EC9');
-          `}
-      </Script>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <LocalBusinessJsonLd />
       </head>
 
       <body className="font-sans antialiased">
         {children}
         <ScrollToTop />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-992WXP6EC9" strategy="lazyOnload" />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-992WXP6EC9');
+          `}
+        </Script>
       </body>
     </html>
   )

@@ -16,7 +16,7 @@
   --secondary: oklch(0.92 0.01 60);
   --secondary-foreground: oklch(0.25 0.015 60);
   --muted: oklch(0.92 0.01 60);
-  --muted-foreground: oklch(0.5 0.01 60);
+  --muted-foreground: oklch(0.38 0.015 60);
   --accent: oklch(0.92 0.01 60);
   --accent-foreground: oklch(0.25 0.015 60);
   --destructive: oklch(0.577 0.245 27.325);
@@ -40,7 +40,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Added venue-specific semantic tokens */
-  --venue-hero-overlay: oklch(0.25 0.015 60 / 0.15);
+  --venue-hero-overlay: oklch(0.25 0.015 60 / 0.08);
   --venue-nav-bg: oklch(0.25 0.015 60 / 0.95);
   --venue-text-light: oklch(0.98 0.005 60);
   --venue-text-muted: oklch(0.95 0.005 60);
@@ -82,7 +82,7 @@
   --sidebar-ring: oklch(0.439 0 0);
 
   /* Dark mode venue tokens */
-  --venue-hero-overlay: oklch(0.145 0 0 / 0.3);
+  --venue-hero-overlay: oklch(0.145 0 0 / 0.1);
   --venue-nav-bg: oklch(0.145 0 0 / 0.95);
   --venue-text-light: oklch(0.985 0 0);
   --venue-text-muted: oklch(0.708 0 0);
@@ -145,10 +145,19 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::placeholder {
+    color: oklch(0.36 0.015 60);
+    opacity: 1;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 @keyframes diagonal-sweep {
@@ -206,25 +215,46 @@ html {
 }
 
 .gallery-photo-reveal {
-  animation: photo-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: photo-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Darker mid-frame gradient so light hero photos still meet WCAG AA 4.5:1 */
+/* LeadConnector/GHL sometimes sizes the iframe to 100vw and breakouts
+   with left:50% / margin-left:-50vw, which overflows a padded column. */
+.contact-form-embed,
+.contact-form-embed iframe,
+.contact-form-embed .ep-wrapper,
+.contact-form-embed .ep-iFrameContainer,
+.contact-form-embed .ep-iFrame {
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.contact-form-embed iframe {
+  width: 100% !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Light full-bleed wash only. Contrast for type lives in the tight text scrim. */
 .hero-contrast-overlay {
   background: linear-gradient(
     to bottom,
-    oklch(0.16 0.015 60 / 0.28) 0%,
-    oklch(0.16 0.015 60 / 0.58) 38%,
-    oklch(0.16 0.015 60 / 0.68) 55%,
-    oklch(0.16 0.015 60 / 0.32) 100%
+    oklch(0.16 0.015 60 / 0.06) 0%,
+    oklch(0.16 0.015 60 / 0.10) 50%,
+    oklch(0.16 0.015 60 / 0.06) 100%
   );
 }
 
 .hero-text-scrim {
   background: radial-gradient(
-    ellipse 85% 75% at 50% 50%,
-    oklch(0.14 0.015 60 / 0.55) 0%,
-    oklch(0.14 0.015 60 / 0.28) 52%,
-    transparent 78%
+    ellipse 52% 42% at 50% 48%,
+    oklch(0.14 0.015 60 / 0.30) 0%,
+    oklch(0.14 0.015 60 / 0.10) 38%,
+    transparent 66%
   );
+}
+
+.hero-text-readable {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.32), 0 0 1px rgba(0, 0, 0, 0.18);
 }
