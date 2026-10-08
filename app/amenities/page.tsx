@@ -3,12 +3,13 @@ import { Amenities } from "@/components/amenities"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { pageMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "Amenities",
-  description:
-    "See the amenities available for weddings and events at 1513 at Stone Creek in Rockmart, Georgia.",
-}
+export const metadata: Metadata = pageMetadata({
+  topic: "Amenities",
+  path: "/amenities",
+  description: "See the amenities available for weddings and events at 1513 at Stone Creek in Rockmart, Georgia.",
+})
 
 export default function AmenitiesPage() {
   return (
@@ -17,7 +18,8 @@ export default function AmenitiesPage() {
       <PageBanner
         title="Amenities"
         description="Everything you need for your perfect celebration"
-        imageQuery="luxury wedding venue amenities and facilities"
+        image="/1513-hero-pic.jpg"
+        imageAlt="Pond and countryside estate at 1513 at Stone Creek"
       />
       <Amenities />
       <Footer />

@@ -1,12 +1,14 @@
 import { HeroOverlay } from "@/components/hero-overlay"
+import { ResponsiveImage } from "@/components/responsive-image"
 
 interface PageBannerProps {
   title: string
   description: string
   image?: string
+  imageAlt?: string
 }
 
-export function PageBanner({ title, description, image }: PageBannerProps) {
+export function PageBanner({ title, description, image, imageAlt }: PageBannerProps) {
   const src = !image
     ? "/1513-hero-pic.jpg"
     : image.startsWith("/")
@@ -16,10 +18,12 @@ export function PageBanner({ title, description, image }: PageBannerProps) {
   return (
     <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        <img
+        <ResponsiveImage
           src={src}
-          alt={title}
+          alt={imageAlt || title}
           className="w-full h-full object-cover"
+          sizes="100vw"
+          loading="eager"
         />
         <HeroOverlay />
       </div>

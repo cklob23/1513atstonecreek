@@ -4,14 +4,18 @@ import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { IntroSection } from "@/components/intro-section"
 import { GalleryPreview } from "@/components/gallery-preview"
+import { StatsStrip } from "@/components/stats-strip"
+import { TestimonialsPreview } from "@/components/testimonials-preview"
+import { CtaBand } from "@/components/cta-band"
+import { pageMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "1513 at Stone Creek | Wedding & Events Venue",
-  },
+export const metadata: Metadata = pageMetadata({
+  topic: "Rockmart, GA Wedding & Event Venue",
+  path: "/",
+  absoluteTitle: "Rockmart, GA Wedding & Event Venue | 1513 at Stone Creek",
   description:
-    "1513 at Stone Creek is a premier wedding and special events venue on a scenic countryside estate in Rockmart, Georgia.",
-}
+    "All-inclusive wedding and event venue in Rockmart, GA. 1300+ weddings hosted on 30 acres, for up to 200 guests.",
+})
 
 export default function Home() {
   return (
@@ -19,8 +23,11 @@ export default function Home() {
       <Navigation />
       <Hero />
       <div id="content">
+        <StatsStrip />
         <IntroSection />
+        <TestimonialsPreview />
         <GalleryPreview />
+        <CtaBand />
       </div>
       <Footer />
     </main>

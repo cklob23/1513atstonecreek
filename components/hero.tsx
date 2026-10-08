@@ -1,16 +1,21 @@
+import Link from "next/link"
 import { ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { DownloadBrochuresButton } from "@/components/download-brochures-button"
 import { HeroOverlay } from "@/components/hero-overlay"
+import { ResponsiveImage } from "@/components/responsive-image"
 
 export function Hero() {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        <img
+        <ResponsiveImage
           src="/1513-photo-301.png"
-          alt="1513 at Stone Creek Venue"
+          alt="Pond and tree-lined grounds at 1513 at Stone Creek, a wedding and event venue in Rockmart, Georgia"
           className="w-full h-full object-cover"
+          sizes="100vw"
           loading="eager"
+          fetchPriority="high"
         />
         <HeroOverlay />
       </div>
@@ -23,12 +28,23 @@ export function Hero() {
         <h1 className="font-serif text-6xl md:text-8xl mb-4 text-balance italic" style={{ fontWeight: 300 }}>
           1513 at Stone Creek
         </h1>
-        <p className="text-xl md:text-3xl mb-8 text-venue-text-light max-w-3xl mx-auto uppercase tracking-wide font-semibold">
+        <p className="text-xl md:text-2xl mb-3 text-venue-text-light max-w-3xl mx-auto font-semibold leading-snug">
+          All-inclusive weddings and events in Rockmart, GA, for up to 200 guests
+        </p>
+        <p className="text-base md:text-lg mb-8 text-venue-text-light/95 max-w-2xl mx-auto uppercase tracking-wide">
           Your Story Begins at 1513 at Stone Creek
         </p>
 
-        <div className="flex items-center justify-center">
-          <DownloadBrochuresButton variant="solid" size="lg" className="h-11 px-8" />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <DownloadBrochuresButton variant="hero" size="lg" />
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="min-h-12 px-8 bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
+          >
+            <Link href="/book-tour">Book a Tour</Link>
+          </Button>
         </div>
       </div>
 

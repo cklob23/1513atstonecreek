@@ -3,12 +3,13 @@ import { Testimonials } from "@/components/testimonials"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { pageMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "Testimonials",
-  description:
-    "Read what couples say about celebrating their wedding or special event at 1513 at Stone Creek.",
-}
+export const metadata: Metadata = pageMetadata({
+  topic: "Couple Reviews",
+  path: "/testimonials",
+  description: "Read couple reviews of weddings and events at 1513 at Stone Creek in Rockmart, Georgia.",
+})
 
 export default function TestimonialsPage() {
   return (
@@ -18,6 +19,7 @@ export default function TestimonialsPage() {
         title="Testimonials"
         description="Hear from couples who celebrated their special day with us"
         image="1513-photo-289.jpg"
+        imageAlt="Couple celebrating at 1513 at Stone Creek"
       />
       <Testimonials />
       <Footer />

@@ -146,7 +146,7 @@ export function StaffSection() {
                             <div>
                                 <img
                                     src={founder.image || "/placeholder.svg"}
-                                    alt={`${founder.name}, ${founder.roles[0]} of 1513 at Stone Creek`}
+                                    alt={`Portrait of ${founder.name}, ${founder.roles.slice(0, 2).join(" and ")} at 1513 at Stone Creek`}
                                     className="w-full h-[460px] object-cover rounded-lg shadow-xl"
                                 />
                             </div>
@@ -192,7 +192,7 @@ export function StaffSection() {
                         >
                             <img
                                 src={member.image || "/placeholder.svg"}
-                                alt={`${member.name}, ${member.role} at 1513 at Stone Creek`}
+                                alt={`Portrait of ${member.name}, ${member.role} at 1513 at Stone Creek`}
                                 className="w-full h-72 object-cover"
                             />
                             <div className="flex flex-col flex-1 p-6">
