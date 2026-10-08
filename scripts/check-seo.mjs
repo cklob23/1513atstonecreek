@@ -117,9 +117,24 @@ for (const routePath of expectedPaths) {
   const twitterImage = (html.match(/<meta name="twitter:image" content="([^"]+)"/i) || [])[1] || ""
   const h1s = html.match(/<h1\b[^>]*>/gi) || []
 
+  const ogDescription = decodeHtml((html.match(/<meta property="og:description" content="([^"]+)"/i) || [])[1] || "")
+  const twitterDescription = decodeHtml((html.match(/<meta name="twitter:description" content="([^"]+)"/i) || [])[1] || "")
+
   if (title.length > 62) fail(`${routePath} title is ${title.length} characters: ${decodeHtml(title)}`)
   if (description.length > 160) fail(`${routePath} description is ${description.length} characters`)
   if (!description) fail(`${routePath} is missing a meta description`)
+
+  const unconfirmedClaim = /\b1300\+?\b|\bacres?\b/i
+  for (const [label, value] of [
+    ["title", title],
+    ["description", description],
+    ["og:description", ogDescription],
+    ["twitter:description", twitterDescription],
+  ]) {
+    if (unconfirmedClaim.test(value)) {
+      fail(`${routePath} ${label} still mentions unconfirmed wedding count or acreage: ${value}`)
+    }
+  }
 
   const expectedCanonical = routePath === "/" ? siteUrl : `${siteUrl}${routePath}`
   if (canonical !== expectedCanonical) {
@@ -138,6 +153,9 @@ for (const routePath of expectedPaths) {
   const serialized = JSON.stringify(blocks)
 
   if (serialized.includes("priceRange")) fail(`${routePath} JSON-LD includes priceRange`)
+  if (unconfirmedClaim.test(serialized)) {
+    fail(`${routePath} JSON-LD still mentions unconfirmed wedding count or acreage`)
+  }
   if (types.includes("Review") || types.includes("AggregateRating")) {
     fail(`${routePath} includes self-serving Review or AggregateRating markup`)
   }

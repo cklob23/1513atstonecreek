@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
   topic: "Wedding Photos in Rockmart, GA",
   path: "/gallery",
   description:
-    "See real wedding photos from 1513 at Stone Creek in Rockmart, Georgia. Outdoor, barn, and pavilion celebrations on 30 countryside acres.",
+    "See real wedding photos from 1513 at Stone Creek, an all-inclusive venue in Rockmart, GA near Atlanta and northwest Georgia.",
 })
 
 export default function GalleryPage() {

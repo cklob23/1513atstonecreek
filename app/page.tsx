@@ -10,13 +10,13 @@ import { TestimonialsPreview } from "@/components/testimonials-preview"
 import { CtaBand } from "@/components/cta-band"
 import { websiteJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
+import { siteDescription } from "@/lib/site"
 
 export const metadata: Metadata = pageMetadata({
   topic: "Rockmart, GA Wedding & Event Venue",
   path: "/",
   absoluteTitle: "Rockmart, GA Wedding & Event Venue | 1513 at Stone Creek",
-  description:
-    "All-inclusive wedding and event venue in Rockmart, GA, near Atlanta and northwest Georgia. 1300+ weddings on 30 acres for up to 200 guests.",
+  description: siteDescription,
 })
 
 export default function Home() {

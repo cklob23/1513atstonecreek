@@ -32,7 +32,7 @@ export const siteFacts = {
 }
 
 export const siteDescription =
-  "All-inclusive wedding and event venue in Rockmart, GA, near Atlanta and northwest Georgia. 1300+ weddings on 30 acres for up to 200 guests."
+  "All-inclusive wedding and event venue in Rockmart, GA, near Atlanta and northwest Georgia, for up to 200 guests."
 
 export const defaultOgImage = {
   url: "/og-image.jpg",
