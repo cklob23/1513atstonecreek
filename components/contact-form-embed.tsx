@@ -77,41 +77,43 @@ export function ContactFormEmbed() {
     return () => window.removeEventListener("message", onMessage)
   }, [])
 
-  if (submitted) {
-    return (
-      <div className="w-full rounded-lg border border-border bg-background p-8 md:p-12 text-center shadow-sm">
-        <h3 className="font-serif text-3xl mb-3 text-foreground">Thank you</h3>
-        <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl mx-auto">
-          We received your request and will follow up with your pricing brochures shortly.
-        </p>
-        <p className="text-foreground font-medium mb-6">Ready for the next step? See the venue in person.</p>
-        <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-          <Link href="/book-tour">Book a Tour</Link>
-        </Button>
-      </div>
-    )
-  }
-
   return (
     <div className="w-full">
-      <iframe
-        src={`https://api.leadconnectorhq.com/widget/form/${FORM_ID}`}
-        id={IFRAME_ID}
-        title={FORM_NAME}
-        data-layout='{"id":"INLINE"}'
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name={FORM_NAME}
-        data-height="1807"
-        data-layout-iframe-id={IFRAME_ID}
-        data-form-id={FORM_ID}
-        className="block w-full min-h-[600px] rounded-md border-0"
-      />
-      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+      {submitted && (
+        <div className="rounded-lg border border-border bg-background p-8 md:p-12 text-center shadow-sm">
+          <h3 className="font-serif text-3xl mb-3 text-foreground">Thank you</h3>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-xl mx-auto">
+            We received your request and will follow up with your pricing brochures shortly.
+          </p>
+          <p className="text-foreground font-medium mb-6">Ready for the next step? See the venue in person.</p>
+          <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Link href="/book-tour">Book a Tour</Link>
+          </Button>
+        </div>
+      )}
+
+      {/* Keep the iframe mounted. The LeadConnector embed mutates this node, and
+          unmounting it after submit crashes React with a removeChild error. */}
+      <div className={submitted ? "hidden" : undefined} aria-hidden={submitted}>
+        <iframe
+          src={`https://api.leadconnectorhq.com/widget/form/${FORM_ID}`}
+          id={IFRAME_ID}
+          title={FORM_NAME}
+          data-layout='{"id":"INLINE"}'
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name={FORM_NAME}
+          data-height="1807"
+          data-layout-iframe-id={IFRAME_ID}
+          data-form-id={FORM_ID}
+          className="block w-full min-h-[600px] rounded-md border-0"
+        />
+        <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+      </div>
     </div>
   )
 }
