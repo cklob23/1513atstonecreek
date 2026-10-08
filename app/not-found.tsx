@@ -1,4 +1,14 @@
-import Link from "next/link";
+import type { Metadata } from "next"
+import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: { absolute: "Page Not Found | 1513 at Stone Creek" },
+  description: "This page is not available. Return home or browse the venue, gallery, and tour pages.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
 
 export default function NotFound() {
   return (
@@ -16,7 +26,6 @@ export default function NotFound() {
         position: "relative",
       }}
     >
-      {/* Soft overlay */}
       <div
         style={{
           position: "absolute",
@@ -26,7 +35,6 @@ export default function NotFound() {
         }}
       />
 
-      {/* Content card */}
       <div
         style={{
           position: "relative",
@@ -60,27 +68,42 @@ export default function NotFound() {
             lineHeight: "1.6",
           }}
         >
-          The page you're looking for doesn't seem to exist.<br />
-          Let's get you back to something beautiful.
+          The page you&apos;re looking for doesn&apos;t seem to exist.
+          <br />
+          Let&apos;s get you back to something beautiful.
         </p>
 
-        <Link
-          href="/"
-          style={{
-            display: "inline-block",
-            padding: "12px 28px",
-            borderRadius: "8px",
-            backgroundColor: "#b68b5e", // Stone Creek accent color
-            color: "white",
-            textDecoration: "none",
-            fontSize: "16px",
-            fontWeight: 500,
-            transition: "background 0.25s ease",
-          }}
-        >
-          Return Home
-        </Link>
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "center" }}>
+          <Link
+            href="/"
+            style={{
+              display: "inline-block",
+              padding: "12px 28px",
+              borderRadius: "8px",
+              backgroundColor: "#b68b5e",
+              color: "white",
+              textDecoration: "none",
+              fontSize: "16px",
+              fontWeight: 500,
+            }}
+          >
+            Return Home
+          </Link>
+          <p style={{ fontSize: "15px", color: "#5a5a5a" }}>
+            <Link href="/venue" style={{ color: "#3b3b3b", fontWeight: 500 }}>
+              The Venue
+            </Link>
+            {" · "}
+            <Link href="/gallery" style={{ color: "#3b3b3b", fontWeight: 500 }}>
+              Gallery
+            </Link>
+            {" · "}
+            <Link href="/book-tour" style={{ color: "#3b3b3b", fontWeight: 500 }}>
+              Book a Tour
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
-  );
+  )
 }

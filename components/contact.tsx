@@ -12,8 +12,9 @@ export function Contact() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Get in Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ready to start planning your perfect day? Share a few details below and our team will follow up with your
-            pricing brochures, including our pricing pamphlet, micro wedding brochure, and venue comparison chart.
+            Planning a wedding, rehearsal dinner, reception, shower, or corporate event in Rockmart or northwest
+            Georgia? Share a few details below and our team will follow up with your pricing brochures, including our
+            pricing pamphlet, micro wedding brochure, and venue comparison chart.
           </p>
         </div>
 

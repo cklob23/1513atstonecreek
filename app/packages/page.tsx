@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CtaBand } from "@/components/cta-band"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { breadcrumbJsonLd, faqJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 import {
   publishedFaqs,
@@ -16,10 +18,10 @@ import {
 } from "@/lib/packages-data"
 
 export const metadata: Metadata = pageMetadata({
-  topic: "Pricing & Packages",
+  topic: "Wedding Packages in Rockmart, GA",
   path: "/packages",
   description:
-    "Compare wedding and event packages at 1513 at Stone Creek in Rockmart, GA. See what's included, then get pricing.",
+    "Compare wedding and event packages at 1513 at Stone Creek in Rockmart, GA. All-inclusive venue for receptions, showers, and celebrations.",
 })
 
 export default function PackagesPage() {
@@ -29,6 +31,8 @@ export default function PackagesPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <JsonLd data={breadcrumbJsonLd("/packages")} />
+      <JsonLd data={faqJsonLd()} />
       <Navigation />
       <PageBanner
         title="Pricing & Packages"
@@ -39,6 +43,23 @@ export default function PackagesPage() {
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Wedding and event packages</h2>
+            <p className="text-foreground/80 text-lg leading-relaxed">
+              1513 at Stone Creek is an all-inclusive wedding and event venue in Rockmart, GA, serving couples and
+              planners across northwest Georgia and the Atlanta area. Request current packages for receptions, rehearsal
+              dinners, showers, and other celebrations, then{" "}
+              <Link href="/book-tour" className="underline font-medium text-foreground">
+                book a tour
+              </Link>{" "}
+              or{" "}
+              <Link href="/contact" className="underline font-medium text-foreground">
+                get pricing
+              </Link>
+              .
+            </p>
+          </div>
+
           {cards.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
               {cards.map((pkg, index) => (
@@ -63,7 +84,6 @@ export default function PackagesPage() {
             </div>
           ) : (
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Current packages</h2>
               <p className="text-foreground/80 text-lg leading-relaxed mb-8">
                 Use Get Pricing to request current packages and brochures for your wedding or event.
               </p>

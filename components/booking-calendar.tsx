@@ -7,8 +7,8 @@ export function BookingCalendar() {
                 <div className="text-center mb-12">
                     <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Schedule Your Tour</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                        Choose a date and time below that works best for you. We can&apos;t wait to walk you through the grounds and
-                        show you where your story begins.
+                        Book a tour of our wedding and event venue in Rockmart, GA. See the Pavilion, Ballroom, and grounds in
+                        person, a countryside setting for couples and planners across northwest Georgia and the Atlanta area.
                     </p>
                     <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed mt-4">
                         Don&apos;t see a time that works for you? Reach out and we&apos;ll do our best to accommodate weekend and

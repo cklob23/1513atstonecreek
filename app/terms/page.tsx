@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
+import { JsonLd } from "@/components/json-ld"
 import { LegalPage } from "@/components/legal-page"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 import { siteFacts } from "@/lib/site"
 
@@ -11,15 +13,18 @@ export const metadata: Metadata = pageMetadata({
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of Use">
-      <p>
-        This website shares information about 1513 at Stone Creek. Using the site does not create a booking. Dates,
-        packages, and responsibilities are set in a written agreement with the venue.
-      </p>
-      <p>
-        If something on the site differs from your agreement, the agreement controls. Questions? Call {siteFacts.phone}{" "}
-        or email {siteFacts.email}.
-      </p>
-    </LegalPage>
+    <>
+      <JsonLd data={breadcrumbJsonLd("/terms")} />
+      <LegalPage title="Terms of Use">
+        <p>
+          This website shares information about 1513 at Stone Creek. Using the site does not create a booking. Dates,
+          packages, and responsibilities are set in a written agreement with the venue.
+        </p>
+        <p>
+          If something on the site differs from your agreement, the agreement controls. Questions? Call {siteFacts.phone}{" "}
+          or email {siteFacts.email}.
+        </p>
+      </LegalPage>
+    </>
   )
 }

@@ -4,6 +4,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   output: 'export',
+  trailingSlash: false,
   images: {
     unoptimized: true,
   },
