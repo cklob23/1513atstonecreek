@@ -21,7 +21,7 @@ export type GalleryImageItem = {
  * Edit `category` on any photo to include it in a filter chip.
  * Photos without a category appear under All only.
  *
- * Pavilion and Ballroom currently have no mapped photos — add categories here
+ * Pavilion and Ballroom currently have no mapped photos - add categories here
  * when Caleb confirms which files belong to those spaces.
  */
 export function galleryAlt(item: GalleryImageItem) {

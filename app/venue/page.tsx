@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/cta-band"
 import { ResponsiveImage } from "@/components/responsive-image"
 import { Users, MapPin, Clock, Sparkles } from "lucide-react"
 import { pageMetadata } from "@/lib/metadata"
-import { venueFactNotes, venueFacts } from "@/lib/packages-data"
+import { publishedVenueFactNotes, publishedVenueFacts } from "@/lib/packages-data"
 
 export const metadata: Metadata = pageMetadata({
   topic: "Ceremony & Reception Spaces",
@@ -17,6 +17,11 @@ export const metadata: Metadata = pageMetadata({
 })
 
 export default function VenuePage() {
+  const facts = publishedVenueFacts()
+  const notes = publishedVenueFactNotes()
+  const showSeated = facts.some((row) => row.seated)
+  const showStanding = facts.some((row) => row.standing)
+
   const features = [
     {
       icon: Users,
@@ -44,7 +49,7 @@ export default function VenuePage() {
     {
       title: "The Pavilion",
       description:
-        "A covered outdoor space perfect for ceremonies, receptions, and gatherings of all kinds — beautifully designed to shine in any season or weather.",
+        "A covered outdoor space perfect for ceremonies, receptions, and gatherings of all kinds, beautifully designed to shine in any season or weather.",
       image: "/1513-photo-302.jpeg",
       imageAlt: "Covered Pavilion ceremony and reception space at 1513 at Stone Creek",
     },
@@ -65,7 +70,7 @@ export default function VenuePage() {
     {
       title: "The Patio",
       description:
-        "Ideal for cocktail hour, mingling, or your next celebration — complete with our brand-new outdoor fireplace, creating a cozy, inviting atmosphere.",
+        "Ideal for cocktail hour, mingling, or your next celebration, complete with our brand-new outdoor fireplace, creating a cozy, inviting atmosphere.",
       image: "/1513-patio.jpg",
       imageAlt: "Patio and outdoor fireplace at 1513 at Stone Creek",
     },
@@ -145,46 +150,52 @@ export default function VenuePage() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Venue facts</h2>
-          <p className="text-foreground/75 mb-8">
-            Confirmed guest capacity is up to 200. Other figures are placeholders until the owner confirms them.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[520px]">
-              <caption className="sr-only">Capacity by space at 1513 at Stone Creek</caption>
-              <thead>
-                <tr className="border-b border-border">
-                  <th scope="col" className="py-3 pr-4 font-semibold text-foreground">
-                    Space
-                  </th>
-                  <th scope="col" className="py-3 pr-4 font-semibold text-foreground">
-                    Seated
-                  </th>
-                  <th scope="col" className="py-3 font-semibold text-foreground">
-                    Standing
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {venueFacts.map((row) => (
-                  <tr key={row.space} className="border-b border-border">
-                    <th scope="row" className="py-3 pr-4 font-medium text-foreground">
-                      {row.space}
+          <p className="text-foreground/80 text-lg mb-8">Guest capacity: up to 200</p>
+          {facts.length > 0 && (showSeated || showStanding) ? (
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <caption className="sr-only">Capacity by space at 1513 at Stone Creek</caption>
+                <thead>
+                  <tr className="border-b border-border">
+                    <th scope="col" className="py-3 pr-4 font-semibold text-foreground">
+                      Space
                     </th>
-                    <td className="py-3 pr-4 text-foreground/80">{row.seated}</td>
-                    <td className="py-3 text-foreground/80">{row.standing}</td>
+                    {showSeated ? (
+                      <th scope="col" className="py-3 pr-4 font-semibold text-foreground">
+                        Seated
+                      </th>
+                    ) : null}
+                    {showStanding ? (
+                      <th scope="col" className="py-3 font-semibold text-foreground">
+                        Standing
+                      </th>
+                    ) : null}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <dl className="mt-10 grid sm:grid-cols-2 gap-6">
-            {venueFactNotes.map((note) => (
-              <div key={note.label}>
-                <dt className="font-semibold text-foreground mb-1">{note.label}</dt>
-                <dd className="text-foreground/80">{note.value}</dd>
-              </div>
-            ))}
-          </dl>
+                </thead>
+                <tbody>
+                  {facts.map((row) => (
+                    <tr key={row.space} className="border-b border-border">
+                      <th scope="row" className="py-3 pr-4 font-medium text-foreground">
+                        {row.space}
+                      </th>
+                      {showSeated ? <td className="py-3 pr-4 text-foreground/80">{row.seated}</td> : null}
+                      {showStanding ? <td className="py-3 text-foreground/80">{row.standing}</td> : null}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+          {notes.length > 0 ? (
+            <dl className="mt-10 grid sm:grid-cols-2 gap-6">
+              {notes.map((note) => (
+                <div key={note.label}>
+                  <dt className="font-semibold text-foreground mb-1">{note.label}</dt>
+                  <dd className="text-foreground/80">{note.value}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : null}
         </div>
       </section>
 

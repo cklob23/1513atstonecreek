@@ -1,20 +1,23 @@
 import type { Metadata } from "next"
 import { LegalPage } from "@/components/legal-page"
 import { pageMetadata } from "@/lib/metadata"
+import { siteFacts } from "@/lib/site"
 
 export const metadata: Metadata = pageMetadata({
   topic: "Privacy Policy",
   path: "/privacy",
-  description: "Privacy policy placeholder for 1513 at Stone Creek.",
+  description: "How 1513 at Stone Creek uses inquiry and tour information.",
 })
 
 export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy Policy">
-      <p>[CALEB: privacy policy — how inquiry forms, tour bookings, and analytics are used]</p>
       <p>
-        This page is a placeholder so couples can find a Privacy link in the footer. Replace this copy with the
-        venue&apos;s actual policy before treating it as legal notice.
+        When you submit an inquiry or book a tour, that form is handled by our booking and CRM provider. We use the
+        information you share only to respond to you and to plan your event.
+      </p>
+      <p>
+        To update or delete your information, contact us at {siteFacts.phone} or {siteFacts.email}.
       </p>
     </LegalPage>
   )

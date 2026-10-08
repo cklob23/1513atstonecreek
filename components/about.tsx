@@ -17,7 +17,7 @@ export function About() {
             <h2 className="font-serif text-4xl md:text-5xl mb-6 text-foreground">Your Dream Venue Awaits</h2>
             <p className="text-foreground/80 text-lg leading-relaxed mb-6">
               At 1513 at Stone Creek, we believe your celebration should be as seamless as it is stunning. Our
-              all-inclusive venue was designed with intention — blending modern amenities with the natural beauty of
+              all-inclusive venue was designed with intention, blending modern amenities with the natural beauty of
               Georgia&apos;s countryside. Imagine exchanging vows with the sound of Fish Creek flowing softly behind
               you, celebrating beneath the glow of chandeliers, and dancing the night away surrounded by the people
               who matter most.
@@ -25,7 +25,7 @@ export function About() {
             <p className="text-foreground/80 text-lg leading-relaxed mb-6">
               From florals to catering, décor to coordination, our talented team curates every detail so you can simply
               savor the day. Whether it&apos;s the rolling hills, the timeless architecture, or the peace that settles
-              over the property as the sun sets, 1513 at Stone Creek is where elegance meets ease — and your dream day
+              over the property as the sun sets, 1513 at Stone Creek is where elegance meets ease, and your dream day
               comes to life.
             </p>
             <div className="grid grid-cols-3 gap-6 mt-8">

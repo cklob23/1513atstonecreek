@@ -41,13 +41,13 @@ export const packageCards: PackageCard[] = [
 ]
 
 export const includedChecklist = [
-  "[CALEB: what's included — venue access]",
-  "[CALEB: what's included — coordination]",
-  "[CALEB: what's included — tables, chairs, or linens]",
-  "[CALEB: what's included — lighting or decor]",
-  "[CALEB: what's included — bridal suite access]",
-  "[CALEB: what's included — parking or day-of staff]",
-  "[CALEB: what's included — any extras that come standard]",
+  "[CALEB: what's included - venue access]",
+  "[CALEB: what's included - coordination]",
+  "[CALEB: what's included - tables, chairs, or linens]",
+  "[CALEB: what's included - lighting or decor]",
+  "[CALEB: what's included - bridal suite access]",
+  "[CALEB: what's included - parking or day-of staff]",
+  "[CALEB: what's included - any extras that come standard]",
 ]
 
 export type PackageFaq = {
@@ -96,6 +96,10 @@ export const packageFaqs: PackageFaq[] = [
     pricingCta: true,
   },
   {
+    question: "What is the guest capacity?",
+    answer: "The venue accommodates up to 200 guests.",
+  },
+  {
     question: "What is the guest capacity by space?",
     answer: "[CALEB: seated vs standing capacity for Pavilion, Ballroom, and Patio]",
   },
@@ -128,6 +132,41 @@ export const venueFacts = [
     standing: "[CALEB: Patio standing capacity]",
   },
 ]
+
+export function isOwnerDraft(text: string) {
+  return text.includes("[CALEB")
+}
+
+export function publishedPackageCards() {
+  return packageCards
+    .map((card) => ({
+      ...card,
+      items: card.items.filter((item) => !isOwnerDraft(item)),
+    }))
+    .filter((card) => !isOwnerDraft(card.name) && !isOwnerDraft(card.audience) && card.items.length > 0)
+}
+
+export function publishedIncludedChecklist() {
+  return includedChecklist.filter((item) => !isOwnerDraft(item))
+}
+
+export function publishedFaqs() {
+  return packageFaqs.filter((faq) => !isOwnerDraft(faq.question) && !isOwnerDraft(faq.answer))
+}
+
+export function publishedVenueFacts() {
+  return venueFacts
+    .map((row) => ({
+      space: row.space,
+      seated: isOwnerDraft(row.seated) ? "" : row.seated,
+      standing: isOwnerDraft(row.standing) ? "" : row.standing,
+    }))
+    .filter((row) => !isOwnerDraft(row.space) && (row.seated || row.standing))
+}
+
+export function publishedVenueFactNotes() {
+  return venueFactNotes.filter((note) => !isOwnerDraft(note.label) && !isOwnerDraft(note.value))
+}
 
 export const venueFactNotes = [
   { label: "Event hours", value: "[CALEB: event start and end hours]" },

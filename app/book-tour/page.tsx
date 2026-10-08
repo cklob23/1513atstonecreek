@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/book-tour",
   absoluteTitle: "Book a Venue Tour | 1513 at Stone Creek",
   description:
-    "Book a venue tour of 1513 at Stone Creek in Rockmart, Georgia. Hours Monday–Saturday 10–6, Sunday 1–5.",
+    "Book a venue tour of 1513 at Stone Creek in Rockmart, Georgia. Hours Monday-Saturday 10-6, Sunday 1-5.",
 })
 
 export default function BookTourPage() {
