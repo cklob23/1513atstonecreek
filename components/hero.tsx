@@ -22,12 +22,9 @@ export function Hero() {
 
       <div className="relative z-10 text-center text-venue-text-light px-4 hero-text-readable">
         <div className="hero-text-scrim pointer-events-none absolute -inset-x-3 -inset-y-2 -z-10" aria-hidden />
-        <h1 className="font-serif text-6xl md:text-8xl mb-4 text-balance italic" style={{ fontWeight: 300 }}>
+        <h1 className="font-serif text-6xl md:text-8xl mb-6 text-balance italic" style={{ fontWeight: 300 }}>
           1513 at Stone Creek
         </h1>
-        <p className="text-xl md:text-2xl mb-3 text-venue-text-light max-w-3xl mx-auto font-semibold leading-snug">
-          All-inclusive weddings and events in Rockmart, GA, for up to 200 guests
-        </p>
         <p className="text-base md:text-lg mb-8 text-venue-text-light/95 max-w-2xl mx-auto uppercase tracking-wide">
           Your Story Begins at 1513 at Stone Creek
         </p>
