@@ -44,10 +44,6 @@ export function IntroSection() {
                             unforgettable moments begin.
                         </p>
 
-                        <p className="font-serif text-3xl text-foreground mb-6 italic" style={{ fontWeight: 300 }}>
-                            Click here to learn more
-                        </p>
-
                         <Link href="/venue">
                             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                                 Explore The Venue

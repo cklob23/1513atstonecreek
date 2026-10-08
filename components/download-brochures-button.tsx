@@ -25,7 +25,7 @@ export function DownloadBrochuresButton({
                 className,
             )}
         >
-            <Link href="/contact">Get Pricing Brochures</Link>
+            <Link href="/contact">Get Pricing</Link>
         </Button>
     )
 }

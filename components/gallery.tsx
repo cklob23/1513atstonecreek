@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useLayoutEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 
 const PAGE_SIZE = 54
@@ -304,35 +304,65 @@ const images = [
 ]
 
 function GalleryImage({ src, alt, index }: { src: string; alt: string; index: number }) {
-  const [loaded, setLoaded] = useState(false)
+  const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading")
+  const imgRef = useRef<HTMLImageElement | null>(null)
 
-  const handleLoad = useCallback(() => {
-    setLoaded(true)
+  const syncFromElement = useCallback((img: HTMLImageElement | null) => {
+    if (!img || !img.src) return
+    // Cached images are often already complete before onLoad is attached.
+    if (!img.complete) return
+    if (img.naturalWidth > 0) {
+      setStatus("loaded")
+    } else {
+      setStatus("error")
+    }
   }, [])
+
+  const setImgRef = useCallback(
+    (img: HTMLImageElement | null) => {
+      imgRef.current = img
+      syncFromElement(img)
+    },
+    [syncFromElement],
+  )
+
+  useLayoutEffect(() => {
+    syncFromElement(imgRef.current)
+  }, [src, syncFromElement])
+
+  const revealDelay = `${Math.min(index, 11) * 80}ms`
 
   return (
     <div className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer h-80">
-      {/* Diagonal shadow sweep placeholder */}
-      <div
-        className={`absolute inset-0 gallery-placeholder ${loaded ? "gallery-sweep-exit" : "gallery-shadow-sweep"
-          }`}
-        style={{ animationDelay: loaded ? "0ms" : `${index * 200}ms` }}
-      />
+      {status !== "loaded" && (
+        <div
+          className={`absolute inset-0 gallery-placeholder ${status === "error" ? "" : "gallery-shadow-sweep"}`}
+          style={{ animationDelay: status === "error" ? "0ms" : `${index * 200}ms` }}
+        />
+      )}
+      {status === "loaded" && (
+        <div className="absolute inset-0 gallery-placeholder gallery-sweep-exit" />
+      )}
 
-      {/* Actual image */}
       <img
-        src={src || "/placeholder.svg"}
+        ref={setImgRef}
+        src={src}
         alt={alt}
-        onLoad={handleLoad}
-        className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${loaded ? "gallery-photo-reveal" : "opacity-0"
-          }`}
-        style={{ animationDelay: `${index * 150}ms` }}
+        onLoad={() => setStatus("loaded")}
+        onError={() => setStatus("error")}
+        className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
+          status === "loaded" ? "gallery-photo-reveal" : "opacity-0"
+        }`}
+        style={{ animationDelay: status === "loaded" ? revealDelay : "0ms" }}
       />
 
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-transparent group-hover:bg-venue-hover-overlay transition-colors duration-300" />
+      {status === "error" && (
+        <div className="absolute inset-0 flex items-center justify-center px-4 text-center text-sm text-muted-foreground">
+          Photo unavailable
+        </div>
+      )}
 
-      {/* Zoom on hover */}
+      <div className="absolute inset-0 bg-transparent group-hover:bg-venue-hover-overlay transition-colors duration-300" />
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
     </div>
   )

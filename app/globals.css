@@ -208,3 +208,23 @@ html {
 .gallery-photo-reveal {
   animation: photo-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* Darker mid-frame gradient so light hero photos still meet WCAG AA 4.5:1 */
+.hero-contrast-overlay {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.16 0.015 60 / 0.28) 0%,
+    oklch(0.16 0.015 60 / 0.58) 38%,
+    oklch(0.16 0.015 60 / 0.68) 55%,
+    oklch(0.16 0.015 60 / 0.32) 100%
+  );
+}
+
+.hero-text-scrim {
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 50%,
+    oklch(0.14 0.015 60 / 0.55) 0%,
+    oklch(0.14 0.015 60 / 0.28) 52%,
+    transparent 78%
+  );
+}
