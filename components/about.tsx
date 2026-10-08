@@ -8,8 +8,8 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-24 py-20 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="md:sticky md:top-24">
             <ResponsiveImage
               src="/1513-photo-296.jpeg"
               alt="Covered pavilion and grounds at 1513 at Stone Creek"

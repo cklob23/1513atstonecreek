@@ -11,7 +11,7 @@ export function publishedStoryExtras() {
 }
 
 export const aboutStatDrafts = [
-  { value: "200", label: "Guest Capacity" },
+  { value: "[CALEB: confirm guest-capacity stat row]", label: "Guest Capacity" },
   { value: "[CALEB: confirm acreage, guide lists both 20 and 30 acres]", label: "Acres" },
   { value: "[CALEB: confirm 1300+ weddings hosted]", label: "Weddings Hosted" },
 ]

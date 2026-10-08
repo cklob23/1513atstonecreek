@@ -16,32 +16,31 @@ export function Hero() {
           loading="eager"
           fetchPriority="high"
         />
+        <div className="absolute inset-0 hero-dark-overlay" aria-hidden />
       </div>
 
-      <div className="relative z-10 text-center text-foreground px-4 max-w-4xl">
-        <div className="hero-text-scrim pointer-events-none absolute -inset-x-6 -inset-y-5 -z-10" aria-hidden />
-        <p className="text-sm md:text-base uppercase tracking-[0.2em] mb-4 text-foreground">1513 at Stone Creek</p>
-        <h1 className="font-serif text-4xl md:text-6xl mb-6 text-balance text-foreground" style={{ fontWeight: 400 }}>
-          Marry your best friend. We&apos;ll take care of the rest.
+      <div className="relative z-10 text-center text-white px-4 max-w-4xl">
+        <h1 className="font-serif text-6xl md:text-8xl mb-6 text-balance italic text-white" style={{ fontWeight: 300 }}>
+          1513 at Stone Creek
         </h1>
-        <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed text-foreground">
-          A family-owned venue by Haley and Gina, built on faith and hospitality, in Rockmart, GA.
+        <p className="text-lg md:text-xl font-medium mb-8 text-white max-w-2xl mx-auto uppercase tracking-wide">
+          Your Story Begins at 1513 at Stone Creek.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <DownloadBrochuresButton variant="solid" size="lg" className="min-h-12 px-8" />
+          <DownloadBrochuresButton variant="hero" size="lg" />
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="min-h-12 px-8 bg-transparent border-foreground text-foreground hover:bg-foreground hover:text-primary-foreground"
+            className="min-h-12 px-8 bg-transparent border-white text-white hover:bg-white hover:text-primary"
           >
             <Link href="/book-tour">Book a Tour</Link>
           </Button>
         </div>
       </div>
 
-      <a href="#content" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-foreground animate-bounce">
+      <a href="#content" className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white animate-bounce">
         <ChevronDown size={32} />
       </a>
     </section>

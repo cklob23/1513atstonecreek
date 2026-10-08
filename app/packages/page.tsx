@@ -14,7 +14,6 @@ import {
   publishedEnhancementsLine,
   publishedExperienceGuideSections,
   publishedFaqs,
-  publishedIncludedChecklist,
   publishedNextSteps,
   publishedPackageCards,
 } from "@/lib/packages-data"
@@ -28,7 +27,6 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PackagesPage() {
   const cards = publishedPackageCards()
-  const checklist = publishedIncludedChecklist()
   const enhancements = publishedEnhancementsLine()
   const guide = publishedExperienceGuideSections()
   const steps = publishedNextSteps()
@@ -38,10 +36,11 @@ export default function PackagesPage() {
     <main className="min-h-screen overflow-x-hidden">
       <Navigation />
       <PageBanner
-        title="Pricing & Packages"
+        title="Wedding Packages"
         description="All-inclusive weddings and events in Rockmart, GA"
         image="/1513-photo-296.jpeg"
         imageAlt="Pavilion ceremony aisle at 1513 at Stone Creek"
+        overlay="strong"
       />
 
       <section className="py-20 bg-background">
@@ -87,27 +86,6 @@ export default function PackagesPage() {
               </Button>
             </div>
           )}
-
-          {checklist.length > 0 ? (
-            <div className="max-w-3xl mx-auto mb-20">
-              <h2 className="font-serif text-4xl mb-6 text-foreground">What&apos;s included</h2>
-              <ul className="space-y-3">
-                {checklist.map((item) => (
-                  <li key={item} className="flex gap-3 text-foreground/85 text-[15px]">
-                    <Check className="w-5 h-5 mt-0.5 shrink-0 text-primary" aria-hidden />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-foreground/80">
-                For current package details and cost,{" "}
-                <Link href="/contact" className="underline font-medium text-foreground">
-                  Get Pricing
-                </Link>
-                .
-              </p>
-            </div>
-          ) : null}
 
           {enhancements ? (
             <div className="max-w-3xl mx-auto mb-20">

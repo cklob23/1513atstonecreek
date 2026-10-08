@@ -9,8 +9,7 @@ export function OwnersBand() {
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground text-balance">Meet Haley and Gina</h2>
           <p className="text-foreground/80 text-lg max-w-2xl mx-auto leading-relaxed">
-            The co-founders of 1513 at Stone Creek, who started this place so couples would feel welcomed, loved,
-            celebrated, and cared for.
+            A family-owned venue by Haley and Gina, built on faith and hospitality, in Rockmart, GA.
           </p>
         </div>
 

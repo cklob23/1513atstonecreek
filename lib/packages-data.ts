@@ -10,12 +10,12 @@ export const packageCards: PackageCard[] = [
     name: "Basically Beautiful",
     audience: "Venue rental only. A stunning, seamless wedding day without managing all the moving pieces.",
     items: [
-      "Venue rental only, with exclusive use of the property for your day",
+      "Exclusive use of the property, one wedding per day",
       "Pavilion, ballroom, bridal suite, groom's lounge, and patio with fireplace",
       "Ceremony and reception setup, including tables and chairs",
       "Day-of venue manager",
-      "Full-day access and a one-hour rehearsal",
-      "Unlimited communication and planning portal access",
+      "9 AM to 9 PM access with a 5-hour event",
+      "One-hour rehearsal, unlimited communication, and planning portal access",
     ],
   },
   {
@@ -23,11 +23,11 @@ export const packageCards: PackageCard[] = [
     audience: "One team coordinates catering, florals, décor, and day-of execution.",
     items: [
       "Everything in Basically Beautiful",
-      "In-house florals, décor, catering, and coordination",
+      "Full-day access",
       "Welcome meeting, planning consult, and tasting",
-      "Wedding coordinator on the day, with rehearsal included",
-      "Wedding cake and cake-cutting service",
-      "Full team execution from start to finish",
+      "Day-of wedding coordinator and full team execution",
+      "Design and décor, including centerpieces, greenery, and LED candles",
+      "In-house florals, catering with BBQ or taco bar, and wedding cake with cutting service",
     ],
   },
   {
@@ -40,7 +40,7 @@ export const packageCards: PackageCard[] = [
       "Elevated catering with a private tasting",
       "Expanded florals",
       "Place settings with linen napkins and chargers",
-      "Photo booth and yard games for social hour",
+      "Photo booth, yard games, and reception up-lighting",
     ],
   },
   {
@@ -49,11 +49,11 @@ export const packageCards: PackageCard[] = [
     badge: "Best Value",
     items: [
       "Everything in The Timeless Experience",
-      "Luxury florals and elevated styling throughout the celebration",
-      "Premium catering",
-      "Champagne toast",
-      "Patio string lights and sparkler send-off",
       "Engagement photo access to the venue",
+      "Champagne toast and sparkler send-off",
+      "Patio string lights and monogram projection",
+      "Premium catering with a late-night snack",
+      "Elevated florals, drapery, and styling throughout the celebration",
     ],
   },
   {
@@ -65,7 +65,7 @@ export const packageCards: PackageCard[] = [
       "Bridal breakfast and lunch, plus groom's lunch",
       "Full wedding director and complete event management",
       "Firework send-off",
-      "Photo booth",
+      "Champagne wall or cloud wall, plus photo booth",
     ],
   },
 ]
