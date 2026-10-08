@@ -1,13 +1,13 @@
 export type PackageCard = {
   name: string
-  price: string
+  audience: string
   items: string[]
 }
 
 export const packageCards: PackageCard[] = [
   {
     name: "[CALEB: package name]",
-    price: "[CALEB: starting price or range]",
+    audience: "[CALEB: who this package is for]",
     items: [
       "[CALEB: included item 1]",
       "[CALEB: included item 2]",
@@ -18,7 +18,7 @@ export const packageCards: PackageCard[] = [
   },
   {
     name: "[CALEB: package name]",
-    price: "[CALEB: starting price or range]",
+    audience: "[CALEB: who this package is for]",
     items: [
       "[CALEB: included item 1]",
       "[CALEB: included item 2]",
@@ -30,7 +30,7 @@ export const packageCards: PackageCard[] = [
   },
   {
     name: "[CALEB: package name]",
-    price: "[CALEB: starting price or range]",
+    audience: "[CALEB: who this package is for]",
     items: [
       "[CALEB: included item 1]",
       "[CALEB: included item 2]",
@@ -50,7 +50,14 @@ export const includedChecklist = [
   "[CALEB: what's included — any extras that come standard]",
 ]
 
-export const packageFaqs = [
+export type PackageFaq = {
+  question: string
+  answer: string
+  /** When true, the answer sends cost or deposit questions to /contact. */
+  pricingCta?: boolean
+}
+
+export const packageFaqs: PackageFaq[] = [
   {
     question: "What catering options do you offer?",
     answer: "[CALEB: catering policy and in-house or preferred vendor details]",
@@ -85,7 +92,8 @@ export const packageFaqs = [
   },
   {
     question: "How do deposit and booking steps work?",
-    answer: "[CALEB: deposit amount, contract steps, and what reserves a date]",
+    answer: "Request current deposit and booking details through Get Pricing.",
+    pricingCta: true,
   },
   {
     question: "What is the guest capacity by space?",
@@ -97,7 +105,9 @@ export const packageFaqs = [
   },
   {
     question: "Do you host events other than weddings?",
-    answer: "[CALEB: other event types accepted and any different pricing]",
+    answer:
+      "[CALEB: other event types accepted]. For cost, request details through Get Pricing.",
+    pricingCta: true,
   },
 ]
 

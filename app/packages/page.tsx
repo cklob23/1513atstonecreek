@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   topic: "Pricing & Packages",
   path: "/packages",
   description:
-    "Compare wedding and event packages at 1513 at Stone Creek in Rockmart, GA. Request starting prices and see what is included.",
+    "Compare wedding and event packages at 1513 at Stone Creek in Rockmart, GA. See what's included, then get pricing.",
 })
 
 export default function PackagesPage() {
@@ -34,8 +34,8 @@ export default function PackagesPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Package options</h2>
             <p className="text-foreground/80 text-lg leading-relaxed">
-              Starting prices and inclusions below are placeholders until Caleb confirms the live packages. Get
-              pricing to receive the current brochures.
+              Package names and inclusions below are placeholders until Caleb confirms the live packages. Use Get
+              Pricing to receive current brochures — prices are not listed on this page.
             </p>
           </div>
 
@@ -44,7 +44,7 @@ export default function PackagesPage() {
               <Card key={`${pkg.name}-${index}`} className="bg-secondary border-border">
                 <CardContent className="p-8 flex flex-col h-full">
                   <h3 className="font-serif text-2xl mb-2 text-foreground">{pkg.name}</h3>
-                  <p className="text-lg font-medium text-foreground mb-6">{pkg.price}</p>
+                  <p className="text-foreground/80 mb-6">{pkg.audience}</p>
                   <ul className="space-y-3 mb-8 flex-1">
                     {pkg.items.map((item) => (
                       <li key={item} className="flex gap-3 text-foreground/85">
@@ -76,13 +76,23 @@ export default function PackagesPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="font-serif text-4xl mb-6 text-foreground">Frequently asked questions</h2>
             <p className="text-foreground/75 mb-6">
-              Answers are placeholders. FAQPage schema will be added after the owner supplies final copy.
+              Answers are placeholders. FAQPage schema will be added after the owner supplies final copy. Cost and
+              deposit questions go to Get Pricing.
             </p>
             <Accordion type="single" collapsible className="bg-secondary rounded-lg px-6">
               {packageFaqs.map((faq, index) => (
                 <AccordionItem key={faq.question} value={`faq-${index}`}>
                   <AccordionTrigger className="text-base text-foreground text-left">{faq.question}</AccordionTrigger>
-                  <AccordionContent className="text-foreground/80 text-[15px]">{faq.answer}</AccordionContent>
+                  <AccordionContent className="text-foreground/80 text-[15px]">
+                    <p>{faq.answer}</p>
+                    {faq.pricingCta ? (
+                      <p className="mt-3">
+                        <Link href="/contact" className="underline font-medium text-foreground">
+                          Get Pricing
+                        </Link>
+                      </p>
+                    ) : null}
+                  </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
@@ -90,7 +100,7 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      <CtaBand title="Ready for real numbers?" />
+      <CtaBand />
       <Footer />
     </main>
   )
