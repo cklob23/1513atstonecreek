@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function BookTourPage() {
   return (
-    <main className="min-h-screen">
+        <main className="min-h-screen overflow-x-hidden">
       <Navigation />
       <PageBanner
         title="Book a Tour"

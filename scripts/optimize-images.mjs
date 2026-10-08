@@ -44,21 +44,26 @@ async function alreadyFresh(inputPath, outputPath) {
 }
 
 async function optimizeOne(filePath) {
-  if (await shouldSkip(filePath)) return 0
-  const stem = path.basename(filePath).replace(/\.[^.]+$/, "")
-  let wrote = 0
+  try {
+    if (await shouldSkip(filePath)) return 0
+    const stem = path.basename(filePath).replace(/\.[^.]+$/, "")
+    let wrote = 0
 
-  for (const width of widths) {
-    const dest = path.join(outDir, `${stem}-${width}.webp`)
-    if (await alreadyFresh(filePath, dest)) continue
-    await sharp(filePath)
-      .rotate()
-      .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 76 })
-      .toFile(dest)
-    wrote += 1
+    for (const width of widths) {
+      const dest = path.join(outDir, `${stem}-${width}.webp`)
+      if (await alreadyFresh(filePath, dest)) continue
+      await sharp(filePath)
+        .rotate()
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: 76 })
+        .toFile(dest)
+      wrote += 1
+    }
+    return wrote
+  } catch (error) {
+    console.warn(`Skip ${path.relative(publicDir, filePath)}: ${error.message}`)
+    return 0
   }
-  return wrote
 }
 
 async function runPool(items, limit, worker) {

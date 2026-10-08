@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function TestimonialsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navigation />
       <PageBanner
         title="Testimonials"

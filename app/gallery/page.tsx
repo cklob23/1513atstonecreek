@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navigation />
       <PageBanner
         title="Gallery"

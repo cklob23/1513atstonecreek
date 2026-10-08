@@ -72,7 +72,7 @@ export default function VenuePage() {
   ]
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Navigation />
       <PageBanner
         title="The Venue"
