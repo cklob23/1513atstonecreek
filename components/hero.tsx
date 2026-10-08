@@ -20,11 +20,8 @@ export function Hero() {
         <HeroOverlay />
       </div>
 
-      <div
-        className="relative z-10 text-center text-venue-text-light px-4"
-        style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
-      >
-        <div className="hero-text-scrim pointer-events-none absolute -inset-x-8 -inset-y-10 -z-10" aria-hidden />
+      <div className="relative z-10 text-center text-venue-text-light px-4 hero-text-readable">
+        <div className="hero-text-scrim pointer-events-none absolute -inset-x-3 -inset-y-2 -z-10" aria-hidden />
         <h1 className="font-serif text-6xl md:text-8xl mb-4 text-balance italic" style={{ fontWeight: 300 }}>
           1513 at Stone Creek
         </h1>

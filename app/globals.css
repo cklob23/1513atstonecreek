@@ -40,7 +40,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Added venue-specific semantic tokens */
-  --venue-hero-overlay: oklch(0.25 0.015 60 / 0.15);
+  --venue-hero-overlay: oklch(0.25 0.015 60 / 0.08);
   --venue-nav-bg: oklch(0.25 0.015 60 / 0.95);
   --venue-text-light: oklch(0.98 0.005 60);
   --venue-text-muted: oklch(0.95 0.005 60);
@@ -82,7 +82,7 @@
   --sidebar-ring: oklch(0.439 0 0);
 
   /* Dark mode venue tokens */
-  --venue-hero-overlay: oklch(0.145 0 0 / 0.3);
+  --venue-hero-overlay: oklch(0.145 0 0 / 0.1);
   --venue-nav-bg: oklch(0.145 0 0 / 0.95);
   --venue-text-light: oklch(0.985 0 0);
   --venue-text-muted: oklch(0.708 0 0);
@@ -236,22 +236,25 @@ body {
   margin-right: 0 !important;
 }
 
-/* Darker mid-frame gradient so light hero photos still meet WCAG AA 4.5:1 */
+/* Light full-bleed wash only. Contrast for type lives in the tight text scrim. */
 .hero-contrast-overlay {
   background: linear-gradient(
     to bottom,
-    oklch(0.16 0.015 60 / 0.28) 0%,
-    oklch(0.16 0.015 60 / 0.58) 38%,
-    oklch(0.16 0.015 60 / 0.68) 55%,
-    oklch(0.16 0.015 60 / 0.32) 100%
+    oklch(0.16 0.015 60 / 0.06) 0%,
+    oklch(0.16 0.015 60 / 0.10) 50%,
+    oklch(0.16 0.015 60 / 0.06) 100%
   );
 }
 
 .hero-text-scrim {
   background: radial-gradient(
-    ellipse 85% 75% at 50% 50%,
-    oklch(0.14 0.015 60 / 0.55) 0%,
-    oklch(0.14 0.015 60 / 0.28) 52%,
-    transparent 78%
+    ellipse 52% 42% at 50% 48%,
+    oklch(0.14 0.015 60 / 0.30) 0%,
+    oklch(0.14 0.015 60 / 0.10) 38%,
+    transparent 66%
   );
+}
+
+.hero-text-readable {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.32), 0 0 1px rgba(0, 0, 0, 0.18);
 }
