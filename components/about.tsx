@@ -1,6 +1,9 @@
+import { publishedStoryExtras } from "@/lib/about-data"
 import { ResponsiveImage } from "@/components/responsive-image"
 
 export function About() {
+  const extras = publishedStoryExtras()
+
   return (
     <section id="about" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
@@ -14,20 +17,29 @@ export function About() {
             />
           </div>
           <div>
-            <h2 className="font-serif text-4xl md:text-5xl mb-6 text-foreground">Your Dream Venue Awaits</h2>
+            <h2 className="font-serif text-4xl md:text-5xl mb-6 text-foreground">A place that feels like family</h2>
             <p className="text-foreground/80 text-lg leading-relaxed mb-6">
-              At 1513 at Stone Creek, we believe your celebration should be as seamless as it is stunning. Our
-              all-inclusive venue was designed with intention, blending modern amenities with the natural beauty of
-              Georgia&apos;s countryside. Imagine exchanging vows with the sound of Fish Creek flowing softly behind
-              you, celebrating beneath the glow of chandeliers, and dancing the night away surrounded by the people
-              who matter most.
+              When Haley and Gina started 1513, they were not only building a wedding venue. They wanted a place where
+              people feel welcomed, loved, celebrated, and cared for. A space where couples feel like family, where you
+              know you are loved and never just another wedding on the calendar.
             </p>
             <p className="text-foreground/80 text-lg leading-relaxed mb-6">
-              From florals to catering, décor to coordination, our talented team curates every detail so you can simply
-              savor the day. Whether it&apos;s the rolling hills, the timeless architecture, or the peace that settles
-              over the property as the sun sets, 1513 at Stone Creek is where elegance meets ease, and your dream day
-              comes to life.
+              They walk alongside couples for a year, so by the time wedding day arrives it feels like celebrating
+              friends. From florals to catering, décor to coordination, the team curates every detail so you can savor
+              the day.
             </p>
+            <p className="text-foreground/80 text-lg leading-relaxed mb-6">
+              Imagine exchanging vows with Fish Creek flowing softly behind you, then gathering your people across 30
+              acres in Rockmart, GA. The venue has hosted 1300+ weddings, with room for celebrations of up to 200
+              guests.
+            </p>
+            {extras.length > 0 ? (
+              <ul className="text-foreground/80 text-lg leading-relaxed mb-6 space-y-2">
+                {extras.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            ) : null}
             <div className="grid grid-cols-3 gap-6 mt-8">
               <div className="text-center">
                 <div className="text-3xl font-serif text-foreground mb-2">200</div>

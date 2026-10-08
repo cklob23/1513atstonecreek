@@ -10,6 +10,7 @@ import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
 import { pageMetadata } from "@/lib/metadata"
 import {
+  publishedExperienceGuideSections,
   publishedFaqs,
   publishedIncludedChecklist,
   publishedPackageCards,
@@ -25,6 +26,7 @@ export const metadata: Metadata = pageMetadata({
 export default function PackagesPage() {
   const cards = publishedPackageCards()
   const checklist = publishedIncludedChecklist()
+  const guide = publishedExperienceGuideSections()
   const faqs = publishedFaqs()
 
   return (
@@ -84,6 +86,34 @@ export default function PackagesPage() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-6 text-foreground/80">
+                For current package details and cost,{" "}
+                <Link href="/contact" className="underline font-medium text-foreground">
+                  Get Pricing
+                </Link>
+                .
+              </p>
+            </div>
+          ) : null}
+
+          {guide.length > 0 ? (
+            <div className="max-w-3xl mx-auto mb-20 space-y-10">
+              {guide.map((section) => (
+                <div key={section.title}>
+                  <h2 className="font-serif text-4xl mb-4 text-foreground">{section.title}</h2>
+                  <p className="text-foreground/80 text-lg leading-relaxed">{section.body}</p>
+                  {section.items && section.items.length > 0 ? (
+                    <ul className="mt-4 space-y-3">
+                      {section.items.map((item) => (
+                        <li key={item} className="flex gap-3 text-foreground/85 text-[15px]">
+                          <Check className="w-5 h-5 mt-0.5 shrink-0 text-primary" aria-hidden />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              ))}
             </div>
           ) : null}
 

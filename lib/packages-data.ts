@@ -41,13 +41,38 @@ export const packageCards: PackageCard[] = [
 ]
 
 export const includedChecklist = [
-  "[CALEB: what's included - venue access]",
-  "[CALEB: what's included - coordination]",
-  "[CALEB: what's included - tables, chairs, or linens]",
-  "[CALEB: what's included - lighting or decor]",
-  "[CALEB: what's included - bridal suite access]",
-  "[CALEB: what's included - parking or day-of staff]",
-  "[CALEB: what's included - any extras that come standard]",
+  "Florals",
+  "Catering",
+  "Décor",
+  "Coordination",
+  "[CALEB: Experience Guide - venue access hours]",
+  "[CALEB: Experience Guide - tables, chairs, or linens]",
+  "[CALEB: Experience Guide - lighting or extra decor]",
+  "[CALEB: Experience Guide - bridal suite access]",
+  "[CALEB: Experience Guide - parking or day-of staff]",
+  "[CALEB: Experience Guide - any extras that come standard]",
+]
+
+export type ExperienceGuideSection = {
+  title: string
+  body: string
+  items?: string[]
+}
+
+/** Draft slots for Experience Guide copy. Filtered out of the UI until filled. */
+export const experienceGuideSections: ExperienceGuideSection[] = [
+  {
+    title: "[CALEB: Experience Guide section title - how planning works]",
+    body: "[CALEB: Experience Guide body - planning steps beyond April, Haley, Gina, and Jaymi roles already on About]",
+  },
+  {
+    title: "[CALEB: Experience Guide section title - wedding-day timeline]",
+    body: "[CALEB: Experience Guide body - ceremony and reception timing]",
+  },
+  {
+    title: "[CALEB: Experience Guide section title - guest experience]",
+    body: "[CALEB: Experience Guide body - parking, lodging, and guest flow]",
+  },
 ]
 
 export type PackageFaq = {
@@ -59,36 +84,60 @@ export type PackageFaq = {
 
 export const packageFaqs: PackageFaq[] = [
   {
+    question: "How much do packages cost?",
+    answer: "Request current package pricing through Get Pricing.",
+    pricingCta: true,
+  },
+  {
+    question: "What is included?",
+    answer:
+      "Packages are all-inclusive and cover florals, catering, décor, and coordination. For current package details and cost, request them through Get Pricing.",
+    pricingCta: true,
+  },
+  {
+    question: "Who helps us plan?",
+    answer:
+      "April, our Tour Specialist, helps from the first visit. Haley and Gina walk alongside couples for a year. Jaymi, our Wedding Coordinator, cares for you from arrival until the last dance.",
+  },
+  {
     question: "What catering options do you offer?",
-    answer: "[CALEB: catering policy and in-house or preferred vendor details]",
+    answer: "[CALEB: Experience Guide - catering policy and in-house or preferred vendor details]",
   },
   {
     question: "How does alcohol service work?",
-    answer: "[CALEB: alcohol policy, bar options, and any licensing notes]",
+    answer: "[CALEB: Experience Guide - alcohol policy, bar options, and any licensing notes]",
   },
   {
     question: "Can we bring outside vendors?",
-    answer: "[CALEB: outside vendor policy and any required approvals]",
+    answer: "[CALEB: Experience Guide - outside vendor policy and any required approvals]",
   },
   {
     question: "What is the rain plan?",
-    answer: "[CALEB: rain plan for ceremony and reception spaces]",
+    answer: "[CALEB: Experience Guide - rain plan for ceremony and reception spaces]",
   },
   {
     question: "Is there on-site parking?",
-    answer: "[CALEB: parking details, guest count, and overflow options]",
+    answer: "[CALEB: Experience Guide - parking details, guest count, and overflow options]",
   },
   {
     question: "Where do guests typically stay nearby?",
-    answer: "[CALEB: nearest lodging and any hotel partners]",
+    answer: "[CALEB: Experience Guide - nearest lodging and any hotel partners]",
   },
   {
     question: "How accessible is the property?",
-    answer: "[CALEB: accessibility details for parking, restrooms, and event spaces]",
+    answer: "[CALEB: Experience Guide - accessibility details for parking, restrooms, and event spaces]",
   },
   {
     question: "What is the event end time, and are there noise limits?",
-    answer: "[CALEB: end time, music cutoff, and noise guidelines]",
+    answer: "[CALEB: Experience Guide - end time, music cutoff, and noise guidelines]",
+  },
+  {
+    question: "[CALEB: Experience Guide FAQ question - planning timeline]",
+    answer: "[CALEB: Experience Guide FAQ answer - planning timeline]",
+  },
+  {
+    question: "[CALEB: Experience Guide FAQ question - day-of schedule]",
+    answer: "[CALEB: Experience Guide FAQ answer - day-of schedule]",
   },
   {
     question: "How do deposit and booking steps work?",
@@ -148,6 +197,15 @@ export function publishedPackageCards() {
 
 export function publishedIncludedChecklist() {
   return includedChecklist.filter((item) => !isOwnerDraft(item))
+}
+
+export function publishedExperienceGuideSections() {
+  return experienceGuideSections
+    .map((section) => ({
+      ...section,
+      items: section.items?.filter((item) => !isOwnerDraft(item)),
+    }))
+    .filter((section) => !isOwnerDraft(section.title) && !isOwnerDraft(section.body))
 }
 
 export function publishedFaqs() {
