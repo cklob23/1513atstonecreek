@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CtaBand } from "@/components/cta-band"
 import { ResponsiveImage } from "@/components/responsive-image"
-import { GALLERY_FILTERS, galleryAlt, galleryImages, type GalleryFilter, type GalleryImageItem } from "@/lib/gallery-data"
+import { galleryAlt, galleryImages, type GalleryImageItem } from "@/lib/gallery-data"
 
-const PAGE_SIZE = 54
+const PAGE_SIZE = 24
 
 function GalleryTile({
   item,
@@ -65,7 +65,6 @@ function GalleryTile({
 }
 
 export function Gallery() {
-  const [filter, setFilter] = useState<GalleryFilter>("All")
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const [failed, setFailed] = useState<Set<string>>(new Set())
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
@@ -78,18 +77,9 @@ export function Gallery() {
     [failed],
   )
 
-  const filtered = useMemo(() => {
-    if (filter === "All") return available
-    return available.filter((item) => item.category === filter)
-  }, [available, filter])
-
-  useEffect(() => {
-    setVisibleCount(PAGE_SIZE)
-  }, [filter])
-
-  const visibleImages = filtered.slice(0, visibleCount)
-  const hasMore = visibleCount < filtered.length
-  const lightboxItem = lightboxIndex !== null ? filtered[lightboxIndex] : null
+  const visibleImages = available.slice(0, visibleCount)
+  const hasMore = visibleCount < available.length
+  const lightboxItem = lightboxIndex !== null ? available[lightboxIndex] : null
 
   const handleFail = useCallback((src: string) => {
     setFailed((current) => {
@@ -107,17 +97,17 @@ export function Gallery() {
 
   const showPrev = useCallback(() => {
     setLightboxIndex((current) => {
-      if (current === null || filtered.length === 0) return current
-      return (current - 1 + filtered.length) % filtered.length
+      if (current === null || available.length === 0) return current
+      return (current - 1 + available.length) % available.length
     })
-  }, [filtered.length])
+  }, [available.length])
 
   const showNext = useCallback(() => {
     setLightboxIndex((current) => {
-      if (current === null || filtered.length === 0) return current
-      return (current + 1) % filtered.length
+      if (current === null || available.length === 0) return current
+      return (current + 1) % available.length
     })
-  }, [filtered.length])
+  }, [available.length])
 
   useEffect(() => {
     if (lightboxIndex === null) return
@@ -174,31 +164,9 @@ export function Gallery() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Gallery categories">
-            {GALLERY_FILTERS.map((chip) => {
-              const selected = filter === chip
-              return (
-                <button
-                  key={chip}
-                  type="button"
-                  role="tab"
-                  aria-selected={selected}
-                  onClick={() => setFilter(chip)}
-                  className={`min-h-11 px-4 rounded-full text-sm tracking-wide border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
-                    selected
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background text-foreground border-border hover:border-foreground/40"
-                  }`}
-                >
-                  {chip}
-                </button>
-              )
-            })}
-          </div>
-
           {visibleImages.length === 0 ? (
             <p className="text-center text-foreground/80 py-16">
-              No photos in this category yet. Choose All to browse every wedding photo.
+              Photos are unavailable right now. Please check back soon.
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -210,7 +178,7 @@ export function Gallery() {
                   onFail={handleFail}
                   onOpen={() => {
                     lastFocusRef.current = document.activeElement as HTMLElement
-                    const fullIndex = filtered.findIndex((entry) => entry.src === item.src)
+                    const fullIndex = available.findIndex((entry) => entry.src === item.src)
                     setLightboxIndex(fullIndex)
                   }}
                 />
@@ -221,14 +189,15 @@ export function Gallery() {
           {hasMore && (
             <div className="flex flex-col items-center gap-3 mt-12">
               <p className="text-muted-foreground text-sm">
-                Showing {visibleImages.length} of {filtered.length} photos
+                Showing {visibleImages.length} of {available.length} photos
               </p>
               <Button
+                type="button"
                 size="lg"
-                onClick={() => setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, filtered.length))}
+                onClick={() => setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, available.length))}
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                Show More
+                Show more
               </Button>
             </div>
           )}

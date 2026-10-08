@@ -1,29 +1,18 @@
-export const GALLERY_FILTERS = [
-  "All",
-  "Ceremony",
-  "Reception",
-  "Pavilion",
-  "Ballroom",
-  "Bridal Suite",
-  "Details",
-] as const
-
-export type GalleryFilter = (typeof GALLERY_FILTERS)[number]
+export type GalleryCategory =
+  | "Ceremony"
+  | "Reception"
+  | "Pavilion"
+  | "Ballroom"
+  | "Bridal Suite"
+  | "Details"
 
 export type GalleryImageItem = {
   src: string
-  /** Owner-editable category. Omit or leave undefined to show under All only. */
-  category?: Exclude<GalleryFilter, "All">
+  /** Optional space label used in image alt text. */
+  category?: GalleryCategory
   watermark?: boolean
 }
 
-/**
- * Edit `category` on any photo to include it in a filter chip.
- * Photos without a category appear under All only.
- *
- * Pavilion and Ballroom currently have no mapped photos - add categories here
- * when Caleb confirms which files belong to those spaces.
- */
 export function galleryAlt(item: GalleryImageItem) {
   return item.category ? `${item.category} at 1513 at Stone Creek` : "Wedding photo at 1513 at Stone Creek"
 }
