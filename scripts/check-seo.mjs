@@ -8,7 +8,6 @@ const errors = []
 const expectedPaths = [
   "/",
   "/venue",
-  "/packages",
   "/gallery",
   "/about",
   "/testimonials",
@@ -100,10 +99,16 @@ if (!robots.includes("User-Agent: *") && !robots.includes("User-agent: *")) {
 if (!robots.includes(`${siteUrl}/sitemap.xml`)) {
   fail("robots.txt is missing the absolute sitemap URL")
 }
+if (sitemap.includes(`${siteUrl}/packages`)) {
+  fail("sitemap.xml still lists /packages; that page is parked off the site")
+}
 
 const files = await readdir(outDir)
 if (!files.includes("manifest.webmanifest") && !files.includes("manifest.json")) {
   fail("web manifest is missing from out/")
+}
+if (files.includes("packages.html") || files.includes("packages")) {
+  fail("out/ still contains a packages page; keep app/_packages parked until it ships")
 }
 
 for (const routePath of expectedPaths) {
@@ -173,12 +178,7 @@ for (const routePath of expectedPaths) {
     fail(`${routePath} is missing BreadcrumbList JSON-LD`)
   }
 
-  if (routePath === "/packages") {
-    if (!types.includes("FAQPage")) fail("Packages is missing FAQPage JSON-LD")
-    if (!serialized.includes("What is the guest capacity?")) {
-      fail("Packages FAQPage does not include the published guest-capacity question")
-    }
-  } else if (types.includes("FAQPage")) {
+  if (types.includes("FAQPage")) {
     fail(`${routePath} has FAQPage JSON-LD but does not render FAQs`)
   }
 }

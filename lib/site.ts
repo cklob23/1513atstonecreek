@@ -52,7 +52,6 @@ export type SiteRoute = {
 export const siteRoutes: SiteRoute[] = [
   { path: "/", title: "Home", crumb: "Home", priority: 1, changeFrequency: "weekly" },
   { path: "/venue", title: "The Venue", crumb: "The Venue", priority: 0.9, changeFrequency: "weekly" },
-  { path: "/packages", title: "Pricing & Packages", crumb: "Packages", priority: 0.9, changeFrequency: "weekly" },
   { path: "/gallery", title: "Gallery", crumb: "Gallery", priority: 0.8, changeFrequency: "weekly" },
   { path: "/about", title: "About", crumb: "About", priority: 0.7, changeFrequency: "monthly" },
   { path: "/testimonials", title: "Testimonials", crumb: "Testimonials", priority: 0.7, changeFrequency: "monthly" },

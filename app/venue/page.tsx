@@ -27,23 +27,23 @@ export default function VenuePage() {
   const features = [
     {
       icon: Users,
-      title: "Capacity",
-      description: "Accommodates up to 200 guests for ceremonies and receptions",
+      title: "Your people",
+      description: "Room for ceremonies and receptions of up to 200 guests",
     },
     {
       icon: MapPin,
-      title: "Location",
-      description: "Nestled in the scenic countryside with stunning natural backdrops",
+      title: "Countryside quiet",
+      description: "Rockmart countryside, with Fish Creek flowing behind the vows",
     },
     {
       icon: Clock,
-      title: "Flexibility",
-      description: "Full-day venue access from setup to teardown",
+      title: "Cared for",
+      description: "From setup to the last dance, the team handles the details so you can savor the day",
     },
     {
       icon: Sparkles,
-      title: "Ambiance",
-      description: "Rustic elegance with modern amenities and timeless charm",
+      title: "Ease and glow",
+      description: "Rustic elegance with modern amenities, so the day feels beautiful and entirely yours",
     },
   ]
 
@@ -51,28 +51,28 @@ export default function VenuePage() {
     {
       title: "The Pavilion",
       description:
-        "A covered outdoor space perfect for ceremonies, receptions, and gatherings of all kinds, beautifully designed to shine in any season or weather.",
+        "Say your vows under cover, with the grounds around you, in any season. A gathering place for ceremonies, receptions, and the people you love, rain or shine.",
       image: "/1513-photo-302.jpeg",
       imageAlt: "Covered Pavilion ceremony and reception space at 1513 at Stone Creek",
     },
     {
       title: "The Ballroom",
       description:
-        "Elegant and spacious, our ballroom seats up to 200 guests comfortably and offers a timeless setting for dining, dancing, and unforgettable moments.",
+        "Dine and dance with up to 200 guests in a space that holds the joy of the room. Elegant, spacious, and ready for the moments you will remember.",
       image: "/the-dining2.jpg",
       imageAlt: "Ballroom dining tables at 1513 at Stone Creek",
     },
     {
       title: "Bridal Suite",
       description:
-        "Luxurious, comfortable, and thoughtfully designed for parties of every size. Begin your day surrounded by your closest friends in spaces crafted for relaxation and excitement.",
+        "Start the morning with your closest people. Comfortable, thoughtfully designed rooms for parties of every size, made for the quiet before the walk down the aisle.",
       image: "/1513-suite4.jpg",
       imageAlt: "Bridal suite seating and vanity at 1513 at Stone Creek",
     },
     {
       title: "The Patio",
       description:
-        "Ideal for cocktail hour, mingling, or your next celebration, complete with our brand-new outdoor fireplace, creating a cozy, inviting atmosphere.",
+        "Linger together after the ceremony. Cocktail hour, conversation, and a brand-new outdoor fireplace for a cozy, inviting pause in the day.",
       image: "/1513-patio.jpg",
       imageAlt: "Patio and outdoor fireplace at 1513 at Stone Creek",
     },
@@ -84,7 +84,7 @@ export default function VenuePage() {
       <Navigation />
       <PageBanner
         title="The Venue"
-        description="A Setting Designed for Every Celebration"
+        description="Where your people come together"
         image="/the-venue5.jpg"
         imageAlt="Ceremony lawn and countryside backdrop at 1513 at Stone Creek"
       />
@@ -92,10 +92,10 @@ export default function VenuePage() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl mb-6 text-foreground">A Timeless Setting</h2>
+            <h2 className="font-serif text-4xl md:text-5xl mb-6 text-foreground">A place to gather the people you love</h2>
             <p className="text-foreground/80 text-lg leading-relaxed">
-              1513 at Stone Creek combines rustic charm with modern sophistication, creating the perfect backdrop for
-              your wedding celebration. Our venue offers a breathtaking variety of spaces to bring your vision to life.
+              Exchange vows with Fish Creek behind you. Celebrate under the Pavilion or in the Ballroom. The countryside
+              in Rockmart holds both the quiet and the joy, with room for up to 200 guests.
             </p>
           </div>
 
@@ -118,9 +118,9 @@ export default function VenuePage() {
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Our Spaces</h2>
             <p className="text-foreground/80 text-lg max-w-2xl mx-auto leading-relaxed">
-              Each space at 1513 at Stone Creek has been thoughtfully designed to create unforgettable moments. From
-              the natural charm of our property to our all-inclusive packages and experienced coordination team, every
-              detail is built to make your day effortless, beautiful, and entirely yours.
+              Each space is here for the feeling of the day: the first look, the vows, the dinner, the last dance. From
+              the natural charm of the property to all-inclusive florals, catering, décor, and coordination, the team
+              keeps the details so the day can feel effortless, beautiful, and entirely yours.
             </p>
           </div>
 

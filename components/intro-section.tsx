@@ -10,7 +10,7 @@ export function IntroSection() {
           className="font-serif text-5xl md:text-6xl text-center mb-16 text-foreground italic"
           style={{ fontWeight: 300 }}
         >
-          Weddings and Special Events
+          A celebration that feels like family
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -27,12 +27,12 @@ export function IntroSection() {
 
           <div className="order-1 md:order-2">
             <p className="text-foreground/80 text-lg leading-relaxed mb-6">
-              1513 at Stone Creek is an all-inclusive wedding and event venue on 30 acres in Rockmart, GA. From
-              intimate gatherings to celebrations of up to 200 guests, our team handles the details so you can enjoy
-              the day.
+              You are not just another wedding on the calendar. Haley and Gina started 1513 so couples would feel
+              welcomed, loved, celebrated, and cared for, like family, with the people who matter most.
             </p>
             <p className="text-foreground/80 text-lg leading-relaxed mb-8">
-              Explore the Pavilion, Ballroom, and grounds, then get pricing or book a tour.
+              The grounds in Rockmart, GA, have room for intimate gatherings and celebrations of up to 200 guests.
+              Walk the Pavilion, Ballroom, and countryside, then get pricing or book a tour.
             </p>
 
             <Link href="/venue">

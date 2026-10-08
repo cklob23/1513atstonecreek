@@ -4,6 +4,8 @@ import { Footer } from "@/components/footer"
 import { JsonLd } from "@/components/json-ld"
 import { Navigation } from "@/components/navigation"
 import { IntroSection } from "@/components/intro-section"
+import { OwnersBand } from "@/components/owners-band"
+import { CareSection } from "@/components/care-section"
 import { GalleryPreview } from "@/components/gallery-preview"
 import { StatsStrip } from "@/components/stats-strip"
 import { TestimonialsPreview } from "@/components/testimonials-preview"
@@ -25,9 +27,11 @@ export default function Home() {
       <JsonLd data={websiteJsonLd()} />
       <Navigation />
       <Hero />
-      <div id="content">
+      <div id="content" className="scroll-mt-24">
         <StatsStrip />
         <IntroSection />
+        <OwnersBand />
+        <CareSection />
         <TestimonialsPreview />
         <GalleryPreview />
         <CtaBand />

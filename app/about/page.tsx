@@ -22,7 +22,7 @@ export default function AboutPage() {
       <Navigation />
       <PageBanner
         title="Our Story"
-        description="Discover the history and charm of 1513 at Stone Creek"
+        description="A place where couples feel like family"
         image="1513-venue0.jpg"
         imageAlt="Stone Creek grounds and trees at 1513 at Stone Creek"
       />
