@@ -7,7 +7,11 @@ interface PageBannerProps {
 }
 
 export function PageBanner({ title, description, image }: PageBannerProps) {
-  const src = image.startsWith("/") ? image : `/${image}`
+  const src = !image
+    ? "/1513-hero-pic.jpg"
+    : image.startsWith("/")
+      ? image
+      : `/${image}`
 
   return (
     <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
