@@ -248,10 +248,10 @@ body {
 
 .hero-text-scrim {
   background: radial-gradient(
-    ellipse 52% 42% at 50% 48%,
-    oklch(0.14 0.015 60 / 0.30) 0%,
-    oklch(0.14 0.015 60 / 0.10) 38%,
-    transparent 66%
+    ellipse 72% 58% at 50% 48%,
+    oklch(0.98 0.005 60 / 0.90) 0%,
+    oklch(0.98 0.005 60 / 0.58) 42%,
+    transparent 72%
   );
 }
 

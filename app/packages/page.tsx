@@ -10,9 +10,12 @@ import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
 import { pageMetadata } from "@/lib/metadata"
 import {
+  nextStepsIntro,
+  publishedEnhancementsLine,
   publishedExperienceGuideSections,
   publishedFaqs,
   publishedIncludedChecklist,
+  publishedNextSteps,
   publishedPackageCards,
 } from "@/lib/packages-data"
 
@@ -26,7 +29,9 @@ export const metadata: Metadata = pageMetadata({
 export default function PackagesPage() {
   const cards = publishedPackageCards()
   const checklist = publishedIncludedChecklist()
+  const enhancements = publishedEnhancementsLine()
   const guide = publishedExperienceGuideSections()
+  const steps = publishedNextSteps()
   const faqs = publishedFaqs()
 
   return (
@@ -35,37 +40,45 @@ export default function PackagesPage() {
       <PageBanner
         title="Pricing & Packages"
         description="All-inclusive weddings and events in Rockmart, GA"
-        image="/1513-photo-294.jpeg"
-        imageAlt="Reception tables ready for a wedding at 1513 at Stone Creek"
+        image="/1513-photo-296.jpeg"
+        imageAlt="Pavilion ceremony aisle at 1513 at Stone Creek"
       />
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           {cards.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-              {cards.map((pkg, index) => (
-                <Card key={`${pkg.name}-${index}`} className="bg-secondary border-border">
-                  <CardContent className="p-8 flex flex-col h-full">
-                    <h3 className="font-serif text-2xl mb-2 text-foreground">{pkg.name}</h3>
-                    <p className="text-foreground/80 mb-6">{pkg.audience}</p>
-                    <ul className="space-y-3 mb-8 flex-1">
-                      {pkg.items.map((item) => (
-                        <li key={item} className="flex gap-3 text-foreground/85">
-                          <Check className="w-5 h-5 mt-0.5 shrink-0 text-primary" aria-hidden />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                      <Link href="/contact">Get Pricing</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="mb-20">
+              <h2 className="font-serif text-4xl md:text-5xl mb-12 text-center text-foreground">
+                Choose your experience.
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {cards.map((pkg, index) => (
+                  <Card key={`${pkg.name}-${index}`} className="bg-secondary border-border">
+                    <CardContent className="p-8 flex flex-col h-full">
+                      {pkg.badge ? (
+                        <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">{pkg.badge}</p>
+                      ) : null}
+                      <h3 className="font-serif text-2xl mb-2 text-foreground">{pkg.name}</h3>
+                      <p className="text-foreground/80 mb-6">{pkg.audience}</p>
+                      <ul className="space-y-3 mb-8 flex-1">
+                        {pkg.items.map((item) => (
+                          <li key={item} className="flex gap-3 text-foreground/85">
+                            <Check className="w-5 h-5 mt-0.5 shrink-0 text-primary" aria-hidden />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        <Link href="/contact">Get pricing for this package</Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Current packages</h2>
+              <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Choose your experience.</h2>
               <p className="text-foreground/80 text-lg leading-relaxed mb-8">
                 Use Get Pricing to request current packages and brochures for your wedding or event.
               </p>
@@ -96,6 +109,16 @@ export default function PackagesPage() {
             </div>
           ) : null}
 
+          {enhancements ? (
+            <div className="max-w-3xl mx-auto mb-20">
+              <h2 className="font-serif text-4xl mb-4 text-foreground">Enhance your experience</h2>
+              <p className="text-foreground/80 text-lg leading-relaxed mb-6">{enhancements}</p>
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link href="/contact">Get Pricing</Link>
+              </Button>
+            </div>
+          ) : null}
+
           {guide.length > 0 ? (
             <div className="max-w-3xl mx-auto mb-20 space-y-10">
               {guide.map((section) => (
@@ -114,6 +137,23 @@ export default function PackagesPage() {
                   ) : null}
                 </div>
               ))}
+            </div>
+          ) : null}
+
+          {steps.length > 0 ? (
+            <div className="max-w-3xl mx-auto mb-20">
+              <h2 className="font-serif text-4xl mb-4 text-foreground">What happens next?</h2>
+              <p className="text-foreground/80 text-lg leading-relaxed mb-8">{nextStepsIntro}</p>
+              <ol className="space-y-6">
+                {steps.map((step, index) => (
+                  <li key={step.title}>
+                    <p className="font-serif text-2xl text-foreground mb-2">
+                      {String(index + 1).padStart(2, "0")} {step.title}
+                    </p>
+                    <p className="text-foreground/80 leading-relaxed">{step.body}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           ) : null}
 

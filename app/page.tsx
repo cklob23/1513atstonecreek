@@ -24,7 +24,7 @@ export default function Home() {
     <main className="min-h-screen w-full overflow-x-hidden">
       <Navigation />
       <Hero />
-      <div id="content">
+      <div id="content" className="scroll-mt-24">
         <StatsStrip />
         <IntroSection />
         <OwnersBand />

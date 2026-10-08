@@ -18,12 +18,14 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 text-center text-foreground px-4">
-        <h1 className="font-serif text-6xl md:text-8xl mb-6 text-balance italic" style={{ fontWeight: 300 }}>
-          1513 at Stone Creek
+      <div className="relative z-10 text-center text-foreground px-4 max-w-4xl">
+        <div className="hero-text-scrim pointer-events-none absolute -inset-x-6 -inset-y-5 -z-10" aria-hidden />
+        <p className="text-sm md:text-base uppercase tracking-[0.2em] mb-4 text-foreground">1513 at Stone Creek</p>
+        <h1 className="font-serif text-4xl md:text-6xl mb-6 text-balance text-foreground" style={{ fontWeight: 400 }}>
+          Marry your best friend. We&apos;ll take care of the rest.
         </h1>
-        <p className="font-serif text-xl md:text-3xl mb-10 text-foreground/90 max-w-3xl mx-auto italic text-balance">
-          Your Story Begins at 1513 at Stone Creek
+        <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed text-foreground">
+          A family-owned venue by Haley and Gina, built on faith and hospitality, in Rockmart, GA.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

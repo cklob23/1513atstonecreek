@@ -16,7 +16,8 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -63,7 +64,7 @@ export function Navigation() {
             >
               <Link href="/book-tour">Book a Tour</Link>
             </Button>
-            <DownloadBrochuresButton variant="solid" />
+            <DownloadBrochuresButton variant="nav" />
           </div>
 
           <button className="xl:hidden text-venue-text-light" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -94,7 +95,7 @@ export function Navigation() {
                 Book a Tour
               </Link>
             </Button>
-            <DownloadBrochuresButton variant="solid" className="w-full mt-4" />
+            <DownloadBrochuresButton variant="nav" className="w-full mt-4" />
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@ import { founders } from "@/lib/staff-data"
 
 export function OwnersBand() {
   return (
-    <section className="py-20 bg-muted">
+    <section id="meet-haley-and-gina" className="scroll-mt-24 py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground text-balance">Meet Haley and Gina</h2>

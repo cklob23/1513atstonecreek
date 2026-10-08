@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface DownloadBrochuresButtonProps {
-  variant?: "outline" | "solid" | "hero"
+  variant?: "outline" | "solid" | "hero" | "nav"
   className?: string
   size?: "default" | "sm" | "lg"
 }
@@ -21,9 +21,10 @@ export function DownloadBrochuresButton({
       className={cn(
         variant === "outline"
           ? "bg-transparent border-venue-text-light text-venue-text-light hover:bg-venue-text-light hover:text-primary"
-          : variant === "hero"
-            ? "min-h-12 px-8 bg-[oklch(0.93_0.04_85)] text-[oklch(0.22_0.02_60)] hover:bg-[oklch(0.88_0.05_85)]"
+          : variant === "hero" || variant === "nav"
+            ? "bg-[oklch(0.93_0.04_85)] text-[oklch(0.22_0.02_60)] hover:bg-[oklch(0.88_0.05_85)]"
             : "bg-primary text-primary-foreground hover:bg-primary/90",
+        variant === "hero" && "min-h-12 px-8",
         className,
       )}
     >

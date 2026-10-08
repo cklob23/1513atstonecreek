@@ -18,7 +18,7 @@ const steps = [
 
 export function CareSection() {
   return (
-    <section className="py-20 bg-background">
+    <section id="how-we-take-care" className="scroll-mt-24 py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground text-balance">How we take care of you</h2>

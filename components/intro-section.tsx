@@ -31,8 +31,8 @@ export function IntroSection() {
               welcomed, loved, celebrated, and cared for, like family, with the people who matter most.
             </p>
             <p className="text-foreground/80 text-lg leading-relaxed mb-8">
-              The grounds stretch across 30 acres in Rockmart, GA, with room for intimate gatherings and celebrations
-              of up to 200 guests. Walk the Pavilion, Ballroom, and countryside, then get pricing or book a tour.
+              The grounds in Rockmart, GA, have room for intimate gatherings and celebrations of up to 200 guests.
+              Walk the Pavilion, Ballroom, and countryside, then get pricing or book a tour.
             </p>
 
             <Link href="/venue">

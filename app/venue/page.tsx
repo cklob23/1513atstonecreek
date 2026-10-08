@@ -31,7 +31,7 @@ export default function VenuePage() {
     {
       icon: MapPin,
       title: "Countryside quiet",
-      description: "30 acres in Rockmart, with Fish Creek flowing behind the vows",
+      description: "Rockmart countryside, with Fish Creek flowing behind the vows",
     },
     {
       icon: Clock,
