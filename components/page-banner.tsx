@@ -3,7 +3,7 @@ import { HeroOverlay } from "@/components/hero-overlay"
 interface PageBannerProps {
   title: string
   description: string
-  image: string
+  image?: string
 }
 
 export function PageBanner({ title, description, image }: PageBannerProps) {
