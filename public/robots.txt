@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://1513atstonecreek.com/sitemap.xml

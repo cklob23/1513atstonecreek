@@ -1,21 +1,23 @@
 import type { Metadata } from "next"
 import { BookingCalendar } from "@/components/booking-calendar"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 
 export const metadata: Metadata = pageMetadata({
-  topic: "Book a Venue Tour",
+  topic: "Tour a Rockmart GA Wedding Venue",
   path: "/book-tour",
-  absoluteTitle: "Book a Venue Tour | 1513 at Stone Creek",
   description:
-    "Book a venue tour of 1513 at Stone Creek in Rockmart, Georgia. Hours Monday-Saturday 10-6, Sunday 1-5.",
+    "Book a tour of 1513 at Stone Creek, a wedding and event venue in Rockmart, GA. Hours Monday through Saturday 10 to 6, Sunday 1 to 5.",
 })
 
 export default function BookTourPage() {
   return (
-        <main className="min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden">
+      <JsonLd data={breadcrumbJsonLd("/book-tour")} />
       <Navigation />
       <PageBanner
         title="Book a Tour"

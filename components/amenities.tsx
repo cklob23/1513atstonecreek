@@ -40,7 +40,8 @@ export function Amenities() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Amenities & Services</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Everything you need for a seamless and memorable celebration
+            Our Rockmart, GA wedding and event venue includes the spaces and services couples and planners look for,
+            from the bridal suite to day-of coordination.
           </p>
         </div>
 

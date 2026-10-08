@@ -12,7 +12,8 @@ export function Testimonials() {
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">What Couples Say</h2>
             <p className="text-foreground/80 text-lg max-w-2xl mx-auto">
-              Hear from couples and guests who celebrated at 1513 at Stone Creek
+              Couples and guests share what it is like to celebrate a wedding, shower, or event at 1513 at Stone Creek
+              in Rockmart, GA.
             </p>
           </div>
 

@@ -6,14 +6,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CtaBand } from "@/components/cta-band"
 import { ResponsiveImage } from "@/components/responsive-image"
 import { Users, MapPin, Clock, Sparkles } from "lucide-react"
+import { JsonLd } from "@/components/json-ld"
+import { breadcrumbJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 import { publishedVenueFactNotes, publishedVenueFacts } from "@/lib/packages-data"
 
 export const metadata: Metadata = pageMetadata({
-  topic: "Ceremony & Reception Spaces",
+  topic: "Wedding Venue Spaces in Rockmart, GA",
   path: "/venue",
   description:
-    "Explore ceremony and reception spaces at 1513 at Stone Creek, including the Pavilion, Ballroom, Bridal Suite, and Patio in Rockmart, GA.",
+    "Explore ceremony and reception spaces at 1513 at Stone Creek in Rockmart, GA. Pavilion, Ballroom, Bridal Suite, and Patio for weddings and events.",
 })
 
 export default function VenuePage() {
@@ -78,6 +80,7 @@ export default function VenuePage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <JsonLd data={breadcrumbJsonLd("/venue")} />
       <Navigation />
       <PageBanner
         title="The Venue"

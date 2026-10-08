@@ -1,3 +1,4 @@
+// Parked off the public site. Move this folder back to app/packages to ship it.
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Check } from "lucide-react"
@@ -6,8 +7,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CtaBand } from "@/components/cta-band"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
 import { Navigation } from "@/components/navigation"
 import { PageBanner } from "@/components/page-banner"
+import { breadcrumbJsonLd, faqJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 import {
   nextStepsIntro,
@@ -19,10 +22,10 @@ import {
 } from "@/lib/packages-data"
 
 export const metadata: Metadata = pageMetadata({
-  topic: "Pricing & Packages",
+  topic: "Wedding Packages in Rockmart, GA",
   path: "/packages",
   description:
-    "Compare wedding and event packages at 1513 at Stone Creek in Rockmart, GA. See what's included, then get pricing.",
+    "Compare wedding and event packages at 1513 at Stone Creek in Rockmart, GA. All-inclusive venue for receptions, showers, and celebrations.",
 })
 
 export default function PackagesPage() {
@@ -34,6 +37,8 @@ export default function PackagesPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <JsonLd data={breadcrumbJsonLd("/packages")} />
+      <JsonLd data={faqJsonLd()} />
       <Navigation />
       <PageBanner
         title="Wedding Packages"
@@ -45,6 +50,23 @@ export default function PackagesPage() {
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl mb-4 text-foreground">Wedding and event packages</h2>
+            <p className="text-foreground/80 text-lg leading-relaxed">
+              1513 at Stone Creek is an all-inclusive wedding and event venue in Rockmart, GA, serving couples and
+              planners across northwest Georgia and the Atlanta area. Request current packages for receptions, rehearsal
+              dinners, showers, and other celebrations, then{" "}
+              <Link href="/book-tour" className="underline font-medium text-foreground">
+                book a tour
+              </Link>{" "}
+              or{" "}
+              <Link href="/contact" className="underline font-medium text-foreground">
+                get pricing
+              </Link>
+              .
+            </p>
+          </div>
+
           {cards.length > 0 ? (
             <div className="mb-20">
               <h2 className="font-serif text-4xl md:text-5xl mb-12 text-center text-foreground">

@@ -26,6 +26,7 @@ export function PageBanner({ title, description, image, imageAlt, overlay = "def
           className="w-full h-full object-cover"
           sizes="100vw"
           loading="eager"
+          fetchPriority="high"
         />
         {strong ? <div className="absolute inset-0 hero-dark-overlay" aria-hidden /> : <HeroOverlay />}
       </div>

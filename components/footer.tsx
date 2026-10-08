@@ -4,7 +4,7 @@ import { siteFacts } from "@/lib/site"
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/venue", label: "The Venue" },
-  { href: "/packages", label: "Pricing" },
+  { href: "/amenities", label: "Amenities" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/testimonials", label: "Testimonials" },
