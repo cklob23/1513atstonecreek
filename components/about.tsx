@@ -68,7 +68,7 @@ export function About() {
               </ul>
             ) : null}
             {stats.length > 0 ? (
-              <div className={`grid gap-6 mt-8 ${stats.length === 1 ? "grid-cols-1 max-w-[10rem]" : "grid-cols-3"}`}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                 {stats.map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="text-3xl font-serif text-foreground mb-2">{stat.value}</div>
