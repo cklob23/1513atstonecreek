@@ -10,7 +10,8 @@ import { GalleryPreview } from "@/components/gallery-preview"
 import { StatsStrip } from "@/components/stats-strip"
 import { TestimonialsPreview } from "@/components/testimonials-preview"
 import { CtaBand } from "@/components/cta-band"
-import { websiteJsonLd } from "@/lib/json-ld"
+import { FaqSection } from "@/components/faq-section"
+import { faqJsonLd, websiteJsonLd } from "@/lib/json-ld"
 import { pageMetadata } from "@/lib/metadata"
 import { siteDescription } from "@/lib/site"
 
@@ -25,6 +26,7 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden">
       <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={faqJsonLd()} />
       <Navigation />
       <Hero />
       <div id="content" className="scroll-mt-24">
@@ -34,6 +36,7 @@ export default function Home() {
         <CareSection />
         <TestimonialsPreview />
         <GalleryPreview />
+        <FaqSection />
         <CtaBand />
       </div>
       <Footer />

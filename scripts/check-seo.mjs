@@ -174,11 +174,12 @@ for (const routePath of expectedPaths) {
 
   if (routePath === "/") {
     if (!types.includes("WebSite")) fail("Home is missing WebSite JSON-LD")
+    if (!types.includes("FAQPage")) fail("Home is missing FAQPage JSON-LD")
   } else if (!types.includes("BreadcrumbList")) {
     fail(`${routePath} is missing BreadcrumbList JSON-LD`)
   }
 
-  if (types.includes("FAQPage")) {
+  if (routePath !== "/" && types.includes("FAQPage")) {
     fail(`${routePath} has FAQPage JSON-LD but does not render FAQs`)
   }
 }

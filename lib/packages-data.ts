@@ -135,8 +135,8 @@ export type PackageFaq = {
 
 export const packageFaqs: PackageFaq[] = [
   {
-    question: "How much do packages cost?",
-    answer: "Request current package pricing through Get Pricing.",
+    question: "How do we get pricing?",
+    answer: "Request current pricing through Get Pricing.",
     pricingCta: true,
   },
   {
@@ -215,11 +215,6 @@ export const packageFaqs: PackageFaq[] = [
     question: "How do we reserve our date?",
     answer:
       "Your wedding date is officially reserved once the required agreement has been signed. For current booking steps, request them through Get Pricing.",
-    pricingCta: true,
-  },
-  {
-    question: "How do deposit and booking steps work?",
-    answer: "Request current deposit and booking details through Get Pricing.",
     pricingCta: true,
   },
   {
