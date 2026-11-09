@@ -17,9 +17,9 @@ export function IntroSection() {
           <div className="order-2 md:order-1">
             <div className="rounded-full overflow-hidden w-full aspect-square">
               <ResponsiveImage
-                src="/1513-photo-303.jpeg"
-                alt="Couple celebrating outdoors at 1513 at Stone Creek"
-                className="w-full h-full object-cover"
+                src="/homepage-below-hero-selected.jpg"
+                alt="Evening lights reflecting on the pond at 1513 at Stone Creek"
+                className="w-full h-full object-cover object-[42%_center]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
