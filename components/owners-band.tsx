@@ -25,7 +25,7 @@ export function OwnersBand() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {founders.map((founder) => (
+            {[...founders].reverse().map((founder) => (
               <article key={founder.name} className="flex flex-col">
                 <h3 className="font-serif text-3xl text-foreground mb-3">{founder.name}</h3>
                 <div className="flex flex-wrap gap-2 mb-6">
