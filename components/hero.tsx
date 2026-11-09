@@ -9,7 +9,7 @@ export function Hero() {
     <section id="home" className="relative h-screen flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <ResponsiveImage
-          src="/1513-photo-301.png"
+          src="/homepage-hero-selected.jpg"
           alt="Pond and tree-lined grounds at 1513 at Stone Creek, a wedding and event venue in Rockmart, Georgia"
           className="w-full h-full object-cover"
           sizes="100vw"
