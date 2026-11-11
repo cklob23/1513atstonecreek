@@ -1,3 +1,4 @@
+import { ResponsiveImage } from "@/components/responsive-image"
 import { founders, team } from "@/lib/staff-data"
 
 export function StaffSection() {
@@ -22,10 +23,12 @@ export function StaffSection() {
                                 }`}
                         >
                             <div>
-                                <img
+                                <ResponsiveImage
                                     src={founder.image || "/placeholder.svg"}
                                     alt={`Portrait of ${founder.name}, ${founder.roles.slice(0, 2).join(" and ")} at 1513 at Stone Creek`}
                                     className="w-full h-[460px] object-cover rounded-lg shadow-xl"
+                                    style={founder.imagePosition ? { objectPosition: founder.imagePosition } : undefined}
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                 />
                             </div>
                             <div>
@@ -59,8 +62,16 @@ export function StaffSection() {
                 </div>
 
                 {/* Team */}
-                <div className="text-center mb-12">
+                <div className="text-center mb-8">
                     <h3 className="font-serif text-3xl md:text-4xl text-foreground">Our Team</h3>
+                </div>
+                <div className="mb-12 overflow-hidden rounded-lg shadow-xl">
+                    <ResponsiveImage
+                        src="/team-group.jpg"
+                        alt="1513 at Stone Creek team"
+                        className="w-full h-auto"
+                        sizes="(max-width: 768px) 100vw, 1200px"
+                    />
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {team.map((member) => (
@@ -68,10 +79,12 @@ export function StaffSection() {
                             key={member.name}
                             className="flex flex-col bg-secondary rounded-lg overflow-hidden shadow-md border border-border"
                         >
-                            <img
+                            <ResponsiveImage
                                 src={member.image || "/placeholder.svg"}
                                 alt={`Portrait of ${member.name}, ${member.role} at 1513 at Stone Creek`}
                                 className="w-full h-72 object-cover"
+                                style={member.imagePosition ? { objectPosition: member.imagePosition } : undefined}
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             />
                             <div className="flex flex-col flex-1 p-6">
                                 <h4 className="font-serif text-2xl text-foreground">{member.name}</h4>

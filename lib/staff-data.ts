@@ -1,6 +1,7 @@
 export type Founder = {
   name: string
   image: string
+  imagePosition?: string
   roles: string[]
   bio: string[]
   funFacts: string[]
@@ -9,6 +10,7 @@ export type Founder = {
 export type TeamMember = {
   name: string
   image: string
+  imagePosition?: string
   role: string
   bio: string
   funFacts: string[]
@@ -17,7 +19,8 @@ export type TeamMember = {
 export const founders: Founder[] = [
   {
     name: "Haley",
-    image: "/haley.png",
+    image: "/haley.jpg",
+    imagePosition: "center 20%",
     roles: ["Co-Founder", "Co-Owner", "Client Experience Coordinator", "Marketing Queen"],
     bio: [
       "When Gina and I started 1513, we weren't just building a wedding venue - we were building a place where people would feel welcomed, loved, celebrated, and cared for. Seeing that dream come to life has been one of the greatest blessings of my life.",
@@ -32,7 +35,8 @@ export const founders: Founder[] = [
   },
   {
     name: "Gina",
-    image: "/gina.png",
+    image: "/gina.jpg",
+    imagePosition: "58% 22%",
     roles: ["Co-Founder", "Co-Owner", "Staff Coordinator", "Floral Queen"],
     bio: [
       "When Haley and I started 1513, we dreamed of creating more than just a beautiful venue. We wanted a space where couples feel like family - where you know you're loved, cared for, and never just another wedding on the calendar.",
@@ -61,7 +65,8 @@ export const team: TeamMember[] = [
   },
   {
     name: "April",
-    image: "/april.png",
+    image: "/april.jpg",
+    imagePosition: "62% 28%",
     role: "Tour Specialist",
     bio: "April knows our property inside and out and understands every one of our package offerings. Whether you're dreaming big or keeping it intimate, she's gifted at piecing it all together to create an experience that feels just right for you.",
     funFacts: [
@@ -72,7 +77,8 @@ export const team: TeamMember[] = [
   },
   {
     name: "Kinley",
-    image: "/kinley.png",
+    image: "/kinley.jpg",
+    imagePosition: "center 25%",
     role: "House Manager & Team Member",
     bio: "Kinley wears many hats - from serving guests at the bar to making sure everything is set up beautifully. Her favorite part of every wedding is listening to the heartfelt speeches and watching everyone hit the dance floor.",
     funFacts: [
@@ -83,7 +89,8 @@ export const team: TeamMember[] = [
   },
   {
     name: "Ryleigh",
-    image: "/ryleigh.png",
+    image: "/ryleigh.jpg",
+    imagePosition: "center 30%",
     role: "House Manager & Team Member",
     bio: "Ryleigh is always on the move - helping with setup, serving guests, and jumping in wherever she's needed with a servant's heart and a positive attitude. Her favorite part is watching the bride walk down the aisle.",
     funFacts: [
@@ -116,7 +123,8 @@ export const team: TeamMember[] = [
   },
   {
     name: "Blayton",
-    image: "/blayton.png",
+    image: "/blayton.jpg",
+    imagePosition: "center 16%",
     role: "Team Member",
     bio: "Whether he's preparing the venue before guests arrive, serving dinner, or resetting spaces, Blayton is always working behind the scenes to make sure every wedding unfolds just the way it should. His favorite part is the reception.",
     funFacts: [
@@ -127,7 +135,8 @@ export const team: TeamMember[] = [
   },
   {
     name: "Branson",
-    image: "/branson.png",
+    image: "/branson.jpg",
+    imagePosition: "center 22%",
     role: "Team Member",
     bio: "Branson helps set up for your big day, serves dinner, takes down décor, and is always ready to lend a hand. If something needs to be done, he's probably already on it. His favorite part of every wedding is the reception.",
     funFacts: [
