@@ -145,4 +145,16 @@ export const team: TeamMember[] = [
       "If there's a chance to make someone laugh, he's already working on it.",
     ],
   },
+  {
+    name: "Sarah",
+    image: "/sarah.jpg",
+    imagePosition: "center 30%",
+    role: "Bartender",
+    bio: "Sarah brings over 25 years of bartending experience and a special connection to 1513, because she celebrated her own wedding here 14 years ago! She loves meeting guests, sharing a laugh, and making sure everyone feels welcome and has a great time. Being back behind the bar where she once celebrated her own love story makes helping couples celebrate theirs even more special.",
+    funFacts: [
+      "A bartending pro with more than 25 years behind the bar.",
+      'She said "I do" at 1513 at Stone Creek 14 years ago.',
+      "Her wedding day must-haves are a full cup of coffee and the perfect playlist.",
+    ],
+  },
 ]
